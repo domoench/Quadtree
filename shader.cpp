@@ -12,8 +12,6 @@ using namespace std;
 #include <string.h>
 
 #include "shader.hpp"
-#include "glm/glm.hpp"
-#include <glfw3.h>
 
 GLuint LoadShaders(const char * vertex_file_path, const char * fragment_file_path) {
 	// Create the shaders
