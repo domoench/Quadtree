@@ -9,11 +9,13 @@ using namespace glm;
 /**
  * A class to represent square bounding boxes.
  */
-class BB {
+class BB
+{
   public:
     vec2 min; //!< Bottom left corner position
     vec2 max; //!< Top right corner position
 
+    BB();
     BB(vec2 _min, vec2 _max);
 };
 

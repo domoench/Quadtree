@@ -12,7 +12,8 @@ using namespace glm;
 /**
  * A class to represent dynamic region quadtrees.
  */
-class QTNode {
+class QTNode
+{
   public:
     unsigned int level;
     vec2 base;          //!< (x,y) coordinate of this node's bottom left corner
@@ -22,6 +23,7 @@ class QTNode {
     //! A list of Geometry objects that intersect this node
     vector<Geometry> geometries;
 
-    QTNode(unsigned int _level, vec2 _base, QTNode* _parent);
+    QTNode(unsigned int _level, vec2 _base, QTNode* _parent,
+           vector<Geometry> geometries);
 };
 #endif

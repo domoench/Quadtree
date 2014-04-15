@@ -14,7 +14,8 @@ using namespace glm;
  * A class to package information about a scene to be rendered, including the
  * scene's geometries, associated quadtree, and window dimensions.
  */
-class Scene {
+class Scene
+{
   public:
     unsigned int window_width;
     unsigned int window_height;

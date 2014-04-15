@@ -11,7 +11,8 @@ using namespace glm;
 /**
  * A class representing convex hull geometries.
  */
-class Geometry {
+class Geometry
+{
   public:
     unsigned int id;
     vector<vec2> vertices;
