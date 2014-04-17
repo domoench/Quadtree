@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -68,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -80,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#var-members">Variables</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">constants.h File Reference</div>  </div>
 </div><!--header-->
@@ -88,25 +89,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><a href="constants_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:ad0f777007b7230b8579d4741a3b22aa3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8h.html#ad0f777007b7230b8579d4741a3b22aa3">QT_N_LEVELS</a> = 32</td></tr>
-<tr class="memdesc:ad0f777007b7230b8579d4741a3b22aa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of quadtree levels. Root is QT_N_LEVELS - 1. Deepest level is 0.  <a href="#ad0f777007b7230b8579d4741a3b22aa3">More...</a><br /></td></tr>
-<tr class="separator:ad0f777007b7230b8579d4741a3b22aa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfb81d11266f03c9c5f285f026e76b03"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8h.html#acfb81d11266f03c9c5f285f026e76b03">DEFAULT_W</a> = 600</td></tr>
-<tr class="memdesc:acfb81d11266f03c9c5f285f026e76b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default window width in pixels.  <a href="#acfb81d11266f03c9c5f285f026e76b03">More...</a><br /></td></tr>
-<tr class="separator:acfb81d11266f03c9c5f285f026e76b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bb365172bd2a91f100a9f443b4c983f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8h.html#a5bb365172bd2a91f100a9f443b4c983f">DEFAULT_H</a> = 450</td></tr>
-<tr class="memdesc:a5bb365172bd2a91f100a9f443b4c983f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default window height in pixels.  <a href="#a5bb365172bd2a91f100a9f443b4c983f">More...</a><br /></td></tr>
-<tr class="separator:a5bb365172bd2a91f100a9f443b4c983f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:ad9f6b02038dcb2b0ca06c2ae4e83507c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8h.html#ad9f6b02038dcb2b0ca06c2ae4e83507c">QT_N_LEVELS</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memdesc:ad9f6b02038dcb2b0ca06c2ae4e83507c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of quadtree levels. Root is QT_N_LEVELS - 1. Deepest level is 0.  <a href="#ad9f6b02038dcb2b0ca06c2ae4e83507c">More...</a><br /></td></tr>
+<tr class="separator:ad9f6b02038dcb2b0ca06c2ae4e83507c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea492520b4d3637c36d824ee3cf38044"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8h.html#aea492520b4d3637c36d824ee3cf38044">DEFAULT_W</a>&#160;&#160;&#160;600</td></tr>
+<tr class="memdesc:aea492520b4d3637c36d824ee3cf38044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default window width in pixels.  <a href="#aea492520b4d3637c36d824ee3cf38044">More...</a><br /></td></tr>
+<tr class="separator:aea492520b4d3637c36d824ee3cf38044"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9550a89ddce281766ed87ce4f62373e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="constants_8h.html#a9550a89ddce281766ed87ce4f62373e6">DEFAULT_H</a>&#160;&#160;&#160;450</td></tr>
+<tr class="memdesc:a9550a89ddce281766ed87ce4f62373e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default window height in pixels.  <a href="#a9550a89ddce281766ed87ce4f62373e6">More...</a><br /></td></tr>
+<tr class="separator:a9550a89ddce281766ed87ce4f62373e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Variable Documentation</h2>
-<a class="anchor" id="a5bb365172bd2a91f100a9f443b4c983f"></a>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a9550a89ddce281766ed87ce4f62373e6"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DEFAULT_H = 450</td>
+          <td class="memname">#define DEFAULT_H&#160;&#160;&#160;450</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -115,12 +116,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="acfb81d11266f03c9c5f285f026e76b03"></a>
+<a class="anchor" id="aea492520b4d3637c36d824ee3cf38044"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int DEFAULT_W = 600</td>
+          <td class="memname">#define DEFAULT_W&#160;&#160;&#160;600</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -129,12 +130,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad0f777007b7230b8579d4741a3b22aa3"></a>
+<a class="anchor" id="ad9f6b02038dcb2b0ca06c2ae4e83507c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int QT_N_LEVELS = 32</td>
+          <td class="memname">#define QT_N_LEVELS&#160;&#160;&#160;32</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -146,7 +147,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 15 2014 10:56:13 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 16 2014 17:48:11 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

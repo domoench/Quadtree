@@ -15,15 +15,29 @@ using namespace glm;
 class QTNode
 {
   public:
-    unsigned int level;
+    unsigned int level; // TODO: Create global lookup table => width[level]
     vec2 base;          //!< (x,y) coordinate of this node's bottom left corner
     QTNode* parent;
-    QTNode* children;   //!< Array of 4 child pointers. NULL if this is leafnode.
 
-    //! A list of Geometry objects that intersect this node
-    vector<Geometry> geometries;
+    /*!
+      Array of 4 child pointers. If children == NULL, then this node is a
+      leafnode.
+     */
+    QTNode* children;
+
+    /*!
+      True if this is an occupied leaf node. False if this is an interior node
+      or unoccupied.
+     */
+    bool occupied;
+
+    /*!
+      The geometry that occupies this node. NULL if this is an interior node
+      or unoccupied.
+     */
+    const Geometry* occupier;
 
     QTNode(unsigned int _level, vec2 _base, QTNode* _parent,
-           vector<Geometry> geometries);
+           const Geometry* _occupier);
 };
 #endif

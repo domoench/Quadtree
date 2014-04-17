@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,29 +89,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="constants_8h.html">constants.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using namespace </span>std;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span>glm;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_geometry.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_geometry.html">Geometry</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_geometry.html#aad8da7cd260eff56d34895126f04b75d">   16</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_geometry.html#aad8da7cd260eff56d34895126f04b75d">id</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_geometry.html#a30086a92b88740f2ca9253f708a6639a">   17</a></span>&#160;    vector&lt;vec2&gt; <a class="code" href="class_geometry.html#a30086a92b88740f2ca9253f708a6639a">vertices</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_geometry.html#a81016e7d24d062ea51dd6842ee576c17">   18</a></span>&#160;    vector&lt;int&gt;  <a class="code" href="class_geometry.html#a81016e7d24d062ea51dd6842ee576c17">edges</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_geometry.html">Geometry</a>(<span class="keywordtype">int</span> _id, vector&lt;vec2&gt; _vertices, vector&lt;int&gt; _edges);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bb_8h.html">bb.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using namespace </span>glm;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_geometry.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_geometry.html">Geometry</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_geometry.html#aad8da7cd260eff56d34895126f04b75d">   18</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_geometry.html#aad8da7cd260eff56d34895126f04b75d">id</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_geometry.html#a30086a92b88740f2ca9253f708a6639a">   19</a></span>&#160;    vector&lt;vec2&gt; <a class="code" href="class_geometry.html#a30086a92b88740f2ca9253f708a6639a">vertices</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_geometry.html#a81016e7d24d062ea51dd6842ee576c17">   20</a></span>&#160;    vector&lt;int&gt;  <a class="code" href="class_geometry.html#a81016e7d24d062ea51dd6842ee576c17">edges</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_geometry.html#ad222ed59c2681a71bd33c6db85c025c2">   21</a></span>&#160;    <a class="code" href="class_b_b.html">BB</a>*          <a class="code" href="class_geometry.html#ad222ed59c2681a71bd33c6db85c025c2">bb</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_geometry.html">Geometry</a>(<span class="keywordtype">int</span> _id, vector&lt;vec2&gt; _vertices, vector&lt;int&gt; _edges);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="constants_8h_html"><div class="ttname"><a href="constants_8h.html">constants.h</a></div></div>
-<div class="ttc" id="class_geometry_html"><div class="ttname"><a href="class_geometry.html">Geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:14</div></div>
-<div class="ttc" id="class_geometry_html_a30086a92b88740f2ca9253f708a6639a"><div class="ttname"><a href="class_geometry.html#a30086a92b88740f2ca9253f708a6639a">Geometry::vertices</a></div><div class="ttdeci">vector&lt; vec2 &gt; vertices</div><div class="ttdef"><b>Definition:</b> geometry.h:17</div></div>
-<div class="ttc" id="class_geometry_html_a81016e7d24d062ea51dd6842ee576c17"><div class="ttname"><a href="class_geometry.html#a81016e7d24d062ea51dd6842ee576c17">Geometry::edges</a></div><div class="ttdeci">vector&lt; int &gt; edges</div><div class="ttdef"><b>Definition:</b> geometry.h:18</div></div>
-<div class="ttc" id="class_geometry_html_aad8da7cd260eff56d34895126f04b75d"><div class="ttname"><a href="class_geometry.html#aad8da7cd260eff56d34895126f04b75d">Geometry::id</a></div><div class="ttdeci">unsigned int id</div><div class="ttdef"><b>Definition:</b> geometry.h:16</div></div>
+<div class="ttc" id="bb_8h_html"><div class="ttname"><a href="bb_8h.html">bb.h</a></div></div>
+<div class="ttc" id="class_b_b_html"><div class="ttname"><a href="class_b_b.html">BB</a></div><div class="ttdef"><b>Definition:</b> bb.h:12</div></div>
+<div class="ttc" id="class_geometry_html"><div class="ttname"><a href="class_geometry.html">Geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:15</div></div>
+<div class="ttc" id="class_geometry_html_a30086a92b88740f2ca9253f708a6639a"><div class="ttname"><a href="class_geometry.html#a30086a92b88740f2ca9253f708a6639a">Geometry::vertices</a></div><div class="ttdeci">vector&lt; vec2 &gt; vertices</div><div class="ttdef"><b>Definition:</b> geometry.h:19</div></div>
+<div class="ttc" id="class_geometry_html_a81016e7d24d062ea51dd6842ee576c17"><div class="ttname"><a href="class_geometry.html#a81016e7d24d062ea51dd6842ee576c17">Geometry::edges</a></div><div class="ttdeci">vector&lt; int &gt; edges</div><div class="ttdef"><b>Definition:</b> geometry.h:20</div></div>
+<div class="ttc" id="class_geometry_html_aad8da7cd260eff56d34895126f04b75d"><div class="ttname"><a href="class_geometry.html#aad8da7cd260eff56d34895126f04b75d">Geometry::id</a></div><div class="ttdeci">unsigned int id</div><div class="ttdef"><b>Definition:</b> geometry.h:18</div></div>
+<div class="ttc" id="class_geometry_html_ad222ed59c2681a71bd33c6db85c025c2"><div class="ttname"><a href="class_geometry.html#ad222ed59c2681a71bd33c6db85c025c2">Geometry::bb</a></div><div class="ttdeci">BB * bb</div><div class="ttdef"><b>Definition:</b> geometry.h:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 15 2014 10:56:13 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 16 2014 17:48:11 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

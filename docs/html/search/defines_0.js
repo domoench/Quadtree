@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['qt_5fn_5flevels',['QT_N_LEVELS',['../constants_8h.html#ad9f6b02038dcb2b0ca06c2ae4e83507c',1,'constants.h']]]
+  ['default_5fh',['DEFAULT_H',['../constants_8h.html#a9550a89ddce281766ed87ce4f62373e6',1,'constants.h']]],
+  ['default_5fw',['DEFAULT_W',['../constants_8h.html#aea492520b4d3637c36d824ee3cf38044',1,'constants.h']]]
 ];

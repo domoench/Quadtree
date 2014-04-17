@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scene',['scene',['../main_8cpp.html#a316ef80f2dad1200569390e1dc3ce5e8',1,'main.cpp']]]
+  ['vertices',['vertices',['../class_geometry.html#a30086a92b88740f2ca9253f708a6639a',1,'Geometry']]]
 ];

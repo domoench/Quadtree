@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "constants.h"
+#include "bb.h"
 #include "glm/glm.hpp"
 
 using namespace std;
@@ -17,6 +18,7 @@ class Geometry
     unsigned int id;
     vector<vec2> vertices;
     vector<int>  edges;
+    BB*          bb;
 
     Geometry(int _id, vector<vec2> _vertices, vector<int> _edges);
 };

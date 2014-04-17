@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li class="current"><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,19 +87,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="constants_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __DOM_CONSTANTS_H__</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __DOM_CONSTANTS_H__</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="constants_8h.html#ad0f777007b7230b8579d4741a3b22aa3">    5</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="constants_8h.html#ad0f777007b7230b8579d4741a3b22aa3">QT_N_LEVELS</a> = 32;</div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="constants_8h.html#ad9f6b02038dcb2b0ca06c2ae4e83507c">    5</a></span>&#160;<span class="preprocessor">#define QT_N_LEVELS 32</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="constants_8h.html#acfb81d11266f03c9c5f285f026e76b03">    8</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="constants_8h.html#acfb81d11266f03c9c5f285f026e76b03">DEFAULT_W</a> = 600;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="constants_8h.html#a5bb365172bd2a91f100a9f443b4c983f">   10</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="constants_8h.html#a5bb365172bd2a91f100a9f443b4c983f">DEFAULT_H</a> = 450;</div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="constants_8h.html#aea492520b4d3637c36d824ee3cf38044">    8</a></span>&#160;<span class="preprocessor">#define DEFAULT_W 600</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define DEFAULT_H 450</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="constants_8h_html_a5bb365172bd2a91f100a9f443b4c983f"><div class="ttname"><a href="constants_8h.html#a5bb365172bd2a91f100a9f443b4c983f">DEFAULT_H</a></div><div class="ttdeci">int DEFAULT_H</div><div class="ttdoc">Default window height in pixels. </div><div class="ttdef"><b>Definition:</b> constants.h:10</div></div>
-<div class="ttc" id="constants_8h_html_acfb81d11266f03c9c5f285f026e76b03"><div class="ttname"><a href="constants_8h.html#acfb81d11266f03c9c5f285f026e76b03">DEFAULT_W</a></div><div class="ttdeci">int DEFAULT_W</div><div class="ttdoc">Default window width in pixels. </div><div class="ttdef"><b>Definition:</b> constants.h:8</div></div>
-<div class="ttc" id="constants_8h_html_ad0f777007b7230b8579d4741a3b22aa3"><div class="ttname"><a href="constants_8h.html#ad0f777007b7230b8579d4741a3b22aa3">QT_N_LEVELS</a></div><div class="ttdeci">int QT_N_LEVELS</div><div class="ttdoc">The maximum number of quadtree levels. Root is QT_N_LEVELS - 1. Deepest level is 0. </div><div class="ttdef"><b>Definition:</b> constants.h:5</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 15 2014 10:56:13 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 16 2014 17:48:11 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

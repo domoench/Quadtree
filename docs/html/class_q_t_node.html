@@ -37,6 +37,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -69,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -93,8 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a02c24673835dc1747d9ba7a9f3c27b84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a02c24673835dc1747d9ba7a9f3c27b84">QTNode</a> (unsigned int _level, vec2 _base, <a class="el" href="class_q_t_node.html">QTNode</a> *_parent)</td></tr>
-<tr class="separator:a02c24673835dc1747d9ba7a9f3c27b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a991c8c64236bd40cda2065d4df6826ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a991c8c64236bd40cda2065d4df6826ef">QTNode</a> (unsigned int _level, vec2 _base, <a class="el" href="class_q_t_node.html">QTNode</a> *_parent, vector&lt; <a class="el" href="class_geometry.html">Geometry</a> &gt; geometries)</td></tr>
+<tr class="separator:a991c8c64236bd40cda2065d4df6826ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -106,16 +107,16 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a1d8821384dae11149cb108440b108176"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_q_t_node.html">QTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a1d8821384dae11149cb108440b108176">parent</a></td></tr>
 <tr class="separator:a1d8821384dae11149cb108440b108176"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aacf4c1618f753633cb7ea9ddb76690f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_q_t_node.html">QTNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#aacf4c1618f753633cb7ea9ddb76690f9">children</a></td></tr>
-<tr class="memdesc:aacf4c1618f753633cb7ea9ddb76690f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of 4 child pointers. NULL if this is leafnode.  <a href="#aacf4c1618f753633cb7ea9ddb76690f9">More...</a><br /></td></tr>
 <tr class="separator:aacf4c1618f753633cb7ea9ddb76690f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa48645f4e491ae201feabd5199eb549e"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="class_geometry.html">Geometry</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#aa48645f4e491ae201feabd5199eb549e">geometries</a></td></tr>
-<tr class="memdesc:aa48645f4e491ae201feabd5199eb549e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of <a class="el" href="class_geometry.html">Geometry</a> objects that intersect this node.  <a href="#aa48645f4e491ae201feabd5199eb549e">More...</a><br /></td></tr>
-<tr class="separator:aa48645f4e491ae201feabd5199eb549e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8bd41ed3407ecad40f52659ecb84b8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#aaa8bd41ed3407ecad40f52659ecb84b8">occupied</a></td></tr>
+<tr class="separator:aaa8bd41ed3407ecad40f52659ecb84b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa101f25c611e27299a96f510567c9516"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_geometry.html">Geometry</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#aa101f25c611e27299a96f510567c9516">occupier</a></td></tr>
+<tr class="separator:aa101f25c611e27299a96f510567c9516"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class to represent dynamic region quadtrees. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a02c24673835dc1747d9ba7a9f3c27b84"></a>
+<a class="anchor" id="a991c8c64236bd40cda2065d4df6826ef"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -135,7 +136,13 @@ Public Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="class_q_t_node.html">QTNode</a> *&#160;</td>
-          <td class="paramname"><em>_parent</em>&#160;</td>
+          <td class="paramname"><em>_parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; <a class="el" href="class_geometry.html">Geometry</a> &gt;&#160;</td>
+          <td class="paramname"><em>_geometries</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,22 +179,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Array of 4 child pointers. NULL if this is leafnode. </p>
-
-</div>
-</div>
-<a class="anchor" id="aa48645f4e491ae201feabd5199eb549e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">vector&lt;<a class="el" href="class_geometry.html">Geometry</a>&gt; QTNode::geometries</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>A list of <a class="el" href="class_geometry.html">Geometry</a> objects that intersect this node. </p>
+<p>Array of 4 child pointers. If children == NULL, then this node is a leafnode. </p>
 
 </div>
 </div>
@@ -200,6 +192,32 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aaa8bd41ed3407ecad40f52659ecb84b8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QTNode::occupied</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>True if this is an occupied leaf node. False if this is an interior node or unoccupied. </p>
+
+</div>
+</div>
+<a class="anchor" id="aa101f25c611e27299a96f510567c9516"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_geometry.html">Geometry</a> QTNode::occupier</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The geometry that occupies this node. NULL if this is an interior node or unoccupied. </p>
 
 </div>
 </div>
@@ -222,7 +240,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 15 2014 10:56:13 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 16 2014 17:48:11 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
