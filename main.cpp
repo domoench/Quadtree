@@ -5,7 +5,8 @@
 
 #include "shader.hpp"
 #include "glm/glm.hpp"
-#include <GLFW/glfw3.h>
+#include <GLFW/glfw3.h> // Leads to inclusion of gl.h
+#include <OpenGL/gl3.h> // For mac
 
 using namespace glm;
 
@@ -28,8 +29,11 @@ int main(int argc, char** argv)
 		return -1;
 	}
   glfwWindowHint(GLFW_SAMPLES, 4);                // MultiSampling
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);  // Min OpenGL API: 2
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);  // Min OpenGL API: 3
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+  // https://stackoverflow.com/questions/22213874/creating-opengl-3-3-context-with-glfw-in-mac-os-x-10-9
+  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
   // Open a window and create its OpenGL context
 	window = glfwCreateWindow(DEFAULT_W, DEFAULT_H, "Quadtree", NULL, NULL);
@@ -40,13 +44,6 @@ int main(int argc, char** argv)
 		return -1;
 	}
 	glfwMakeContextCurrent(window);
-
-  // Initialize GLEW
-	if (glewInit() != GLEW_OK)
-  {
-		fprintf(stderr, "Failed to initialize GLEW\n");
-		return -1;
-	}
 
   // Ensure we can capture the escape key as a "sticky key"
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
