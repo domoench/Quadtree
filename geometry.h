@@ -5,6 +5,8 @@
 #include "constants.h"
 #include "bb.h"
 #include "glm/glm.hpp"
+#include <GLFW/glfw3.h> // Leads to inclusion of gl.h
+#include <OpenGL/gl3.h> // For mac
 
 using namespace std;
 using namespace glm;
@@ -15,11 +17,15 @@ using namespace glm;
 class Geometry
 {
   public:
-    unsigned int  id;
-    vector<vec2>* vertices;
-    vector<int>*  edges;
-    BB*           bb;
+    unsigned int  _id;
+    vector<vec2>* _vertices;
+    vector<int>*  _edges;
+    BB*           _bb;
 
-    Geometry(int _id, vector<vec2>* _vertices, vector<int>* _edges);
+    // OpenGL-GLSL State Members
+    GLuint _vao, _vbo, _vert_pos_loc;
+
+    Geometry(int id, vector<vec2>* vertices, vector<int>* edges);
+    ~Geometry();
 };
 #endif

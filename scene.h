@@ -19,18 +19,21 @@ using namespace glm;
 class Scene
 {
   public:
-    unsigned int window_width;
-    unsigned int window_height;
-    float        window_aspect;
-    GLuint       vao, vbo, prog_ID, vert_pos_loc; //! OpenGL-GLSL state
+    unsigned int _window_width;
+    unsigned int _window_height;
+    float        _window_aspect;
+
+    //<! OpenGL Shaders ID
+    GLuint       _prog_ID;
 
     //!< A list of all the Geometry objects contained in the scene
-    vector<Geometry> all_geometries;
+    vector<Geometry*> _all_geometries;
     //!< A bounding box for all the Geometries in the scene. Serves
     //!< as the root level octree
-    BB top_bb;
+    BB _top_bb;
 
-    void setDimensions(unsigned int _w, unsigned int _h);
+    void setDimensions(unsigned int w, unsigned int h);
+    void addGeometry(Geometry* geometry);
     void drawGeometry(Geometry* geometry);
 
     void init();

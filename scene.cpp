@@ -3,18 +3,29 @@
 /**
  * Reset this scene's window dimensions
  */
-void Scene::setDimensions(unsigned int _w, unsigned int _h)
+void Scene::setDimensions(unsigned int w, unsigned int h)
 {
-  window_width = _w;
-  window_height = _h;
-  window_aspect = (float) _w / (float) _h;
+  _window_width = w;
+  _window_height = h;
+  _window_aspect = (float) w / (float) h;
 }
 
 /**
- * TODO
+ * Add a reference to the given Geometry object to the scene.
  */
-void drawGeometry(Geometry* geometry)
+void Scene::addGeometry(Geometry* g)
 {
+  _all_geometries.push_back(g);
+}
+
+/**
+ * Render the referenced Geometry object.
+ */
+void Scene::drawGeometry(Geometry* g)
+{
+  // Make this geometry's VAO current
+  glBindVertexArray(g->_vao);
+  glDrawArrays(GL_TRIANGLES, 0, g->_vertices->size());
 }
 
 /**

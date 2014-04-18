@@ -1,10 +1,10 @@
 #include "bb.h"
 
-BB::BB() : min(), max()
+BB::BB() : _min(vec2(0.0f,0.0f)), _max(vec2(0.0f, 0.0f))
 {}
 
 /**
  * TODO
  */
-BB::BB(vec2 _min, vec2 _max) : min(_min), max(_max)
+BB::BB(vec2 min, vec2 max) : _min(min), _max(max)
 {}

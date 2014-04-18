@@ -12,11 +12,11 @@ using namespace glm;
 class BB
 {
   public:
-    vec2 min; //!< Bottom left corner position
-    vec2 max; //!< Top right corner position
+    vec2 _min; //!< Bottom left corner position
+    vec2 _max; //!< Top right corner position
 
     BB();
-    BB(vec2 _min, vec2 _max);
+    BB(vec2 min, vec2 max);
 };
 
 #endif

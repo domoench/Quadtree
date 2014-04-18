@@ -26,13 +26,27 @@ int main(int argc, char** argv)
   // Initialize Scene
   if (init() == -1) return -1;
 
+  // TEST: Triangle
+  vector<vec2>* tri_verts = new vector<vec2>;
+  tri_verts->push_back(vec2(-1.0f, -1.0f));
+  tri_verts->push_back(vec2(1.0f, -1.0f));
+  tri_verts->push_back(vec2(0.0f, 1.0f));
+  vector<int> edges;
+  Geometry* triangle = new Geometry(0, tri_verts, &edges); // TODO: Where to free this?
+  scene.addGeometry(triangle);
+
+  printf("Triangle has %lu indices\n", triangle->_vertices->size());
+
 	do
   {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// Draw!
-		glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
+		// Draw all scene geometries
+    for (Geometry* g : scene._all_geometries)
+    {
+      scene.drawGeometry(g);
+    }
 
 		// Swap buffers
 		glfwSwapBuffers(window);
@@ -85,41 +99,11 @@ int init()
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
   // Create and compile GLSL program from the shaders
-	scene.prog_ID = LoadShaders("../shaders/VertexShader.glsl",
-                              "../shaders/FragmentShader.glsl");
-
-  // Create a test Geometry
-  vector<vec2>* tri_verts = new vector<vec2>;
-  tri_verts->push_back(vec2(-1.0f, -1.0f));
-  tri_verts->push_back(vec2(1.0f, -1.0f));
-  tri_verts->push_back(vec2(0.0f, 1.0f));
-  vector<int> edges;
-  Geometry* triangle = new Geometry(0, tri_verts, &edges);
-
-  // Create Vertex Position VBO
-	glGenBuffers(1, &scene.vbo);
-  //Create buffer object of vertex attribute data
-	glBindBuffer(GL_ARRAY_BUFFER, scene.vbo);
-  // Allocate memory on the GPU and transfer the app data to it
-  glBufferData(GL_ARRAY_BUFFER, 3 * sizeof(vec2), triangle->vertices->data(), GL_STATIC_DRAW);
-
-  // Create VAO to manage Vertex and Color VBOs
-  glGenVertexArrays(1, &scene.vao); // Find unused name
-  glBindVertexArray(scene.vao);     // Make the VAO object current
-	scene.vert_pos_loc = glGetAttribLocation(scene.prog_ID, "vertex_pos");
-	glEnableVertexAttribArray(scene.vert_pos_loc);
-	glBindBuffer(GL_ARRAY_BUFFER, scene.vbo); // Bind our vertex VBO to current VAO
-  glVertexAttribPointer(
-    scene.vert_pos_loc,  // The attribute we want to configure
-    2,            // Number of elems per vertex for this attribute
-    GL_FLOAT,     // type
-    GL_FALSE,     // normalized?
-    0,            // stride
-    (void*)0      // array buffer offset
-  );
+	scene._prog_ID = LoadShaders("../shaders/VertexShader.glsl",
+                               "../shaders/FragmentShader.glsl");
 
   // Make shaders current
-  glUseProgram(scene.prog_ID);
+  glUseProgram(scene._prog_ID);
 
   scene.init();
 
@@ -131,9 +115,7 @@ int init()
  */
 void cleanUp()
 {
-	glDisableVertexAttribArray(scene.vert_pos_loc);
-	glDeleteBuffers(1, &scene.vbo);
-	glDeleteProgram(scene.prog_ID);
+	glDeleteProgram(scene._prog_ID);
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
 }
