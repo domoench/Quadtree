@@ -15,11 +15,11 @@ using namespace glm;
 class Geometry
 {
   public:
-    unsigned int id;
-    vector<vec2> vertices;
-    vector<int>  edges;
-    BB*          bb;
+    unsigned int  id;
+    vector<vec2>* vertices;
+    vector<int>*  edges;
+    BB*           bb;
 
-    Geometry(int _id, vector<vec2> _vertices, vector<int> _edges);
+    Geometry(int _id, vector<vec2>* _vertices, vector<int>* _edges);
 };
 #endif

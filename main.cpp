@@ -14,14 +14,47 @@ GLFWwindow* window;
 Scene scene;
 
 // Local Function Declarations
-void Init();
-void Display();
-void KeyHandler();
-void MouseButton();
-void MouseMotion();
+int init();
+void cleanUp();
+void display();
+void keyHandler();
+void mouseButton();
+void mouseMotion();
 
 int main(int argc, char** argv)
 {
+  // Initialize Scene
+  if (init() == -1) return -1;
+
+	do
+  {
+		// Clear the screen
+		glClear(GL_COLOR_BUFFER_BIT);
+
+		// Draw!
+		glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
+
+		// Swap buffers
+		glfwSwapBuffers(window);
+		glfwPollEvents();
+
+	} // Check if the ESC key was pressed or the window was closed
+	while(glfwGetKey(window, GLFW_KEY_ESCAPE)!= GLFW_PRESS &&
+		    glfwWindowShouldClose(window) == 0);
+
+  // Clean Up
+  cleanUp();
+  return 0;
+}
+
+/**
+ * Sets up GLFW and initializes GLSL shaders and buffers and saves them to the
+ * scene.
+ */
+int init()
+{
+  scene.setDimensions(DEFAULT_W, DEFAULT_H);
+
   // Initialise GLFW
 	if (!glfwInit())
   {
@@ -52,108 +85,75 @@ int main(int argc, char** argv)
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
 
   // Create and compile GLSL program from the shaders
-	GLuint programID = LoadShaders("../VertexShader.glsl",
-                                 "../FragmentShader.glsl");
+	scene.prog_ID = LoadShaders("../shaders/VertexShader.glsl",
+                              "../shaders/FragmentShader.glsl");
 
-  // Get a handle for our buffers
-	GLuint vertexPosition_modelspaceID = glGetAttribLocation(programID, "vertexPosition_modelspace");
-
-  vector<vec2> tri_verts;
-  tri_verts.push_back(vec2(-1.0f, -1.0f));
-  tri_verts.push_back(vec2(1.0f, -1.0f));
-  tri_verts.push_back(vec2(0.0f, 1.0f));
+  // Create a test Geometry
+  vector<vec2>* tri_verts = new vector<vec2>;
+  tri_verts->push_back(vec2(-1.0f, -1.0f));
+  tri_verts->push_back(vec2(1.0f, -1.0f));
+  tri_verts->push_back(vec2(0.0f, 1.0f));
   vector<int> edges;
-  //Geometry triangle(0, ;
+  Geometry* triangle = new Geometry(0, tri_verts, &edges);
 
-  // TODO: Replace with a geometry
-  /*
-	static const GLfloat g_vertex_buffer_data[] = {
-		-1.0f, -1.0f, 0.0f,
-		 1.0f, -1.0f, 0.0f,
-		 0.0f,  1.0f, 0.0f,
-	};
-  */
+  // Create Vertex Position VBO
+	glGenBuffers(1, &scene.vbo);
+  //Create buffer object of vertex attribute data
+	glBindBuffer(GL_ARRAY_BUFFER, scene.vbo);
+  // Allocate memory on the GPU and transfer the app data to it
+  glBufferData(GL_ARRAY_BUFFER, 3 * sizeof(vec2), triangle->vertices->data(), GL_STATIC_DRAW);
 
-  // Create VAO. TODO: Why?
-  GLuint vao;
-  glGenVertexArrays(1, &vao);
-  glBindVertexArray(vao);
+  // Create VAO to manage Vertex and Color VBOs
+  glGenVertexArrays(1, &scene.vao); // Find unused name
+  glBindVertexArray(scene.vao);     // Make the VAO object current
+	scene.vert_pos_loc = glGetAttribLocation(scene.prog_ID, "vertex_pos");
+	glEnableVertexAttribArray(scene.vert_pos_loc);
+	glBindBuffer(GL_ARRAY_BUFFER, scene.vbo); // Bind our vertex VBO to current VAO
+  glVertexAttribPointer(
+    scene.vert_pos_loc,  // The attribute we want to configure
+    2,            // Number of elems per vertex for this attribute
+    GL_FLOAT,     // type
+    GL_FALSE,     // normalized?
+    0,            // stride
+    (void*)0      // array buffer offset
+  );
 
-  // Create a container for the ID
-	GLuint vbo;
-  // Let GPU generate pick the ID for the buffer of vertex positions
-	glGenBuffers(1, &vbo);
-  // Specify the type of the buffer - ARRAY is what attributes use
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-  // Specify the buffer size and transfer the vertex data to it
-	glBufferData(GL_ARRAY_BUFFER, 3 * sizeof(vec2), tri_verts.data(), GL_STATIC_DRAW);
+  // Make shaders current
+  glUseProgram(scene.prog_ID);
 
-	do
-  {
-		// Clear the screen
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		// Use shaders
-		glUseProgram(programID);
-
-		// 1rst attribute buffer: vertices
-		glEnableVertexAttribArray(vertexPosition_modelspaceID);
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glVertexAttribPointer(
-			vertexPosition_modelspaceID, // The attribute we want to configure
-			2,                           // Number of elems per vertex for this attribute
-			GL_FLOAT,                    // type
-			GL_FALSE,                    // normalized?
-			0,                           // stride
-			(void*)0                     // array buffer offset
-		);
-
-		// Draw!
-		glDrawArrays(GL_TRIANGLES, 0, 3); // 3 indices starting at 0 -> 1 triangle
-
-		glDisableVertexAttribArray(vertexPosition_modelspaceID);
-
-		// Swap buffers
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-
-	} // Check if the ESC key was pressed or the window was closed
-	while(glfwGetKey(window, GLFW_KEY_ESCAPE)!= GLFW_PRESS &&
-		    glfwWindowShouldClose(window) == 0);
-
-	// Cleanup VBO
-	glDeleteBuffers(1, &vbo);
-	glDeleteProgram(programID);
-
-	// Close OpenGL window and terminate GLFW
-	glfwTerminate();
-
-  scene.setDimensions(DEFAULT_W, DEFAULT_H);
+  scene.init();
 
   return 0;
 }
 
-void Init()
+/**
+ * Deletes the GLSL shaders and buffers from the GPU.
+ */
+void cleanUp()
 {
-  scene.Init();
+	glDisableVertexAttribArray(scene.vert_pos_loc);
+	glDeleteBuffers(1, &scene.vbo);
+	glDeleteProgram(scene.prog_ID);
+	// Close OpenGL window and terminate GLFW
+	glfwTerminate();
 }
 
-void Display()
+void display()
 {
-  scene.Display();
+  scene.display();
 }
 
-void KeyHandler()
+void keyHandler()
 {
-  scene.KeyHandler();
+  scene.keyHandler();
 }
 
-void MouseButton()
+void mouseButton()
 {
-  scene.MouseButton();
+  scene.mouseButton();
 }
 
-void MouseMotion()
+void mouseMotion()
 {
-  scene.MouseMotion();
+  scene.mouseMotion();
 }

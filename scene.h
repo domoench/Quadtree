@@ -6,6 +6,8 @@
 #include "bb.h"
 #include "geometry.h"
 #include "glm/glm.hpp"
+#include <GLFW/glfw3.h> // Leads to inclusion of gl.h
+#include <OpenGL/gl3.h> // For mac
 
 using namespace std;
 using namespace glm;
@@ -20,6 +22,7 @@ class Scene
     unsigned int window_width;
     unsigned int window_height;
     float        window_aspect;
+    GLuint       vao, vbo, prog_ID, vert_pos_loc; //! OpenGL-GLSL state
 
     //!< A list of all the Geometry objects contained in the scene
     vector<Geometry> all_geometries;
@@ -28,10 +31,12 @@ class Scene
     BB top_bb;
 
     void setDimensions(unsigned int _w, unsigned int _h);
-    void Init();
-    void Display();
-    void KeyHandler();
-    void MouseButton();
-    void MouseMotion();
+    void drawGeometry(Geometry* geometry);
+
+    void init();
+    void display();
+    void keyHandler();
+    void mouseButton();
+    void mouseMotion();
 };
 #endif

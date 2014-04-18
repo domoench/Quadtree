@@ -13,34 +13,41 @@ void Scene::setDimensions(unsigned int _w, unsigned int _h)
 /**
  * TODO
  */
-void Scene::Init()
+void drawGeometry(Geometry* geometry)
 {
 }
 
 /**
  * TODO
  */
-void Scene::Display()
+void Scene::init()
 {
 }
 
 /**
  * TODO
  */
-void Scene::KeyHandler()
+void Scene::display()
 {
 }
 
 /**
  * TODO
  */
-void Scene::MouseButton()
+void Scene::keyHandler()
 {
 }
 
 /**
  * TODO
  */
-void Scene::MouseMotion()
+void Scene::mouseButton()
+{
+}
+
+/**
+ * TODO
+ */
+void Scene::mouseMotion()
 {
 }
