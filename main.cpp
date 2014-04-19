@@ -5,6 +5,7 @@
 
 #include "shader.hpp"
 #include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #include <GLFW/glfw3.h> // Leads to inclusion of gl.h
 #include <OpenGL/gl3.h> // For mac
 
@@ -28,12 +29,20 @@ int main(int argc, char** argv)
 
   // TEST: Triangle
   vector<vec2>* tri_verts = new vector<vec2>;
-  tri_verts->push_back(vec2(-1.0f, -1.0f));
+  tri_verts->push_back(vec2(-0.4f, -1.0f));
   tri_verts->push_back(vec2(1.0f, -1.0f));
   tri_verts->push_back(vec2(0.0f, 1.0f));
   vector<int> edges;
   Geometry* triangle = new Geometry(0, tri_verts, &edges); // TODO: Where to free this?
   scene.addGeometry(triangle);
+
+  vector<vec2>* sq_verts = new vector<vec2>;
+  sq_verts->push_back(vec2(2.0f, 2.0f));
+  sq_verts->push_back(vec2(3.0f, 2.0f));
+  sq_verts->push_back(vec2(3.0f, 3.0f));
+  sq_verts->push_back(vec2(2.0f, 3.0f));
+  Geometry* square = new Geometry(1, sq_verts, &edges); // TODO: Where to free this?
+  scene.addGeometry(square);
 
   printf("Triangle has %lu indices\n", triangle->_vertices->size());
 
@@ -43,7 +52,7 @@ int main(int argc, char** argv)
 		glClear(GL_COLOR_BUFFER_BIT);
 
 		// Draw all scene geometries
-    for (Geometry* g : scene._all_geometries)
+    for (const Geometry* g : scene._all_geometries)
     {
       scene.drawGeometry(g);
     }
@@ -92,6 +101,9 @@ int init()
 	}
 	glfwMakeContextCurrent(window);
 
+  // Set viewport to be the entire size of the window
+  glViewport(0, 0, DEFAULT_W, DEFAULT_H);
+
   // Ensure we can capture the escape key as a "sticky key"
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
@@ -104,6 +116,28 @@ int init()
 
   // Make shaders current
   glUseProgram(scene._prog_ID);
+
+  // Set up Model-View-Projection.
+  // As far as Shaders know, we work with 3D homogeneous coords => 4D Matrices
+  mat4 Projection = perspective(
+    60.0f,                // Field of View
+    scene._window_aspect, // Apsect Ratio
+    0.1f, 100.0f          // Display range down Z axis: 0.1 unit <-> 100 units
+  );
+
+  // Camera matrix
+	mat4 View = lookAt(
+    vec3(0,0,6), // Camera is at (4,3,3), in World Space
+    vec3(0,0,0), // Looks at the origin
+    vec3(0,1,0)  // Head is up
+	);
+
+  // Model Matrix is Identity matrix: models are what and where they are
+  mat4 Model = mat4(1.0f);
+  mat4 MVP = Projection * View * Model;
+
+  GLuint MatrixID = glGetUniformLocation(scene._prog_ID, "MVP");
+  glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 
   scene.init();
 

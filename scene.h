@@ -27,14 +27,14 @@ class Scene
     GLuint       _prog_ID;
 
     //!< A list of all the Geometry objects contained in the scene
-    vector<Geometry*> _all_geometries;
+    vector<const Geometry*> _all_geometries;
     //!< A bounding box for all the Geometries in the scene. Serves
     //!< as the root level octree
     BB _top_bb;
 
     void setDimensions(unsigned int w, unsigned int h);
-    void addGeometry(Geometry* geometry);
-    void drawGeometry(Geometry* geometry);
+    void addGeometry(const Geometry* geometry);
+    void drawGeometry(const Geometry* geometry);
 
     void init();
     void display();

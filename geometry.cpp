@@ -43,7 +43,7 @@ Geometry::Geometry(int id, vector<vec2>* vertices, vector<int>* edges) :
     (void*)0        // array buffer offset
   );
 
-  _bb = new BB(vec2(0.0f,0.0f), vec2(0.0f,0.0f)); // TODO: Initialize the BB correctly
+  _bb = new BB(vertices); // TODO: Initialize the BB correctly
 }
 
 /**

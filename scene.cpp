@@ -13,7 +13,7 @@ void Scene::setDimensions(unsigned int w, unsigned int h)
 /**
  * Add a reference to the given Geometry object to the scene.
  */
-void Scene::addGeometry(Geometry* g)
+void Scene::addGeometry(const Geometry* g)
 {
   _all_geometries.push_back(g);
 }
@@ -21,11 +21,11 @@ void Scene::addGeometry(Geometry* g)
 /**
  * Render the referenced Geometry object.
  */
-void Scene::drawGeometry(Geometry* g)
+void Scene::drawGeometry(const Geometry* g)
 {
   // Make this geometry's VAO current
   glBindVertexArray(g->_vao);
-  glDrawArrays(GL_TRIANGLES, 0, g->_vertices->size());
+  glDrawArrays(GL_LINE_LOOP, 0, g->_vertices->size());
 }
 
 /**
