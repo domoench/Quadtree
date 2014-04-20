@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include "constants.h"
 #include "scene.h"
-
 #include "shader.hpp"
+#include "tests.h"
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include <GLFW/glfw3.h> // Leads to inclusion of gl.h
@@ -11,11 +12,12 @@
 
 using namespace glm;
 
+// Globals
 GLFWwindow* window;
-Scene scene;
+Scene       scene;
 
 // Local Function Declarations
-int init();
+int  init();
 void cleanUp();
 void display();
 void keyHandler();
@@ -24,6 +26,9 @@ void mouseMotion();
 
 int main(int argc, char** argv)
 {
+  // Run Tests
+  if (!runAllTests()) return -1;
+
   // Initialize Scene
   if (init() == -1) return -1;
 
@@ -43,8 +48,6 @@ int main(int argc, char** argv)
   sq_verts->push_back(vec2(2.0f, 3.0f));
   Geometry* square = new Geometry(1, sq_verts, &edges); // TODO: Where to free this?
   scene.addGeometry(square);
-
-  printf("Triangle has %lu indices\n", triangle->_vertices->size());
 
 	do
   {
@@ -136,6 +139,7 @@ int init()
   mat4 Model = mat4(1.0f);
   mat4 MVP = Projection * View * Model;
 
+  // Pass to the GPU
   GLuint MatrixID = glGetUniformLocation(scene._prog_ID, "MVP");
   glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
 

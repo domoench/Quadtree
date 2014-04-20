@@ -3,7 +3,7 @@
 
 using namespace std;
 
-BB::BB() : _min(vec2(0.0f,0.0f)), _max(vec2(0.0f, 0.0f))
+BB::BB() : _min(vec2(0.0f, 0.0f)), _max(vec2(0.0f, 0.0f))
 {}
 
 /**
@@ -36,3 +36,19 @@ BB::BB(const vector<vec2>* vertices)
  */
 BB::BB(vec2 min, vec2 max) : _min(min), _max(max)
 {}
+
+/**
+ * Use SAT-style intersection with X and Y axes.
+ */
+bool BB::intersects(const BB& other)
+{
+  // Check X axis projection
+  bool x_intersect = (this->_min[0] <= other._max[0]) &&
+                     (this->_max[0] >= other._min[0]);
+  // Check Y axis projection
+  bool y_intersect = (this->_min[1] <= other._max[1]) &&
+                     (this->_max[1] >= other._min[1]);
+
+  // If both axes projections intersect, then BBs intersect
+  return x_intersect && y_intersect;
+}

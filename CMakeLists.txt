@@ -9,6 +9,7 @@ set(SRCS
   qtnode.cpp
   scene.cpp
   shader.cpp
+  tests.cpp
 )
 
 add_executable(quadtree ${SRCS})

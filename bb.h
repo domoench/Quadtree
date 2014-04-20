@@ -9,7 +9,7 @@ using namespace glm;
 using namespace std;
 
 /**
- * A class to represent square bounding boxes.
+ * A class to represent bounding boxes.
  */
 class BB
 {
@@ -20,6 +20,8 @@ class BB
     BB();
     BB(const vector<vec2>* vertices);
     BB(vec2 min, vec2 max);
+
+    bool intersects(const BB& other);
 };
 
 #endif
