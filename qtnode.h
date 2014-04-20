@@ -3,8 +3,8 @@
 
 #include <vector>
 #include "constants.h"
-#include "geometry.h"
 #include "glm/glm.hpp"
+#include "geometry.h"
 
 using namespace std;
 using namespace glm;
@@ -15,29 +15,31 @@ using namespace glm;
 class QTNode
 {
   public:
-    unsigned int level; // TODO: Create global lookup table => width[level]
-    vec2 base;          //!< (x,y) coordinate of this node's bottom left corner
-    QTNode* parent;
+    unsigned int _level;
+    vec2 _base;          //!< (x,y) coordinate of this node's bottom left corner
+    QTNode* _parent;
 
     /*!
       Array of 4 child pointers. If children == NULL, then this node is a
       leafnode.
      */
-    QTNode* children;
+    QTNode* _children;
 
     /*!
       True if this is an occupied leaf node. False if this is an interior node
       or unoccupied.
      */
-    bool occupied;
+    bool _occupied;
 
     /*!
-      The geometry that occupies this node. NULL if this is an interior node
+      The Geometry that occupies this node. NULL if this is an interior node
       or unoccupied.
      */
-    const Geometry* occupier;
+    const Geometry* _occupier;
 
-    QTNode(unsigned int _level, vec2 _base, QTNode* _parent,
-           const Geometry* _occupier);
+    QTNode(unsigned int level, vec2 base, QTNode* parent,
+           const Geometry* occupier);
+    bool intersects(const BB& box);
+    bool intersects(const Geometry& geom);
 };
 #endif

@@ -9,6 +9,7 @@
 
 #include "bb.h"
 #include "geometry.h"
+#include "polygon.h"
 #include "qtnode.h"
 #include "scene.h"
 #include "shader.hpp"

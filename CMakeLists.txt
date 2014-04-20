@@ -9,6 +9,7 @@ set(SRCS
   qtnode.cpp
   scene.cpp
   shader.cpp
+  polygon.cpp
   tests.cpp
 )
 

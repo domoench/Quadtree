@@ -1,4 +1,5 @@
 #include "tests.h"
+#include <stdio.h>
 
 /**
  * Some haphazard unit tests.
@@ -28,9 +29,25 @@ void testBBIntersection()
   assert(b1_r.intersects(b2_r));
 }
 
+void testOnLeftSide()
+{
+  vec2 a = vec2(0, 0);
+  vec2 b = vec2(0, 1);
+  vec2 p = vec2(-1, 0);
+  assert(onLeftSide(a, b, p) == 1);
+  p = vec2(1, 1);
+  assert(onLeftSide(a, b, p) == -1);
+  p = vec2(0, 10);
+  assert(onLeftSide(a, b, p) == 0);
+}
+
 bool runAllTests()
 {
+  // Bounding Box
   testBBIntersection();
+
+  // Polygons
+  testOnLeftSide();
 
   // If we made it here, all tests passed!
   return true;

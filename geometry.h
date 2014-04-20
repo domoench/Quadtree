@@ -18,7 +18,7 @@ class Geometry
 {
   public:
     unsigned int  _id;
-    vector<vec2>* _vertices;
+    vector<vec2>* _vertices; //! Vertices must be ordered counter-clockwise
     vector<int>*  _edges;
     BB*           _bb;
 
@@ -28,4 +28,5 @@ class Geometry
     Geometry(int id, vector<vec2>* vertices, vector<int>* edges);
     ~Geometry();
 };
+
 #endif
