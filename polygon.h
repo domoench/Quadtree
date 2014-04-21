@@ -6,15 +6,26 @@ using namespace std;
 using namespace glm;
 
 /*----------------------------------------------------------------------------*\
-  POLYGON HELPER FUNCTIONS
+  POLYGON
 
   A polygon is defined by a set of points in counter-clockwise order. Edges are
-  between adjacent points in this order. The following functions are helper
-  functions to work with vertex lists as polygons.
+  between adjacent points in this order.
 
-  TODO: Consider whether its worth making a seperate class.
+  This class helps to dynamically generate and work with vertex vectors
+  representing polygons.
 \*----------------------------------------------------------------------------*/
 
-int  onLeftSide(vec2 a, vec2 b, vec2 p);
-void clipPolygon(vector<vec2>& poly, const QTNode& quad);
-void clipPolygonOneSide(vector<vec2>& poly, vec2 h);
+class Polygon
+{
+  public:
+    vector<vec2>* _verts;
+
+    Polygon();
+    ~Polygon();
+
+    void clipPolygon(Polygon& poly, const Polygon& clip_box);
+    void clipPolygonOneSide(vector<vec2>& poly, vec2 h);
+
+    // Helpers
+    static int onLeftSide(vec2 a, vec2 b, vec2 p);
+};

@@ -1,10 +1,23 @@
 #include "polygon.h"
+
+Polygon::Polygon()
+{
+  printf("Polygon created\n");
+  _verts = new vector<vec2>();
+}
+
+Polygon::~Polygon()
+{
+  printf("Polygon deconstructed\n");
+  delete _verts;
+}
+
 /**
  * Determine if two line segments intersect. If they do, returns point of
  * intersection. TODO: Otherwise what?
  */
 /*
-vec2 intersectLineSegments(vec2 a_1, vec2 a_2, vec2 b_1, vec2 b_2)
+vec2 Polygon::intersectLineSegments(vec2 a_1, vec2 a_2, vec2 b_1, vec2 b_2)
 {
   // TODO: https://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
 }
@@ -19,7 +32,7 @@ vec2 intersectLineSegments(vec2 a_1, vec2 a_2, vec2 b_1, vec2 b_2)
  *  -1 if right
  *  0  if colinear
  */
-int onLeftSide(vec2 a, vec2 b, vec2 p)
+int Polygon::onLeftSide(vec2 a, vec2 b, vec2 p)
 {
   vec2 axis = b - a;
   //printf("a: <%f, %f>\n", a[0], a[1]);
@@ -37,9 +50,9 @@ int onLeftSide(vec2 a, vec2 b, vec2 p)
 
 /**
  * Mutate the given polygon so that it is clipped with respect to the
- * clipping polygon defined by the given quadtree node.
+ * clipping polygon.
  */
-void clipPolygon(vector<vec2>& poly, const QTNode& quad)
+void Polygon::clipPolygon(Polygon& poly, const Polygon& clip_box)
 {
   // TODO
 }
@@ -49,7 +62,7 @@ void clipPolygon(vector<vec2>& poly, const QTNode& quad)
  * given vector h which divides the plane into "left" and "right" half
  * spaces (where "up" would be the direction of vector h).
  */
-void clipPolygonOneSide(vector<vec2>& poly, vec2 h)
+void Polygon::clipPolygonOneSide(vector<vec2>& poly, vec2 h)
 {
   // TODO
 }

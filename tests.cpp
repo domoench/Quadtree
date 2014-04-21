@@ -1,9 +1,24 @@
-#include "tests.h"
-#include <stdio.h>
-
 /**
  * Some haphazard unit tests.
  */
+
+#include "tests.h"
+#include <stdio.h>
+
+bool runAllTests()
+{
+  // Bounding Box
+  testBBIntersection();
+
+  // Polygons
+  testOnLeftSide();
+  testDynamicPolygon();
+  testClipPolygon();
+
+  // If we made it here, all tests passed!
+  return true;
+}
+
 void testBBIntersection()
 {
   BB b1(vec2(0,0), vec2(1,1));
@@ -34,21 +49,30 @@ void testOnLeftSide()
   vec2 a = vec2(0, 0);
   vec2 b = vec2(0, 1);
   vec2 p = vec2(-1, 0);
-  assert(onLeftSide(a, b, p) == 1);
+  assert(Polygon::onLeftSide(a, b, p) == 1);
   p = vec2(1, 1);
-  assert(onLeftSide(a, b, p) == -1);
+  assert(Polygon::onLeftSide(a, b, p) == -1);
   p = vec2(0, 10);
-  assert(onLeftSide(a, b, p) == 0);
+  assert(Polygon::onLeftSide(a, b, p) == 0);
 }
 
-bool runAllTests()
+void testDynamicPolygon()
 {
-  // Bounding Box
-  testBBIntersection();
+  for (int i = 0; i < 3; ++i)
+  {
+    Polygon poly;
+    poly._verts->push_back(vec2(3,2));
+  }
+  // TODO: How to test there is no memory leak of dynamically allocated vertex
+  // list?
+}
 
-  // Polygons
-  testOnLeftSide();
-
-  // If we made it here, all tests passed!
-  return true;
+void testClipPolygon()
+{
+  // Unit square clipping box
+  Polygon clip_box;
+  clip_box._verts->push_back(vec2(0,0));
+  clip_box._verts->push_back(vec2(1,0));
+  clip_box._verts->push_back(vec2(1,1));
+  clip_box._verts->push_back(vec2(0,1));
 }

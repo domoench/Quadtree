@@ -10,8 +10,6 @@
 #include <GLFW/glfw3.h> // Leads to inclusion of gl.h
 #include <OpenGL/gl3.h> // For mac
 
-using namespace glm;
-
 // Globals
 GLFWwindow* window;
 Scene       scene;
@@ -28,6 +26,8 @@ void display();
 void keyHandler();
 void mouseButton();
 void mouseMotion();
+
+using namespace glm;
 
 int main(int argc, char** argv)
 {
@@ -154,8 +154,8 @@ int init()
   {
     // Top level width is full scene dimensions
     qt_width[level] = (float) scene._window_width * pow(2, -1 * level);
-    printf("%f\n", pow(2, -1 * level));
-    printf("Level %d width: %f\n", level, qt_width[level]);
+    // printf("%f\n", pow(2, -1 * level));
+    // printf("Level %d width: %f\n", level, qt_width[level]);
   }
 
   scene.init();

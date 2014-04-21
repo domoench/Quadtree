@@ -18,3 +18,6 @@ using namespace glm;
 
 bool runAllTests();
 void testBBIntersection();
+void testOnLeftSide();
+void testDynamicPolygon();
+void testClipPolygon();

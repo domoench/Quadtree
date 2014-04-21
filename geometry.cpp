@@ -10,7 +10,7 @@ extern Scene scene;
 Geometry::Geometry(int id, vector<vec2>* vertices, vector<int>* edges) :
   _id(id), _vertices(vertices), _edges(edges)
 {
-  printf("Constructing Geometry object with %lu vertices\n", vertices->size());
+  //printf("Constructing Geometry object with %lu vertices\n", vertices->size());
   // Create VAO to manage Vertex and Color VBOs
   // Find unused VAO ID
   glGenVertexArrays(1, &_vao);
