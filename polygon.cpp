@@ -49,20 +49,47 @@ int Polygon::onLeftSide(vec2 a, vec2 b, vec2 p)
 }
 
 /**
- * Mutate the given polygon so that it is clipped with respect to the
- * clipping polygon.
+ * Mutate this polygon's vertex list so that it is clipped with respect to the
+ * clipping box.
  */
-void Polygon::clipPolygon(Polygon& poly, const Polygon& clip_box)
+void Polygon::clip(const Polygon& clip_box)
 {
   // TODO
 }
 
 /**
- * Mutate the given polygon so that it is clipped with respect to the
- * given vector h which divides the plane into "left" and "right" half
- * spaces (where "up" would be the direction of vector h).
+ * Mutate the given polygon so that it is clipped with respect to the line
+ * defined by a->b which divides the plane into "left" and "right" half spaces
+ * (where "up" would be the direction of vector a->b).
  */
-void Polygon::clipPolygonOneSide(vector<vec2>& poly, vec2 h)
+void Polygon::clipOneSide(vec2 a, vec2 b)
 {
   // TODO
+}
+
+/**
+ * Return the area of this simple polygon. Follows technique described in
+ * Graphic Gems II, pg 7.
+ */
+float Polygon::area()
+{
+  const vector<vec2>& verts = *_verts;
+  int n = verts.size();
+  assert(n > 2);
+
+  // Calculate product sum term
+  float prod_sum  = 0.0f;
+  for (int i = 0; i < n-1; ++i)
+  {
+    prod_sum += (verts[i][0] * verts[i+1][1]);
+  }
+
+  // Calculate product difference term
+  float prod_diff = 0.0f;
+  for (int i = 0; i < n-1; ++i)
+  {
+    prod_diff -= (verts[i][1] * verts[i+1][0]);
+  }
+
+  return 0.5 * (prod_sum + prod_diff);
 }

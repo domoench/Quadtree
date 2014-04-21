@@ -18,13 +18,18 @@ using namespace glm;
 class Polygon
 {
   public:
+    /*!
+      Vertices must be ordered counter-clockwise. First vertex is NOT repeated
+      at the end of the list.
+    */
     vector<vec2>* _verts;
 
     Polygon();
     ~Polygon();
 
-    void clipPolygon(Polygon& poly, const Polygon& clip_box);
-    void clipPolygonOneSide(vector<vec2>& poly, vec2 h);
+    void  clip(const Polygon& clip_box);
+    void  clipOneSide(vec2 a, vec2 b);
+    float area();
 
     // Helpers
     static int onLeftSide(vec2 a, vec2 b, vec2 p);

@@ -18,7 +18,8 @@ class Geometry
 {
   public:
     unsigned int  _id;
-    vector<vec2>* _vertices; //! Vertices must be ordered counter-clockwise
+    // TODO: Change member to a Polygon object
+    vector<vec2>* _vertices;
     vector<int>*  _edges;
     BB*           _bb;
 

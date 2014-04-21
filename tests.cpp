@@ -14,6 +14,7 @@ bool runAllTests()
   testOnLeftSide();
   testDynamicPolygon();
   testClipPolygon();
+  testPolygonArea();
 
   // If we made it here, all tests passed!
   return true;
@@ -67,6 +68,23 @@ void testDynamicPolygon()
   // list?
 }
 
+void testPolygonArea()
+{
+  Polygon square;
+  square._verts->push_back(vec2(0,0));
+  square._verts->push_back(vec2(1,0));
+  square._verts->push_back(vec2(1,1));
+  square._verts->push_back(vec2(0,1));
+  assert(square.area() == 1.0);
+
+  Polygon triangle;
+  triangle._verts->push_back(vec2(0,0));
+  triangle._verts->push_back(vec2(100,0));
+  triangle._verts->push_back(vec2(100,100));
+  //printf("Area of triangle: %f\n", triangle.area());
+  assert(triangle.area() == 5000.0);
+}
+
 void testClipPolygon()
 {
   // Unit square clipping box
@@ -75,4 +93,14 @@ void testClipPolygon()
   clip_box._verts->push_back(vec2(1,0));
   clip_box._verts->push_back(vec2(1,1));
   clip_box._verts->push_back(vec2(0,1));
+  assert(clip_box._verts->size() == 4);
+
+  Polygon square;
+  square._verts->push_back(vec2(0.5,0.5));
+  square._verts->push_back(vec2(1.5,0.5));
+  square._verts->push_back(vec2(1.5,1.5));
+  square._verts->push_back(vec2(0.5,1.5));
+  assert(square._verts->size() == 4);
+
+  // TODO
 }
