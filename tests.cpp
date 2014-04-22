@@ -24,6 +24,7 @@ bool runAllTests()
   // QTNode
   testBasicQTNode();
   testQTNodeIntersect();
+  testQTNodeInsert();
 
   // If we made it here, all tests passed!
   assert(false);
@@ -249,7 +250,6 @@ void testBasicQTNode()
 
 void testQTNodeIntersect()
 {
-  // TEST: Triangle
   vector<vec2> tri_verts;
   tri_verts.push_back(vec2(0.0f, 0.0f));
   tri_verts.push_back(vec2(100.0f, 0.0f));
@@ -263,4 +263,21 @@ void testQTNodeIntersect()
   float ratio = qt.intersects(tri);
   assert(fabs(ratio - 0.00617328) <= PRECISION_EPSILON);
   printf("%f\n", ratio);
+}
+
+void testQTNodeInsert()
+{
+  // Triangle Geometry
+  vector<vec2> tri_verts;
+  tri_verts.push_back(vec2(0.0f, 0.0f));
+  tri_verts.push_back(vec2(700.0f, 0.0f));
+  tri_verts.push_back(vec2(0.0f, 700.0f));
+  vector<int> edges;
+  Geometry triangle = Geometry(0, tri_verts, edges);
+
+  // Quadtree Root
+  vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
+  QTNode qt(0, base, NULL, NULL);
+
+  bool inserted = qt.insert(triangle);
 }

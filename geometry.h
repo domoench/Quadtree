@@ -28,6 +28,7 @@ class Geometry
 
     Geometry(int id, const vector<vec2>& vertices, const vector<int>& edges);
     ~Geometry();
+    float area() const;
 };
 
 #endif

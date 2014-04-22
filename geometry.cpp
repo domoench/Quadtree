@@ -1,5 +1,6 @@
 #include "geometry.h"
 #include "scene.h"
+#include "polygon.h"
 
 // The scene state is global
 extern Scene scene;
@@ -66,4 +67,14 @@ Geometry::~Geometry()
 	glDisableVertexAttribArray(_vert_pos_loc);
 	glDeleteBuffers(1, &_vbo);
   printf("Geometry DESTROYED!\n");
+}
+
+/**
+ * Return the area of this geometry
+ */
+float Geometry::area() const
+{
+  // TODO: Consider just making the vertices member of a Geometry object a Polygon
+  Polygon geom_poly(*_vertices);
+  return geom_poly.area();
 }

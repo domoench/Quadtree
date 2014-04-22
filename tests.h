@@ -26,3 +26,4 @@ void testLineIntersection();
 void testClipOneSide();
 void testBasicQTNode();
 void testQTNodeIntersect();
+void testQTNodeInsert();

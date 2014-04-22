@@ -32,7 +32,7 @@ bool QTNode::intersects(const BB& box)
  */
 float QTNode::intersects(const Geometry& geom)
 {
-  printf("Entering intersects()\n");
+  // printf("Entering intersects()\n");
   // Construct clipping box for this node
   Polygon qt_clip_box;
   double w = (double) scene._window_width / pow(2.0, _level);
@@ -45,30 +45,60 @@ float QTNode::intersects(const Geometry& geom)
   Polygon geom_poly(*(geom._vertices));
   geom_poly.clip(qt_clip_box);
 
-  printf("geom_poly.area(): %f\n", geom_poly.area());
-  printf("qt_clip_box.area(): %f\n", qt_clip_box.area());
-  printf("Leaving intersects()\n");
+  // printf("geom_poly.area(): %f\n", geom_poly.area());
+  // printf("qt_clip_box.area(): %f\n", qt_clip_box.area());
+  // printf("Leaving intersects()\n");
   return geom_poly.area() / qt_clip_box.area();
 }
 
 /**
  * Recursively insert the given Geometry into this quadtree node.
+ *
+ * Returns true if successfully inserted, false if it can't be inserted.
+ * Insertion fails if the geometry overlaps an existing geometry maintained
+ * by the Quadtree.
+ *
+ * Pre: Geometry intersects this node
  */
-void QTNode::insert(const Geometry& geom)
+bool QTNode::insert(const Geometry& geom)
 {
-  /*
-  Pre: geom intersects this node
-  ratio := geom.area() / QTNode.area()
-  if ratio < threshold:
-    this.subdivide()
-    Determine which children geom intersects
-    for each candidate in candidates:
-      candidate.insert(geom);
+  // This is an occupied leaf node
+  if (_occupied) return false;
 
-  Calculate which of the 4 children it intersects => candidates
+  // This is an unoccupied leaf
+  if (isLeaf())
+  {
+    float ratio = geom.area() / this->area();
 
-  Case II: geom doesn't intersect this node
-  */
+    if (ratio > SUBDIV_THRESHOLD) // Become an occupied leaf
+    {
+      _occupier = &geom;
+      _occupied = true;
+      return true;
+    }
+    else // geom can't fully occupy, must subdivide
+    {
+      subdivide(); // => Now we've got kids!
+      // TODO: What if we've reached max level
+    }
+  }
+
+  // Find which of the 4 children geom intersects with. We must insert geom
+  // into them.
+  bool insert_result[4];
+  for (int i = 0; i < 4; ++i)
+  {
+    QTNode& child = *(_children[i]);
+    if (child.intersects(geom) > 0)
+    {
+      insert_result[i] = child.insert(geom);
+    }
+    else insert_result[i] = false;
+  }
+
+  bool insert_success = insert_result[0] || insert_result[1] ||
+                        insert_result[2] || insert_result[3];
+  return insert_success;
 }
 
 /*
@@ -112,4 +142,19 @@ void QTNode::clear()
 bool QTNode::isLeaf()
 {
   return _children[0] == NULL;
+}
+
+/**
+ * Return the area of this QTNode instance
+ */
+float QTNode::area() const
+{
+  Polygon qt_poly;
+  double w = (double) scene._window_width / pow(2.0, _level);
+  qt_poly.add(_base);
+  qt_poly.add(_base + vec2(w,0));
+  qt_poly.add(_base + vec2(w,w));
+  qt_poly.add(_base + vec2(0,w));
+
+  return qt_poly.area();
 }

@@ -121,7 +121,7 @@ void Polygon::clip(const Polygon& clip_box)
  */
 void Polygon::clipOneSide(vec2 a, vec2 b)
 {
-  printf("Entering clipOneSide()\n");
+  // printf("Entering clipOneSide()\n");
   vector<vec2>* new_verts = new vector<vec2>; // Output Poly Vertices
 
   // Walk through
@@ -171,7 +171,7 @@ void Polygon::clipOneSide(vec2 a, vec2 b)
   delete _verts;
   _verts = new_verts;
 
-  printf("Leaving clipOneSide()\n");
+  // printf("Leaving clipOneSide()\n");
 }
 
 /**
