@@ -13,11 +13,6 @@
 // Globals
 GLFWwindow* window;
 Scene       scene;
-/**
- * Class-wide lookup table to determine the dimensions of a node at this
- * level. Usage: width[level]. TODO: Make this a static member of QTNode
- */
-float qt_width[QT_N_LEVELS];
 
 // Local Function Declarations
 int  init();
@@ -31,11 +26,11 @@ using namespace glm;
 
 int main(int argc, char** argv)
 {
-  // Run Tests
-  if (DEBUG) runAllTests();
-
   // Initialize Scene
   if (init() == -1) return -1;
+
+  // Run Tests
+  if (DEBUG) runAllTests();
 
   // TEST: Triangle
   vector<vec2>* tri_verts = new vector<vec2>;
@@ -147,16 +142,6 @@ int init()
   // Pass to the GPU
   GLuint MatrixID = glGetUniformLocation(scene._prog_ID, "MVP");
   glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
-
-  // Initialize QTNode dimensions lookup table
-  // TODO: QTNode::initDimensionsLookup();
-  for (int level = 0; level < QT_N_LEVELS; ++level)
-  {
-    // Top level width is full scene dimensions
-    qt_width[level] = (float) scene._window_width * pow(2, -1 * level);
-    // printf("%f\n", pow(2, -1 * level));
-    // printf("Level %d width: %f\n", level, qt_width[level]);
-  }
 
   scene.init();
 

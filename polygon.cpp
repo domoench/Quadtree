@@ -79,7 +79,7 @@ int Polygon::onLeftSide(vec2 a, vec2 b, vec2 p)
  */
 void Polygon::clip(const Polygon& clip_box)
 {
-  printf("Entering clip()\n");
+  // printf("Entering clip()\n");
   const vector<vec2>& clip_verts = *(clip_box._verts);
 
   // 4 clip edges
@@ -88,7 +88,7 @@ void Polygon::clip(const Polygon& clip_box)
     clipOneSide(clip_verts[i], clip_verts[(i+1)%4]);
   }
 
-  printf("Leaving clip()\n");
+  //printf("Leaving clip()\n");
 }
 
 /**
@@ -99,12 +99,11 @@ void Polygon::clip(const Polygon& clip_box)
 void Polygon::clipOneSide(vec2 a, vec2 b)
 {
   printf("Entering clipOneSide()\n");
-  const vector<vec2>& verts = *_verts;        // Input Poly Vertices
   vector<vec2>* new_verts = new vector<vec2>; // Output Poly Vertices
 
   // Walk through
-  vec2 prev = verts.back();
-  for (vec2 curr : verts)
+  vec2 prev = _verts->back();
+  for (vec2 curr : *_verts)
   {
     // printf("Inspecting (%f,%f)\n", curr[0], curr[1]);
     int curr_test = onLeftSide(a, b, curr);

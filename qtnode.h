@@ -11,6 +11,17 @@ using namespace glm;
 
 /**
  * A class to represent dynamic region quadtrees.
+ *
+ * Quadrant ordering:
+ *    +–––––––+–––––––+
+ *    |       |       |
+ *    |  II   |   I   |
+ *    |       |       |
+ *    +–––––––––––––––+
+ *    |       |       |
+ *    |  III  |  IV   |
+ *    |       |       |
+ *    +–––––––+–––––––+
  */
 class QTNode
 {
@@ -23,7 +34,7 @@ class QTNode
       Array of 4 child pointers. If children == NULL, then this node is a
       leafnode.
      */
-    QTNode* _children;
+    QTNode* _children[4];
 
     /*!
       True if this is an occupied leaf node. False if this is an interior node
@@ -41,5 +52,9 @@ class QTNode
            const Geometry* occupier);
     bool intersects(const BB& box);
     bool intersects(const Geometry& geom);
+    void insert(const Geometry& geom);
+    void clear();
+    void subdivide();
+    bool isLeaf();
 };
 #endif

@@ -5,7 +5,8 @@
 #define DEBUG true
 
 //! The maximum number of quadtree levels. Root is 0, Deepest is QT_N_LEVELS - 1.
-#define QT_N_LEVELS 32
+#define QT_N_LEVELS  32
+#define QT_MAX_LEVEL 31
 
 //! Default window width in pixels
 #define DEFAULT_W 900

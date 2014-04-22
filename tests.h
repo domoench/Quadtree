@@ -24,3 +24,4 @@ void testClipPolygon();
 void testPolygonArea();
 void testLineIntersection();
 void testClipOneSide();
+void testBasicQTNode();

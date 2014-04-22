@@ -15,8 +15,11 @@ bool runAllTests()
   testDynamicPolygon();
   testPolygonArea();
   testLineIntersection();
-  testClipOneSide();
   testClipPolygon();
+  testClipOneSide();
+
+  // QTNode
+  testBasicQTNode();
 
   // If we made it here, all tests passed!
   return true;
@@ -89,6 +92,8 @@ void testPolygonArea()
 
 void testClipPolygon()
 {
+  printf("testClipPolygon(): \n");
+
   // Unit square clipping box
   const Polygon clip_box;
   clip_box._verts->push_back(vec2(0,0));
@@ -107,13 +112,15 @@ void testClipPolygon()
   square.clip(clip_box);
   assert(square.area() == 0.25);
 
-  // Cookie cut
+  // Cookie cut a square out of a big triangle
   Polygon big_tri;
   big_tri._verts->push_back(vec2(-100, -100));
   big_tri._verts->push_back(vec2(100, -100));
   big_tri._verts->push_back(vec2(15.632, 100));
   big_tri.clip(clip_box);
   assert(big_tri.area() == 1);
+
+  printf("testClipPolygon() Passed.\n");
 }
 
 void testLineIntersection()
@@ -190,8 +197,36 @@ void testClipOneSide()
   assert(diamond._verts->size() == 3);
 
   // Cut everything out
-  printf("diamond area: %f\n", diamond.area());
+  // printf("diamond area: %f\n", diamond.area());
   diamond.clipOneSide(vec2(1,1), vec2(0,-10));
   assert(diamond.area() == 0);
   assert(diamond._verts->size() == 0);
+
+  // Can you do this?
+  /*
+  int* x_p = new int;
+  *x_p = 5;
+  int& x_r = *x_p;
+  delete x_p;
+  */
+
+  printf("testClipOneSide() Passed.\n");
+}
+
+void testBasicQTNode()
+{
+  vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
+  QTNode qt(0, base, NULL, NULL);
+  qt.subdivide();
+  qt._children[1]->subdivide();
+
+  assert(qt._level == 0);
+  assert(qt._children[0]->_level == 1);
+  assert(qt._children[0]->_children[0] == NULL);
+  assert(qt._children[1]->_children[0]->_level == 2);
+
+  qt.clear();
+  assert (qt.isLeaf());
+
+  printf("testBasicQTNode() Passed.\n");
 }
