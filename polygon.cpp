@@ -1,11 +1,17 @@
 #include "polygon.h"
 
+/**
+ * Construct a polygon object, dynamically allocating its vertices
+ */
 Polygon::Polygon()
 {
   printf("Polygon created\n");
   _verts = new vector<vec2>();
 }
 
+/**
+ * Destroy a polygon object, dynamically de-allocating its vertices
+ */
 Polygon::~Polygon()
 {
   printf("Polygon deconstructed\n");
@@ -13,15 +19,33 @@ Polygon::~Polygon()
 }
 
 /**
- * Determine if two line segments intersect. If they do, returns point of
+ * Determine if two lines intersect. If they do, returns point of
  * intersection. TODO: Otherwise what?
+ *
+ * Arguments define the following 2 parametric line eqs:
+ * L1 = a1 + s * u    (u = a2 - a1)
+ * L1 = b1 + t * v    (v = b2 - a1)
+ *
+ * www.ahinson.com/algorithms_general/Sections/Geometry/ParametricLineIntersection.pdf
  */
-/*
-vec2 Polygon::intersectLineSegments(vec2 a_1, vec2 a_2, vec2 b_1, vec2 b_2)
+vec2 Polygon::intersectLineSegments(vec2 a1, vec2 a2, vec2 b1, vec2 b2)
 {
-  // TODO: https://stackoverflow.com/questions/563198/how-do-you-detect-where-two-line-segments-intersect
+  vec2 u   = a2 - a1; // L1 direction vector
+  vec2 v   = b2 - b1; // L2 direction vector
+  vec2 u_n = normalize(u);
+  vec2 v_n = normalize(v);
+  assert(u_n != v_n); // Uh oh, parallel lines got in here!
+
+  // Calculate s parameter of intersection point
+  float s = ((b2[0]-b1[0])*(b1[1]-a1[1]) - (b1[0]-a1[0])*(b2[1]-b1[1])) /
+            ((b2[0]-b1[0])*(a2[1]-a1[1]) - (a2[0]-a1[0])*(b2[1]-b1[1]));
+
+  // Calculate intersection point p, along L1 for example
+  vec2 sxu = vec2(s * u[0], s * u[1]); // s * u
+  vec2 p = a1 + sxu;
+
+  return p;
 }
-*/
 
 /**
  * Determine if point p lies in the left half of the halfplanes separated by

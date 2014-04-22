@@ -13,8 +13,9 @@ bool runAllTests()
   // Polygons
   testOnLeftSide();
   testDynamicPolygon();
-  testClipPolygon();
   testPolygonArea();
+  testLineIntersection();
+  testClipPolygon();
 
   // If we made it here, all tests passed!
   return true;
@@ -103,4 +104,36 @@ void testClipPolygon()
   assert(square._verts->size() == 4);
 
   // TODO
+  assert(false);
+}
+
+void testLineIntersection()
+{
+  vec2 a1 = vec2(0, 0);
+  vec2 a2 = vec2(10, 10);
+  vec2 b1 = vec2(10, 0);
+  vec2 b2 = vec2(0, 10);
+
+  // Quick tests of how vec2 type works
+  vec2 test_a1 = vec2(0,0);
+  assert(test_a1 == a1); // vec2 comparison can work like this
+  // assert(2 * a2 == vec2(20, 20)); // Can't do this!
+  assert(vec2(2 * a2[0], 2 * a2[1]) == vec2(20, 20));
+  vec2 a2_n = normalize(a2); // Normalize generates a new vector
+  assert(a2 == vec2(10,10)); // Leaving original unmodified
+
+  // Test simple diagonal intersection
+  vec2 p = Polygon::intersectLineSegments(a1, a2, b1, b2);
+  assert(p == vec2(5,5));
+
+  // Can't pass in parallel lines
+  p = Polygon::intersectLineSegments(a1, a2, a1, a2);
+
+  // Test lines defined by non-overlapping segment arguments
+  a1 = vec2(0, 0);
+  a2 = vec2(0, 10);
+  b1 = vec2(1, 1);
+  b2 = vec2(10, 10);
+  p  = Polygon::intersectLineSegments(a1, a2, b1, b2);
+  assert(p == vec2(0,0));
 }
