@@ -15,6 +15,7 @@ bool runAllTests()
   testDynamicPolygon();
   testPolygonArea();
   testLineIntersection();
+  testClipOneSide();
   testClipPolygon();
 
   // If we made it here, all tests passed!
@@ -89,7 +90,7 @@ void testPolygonArea()
 void testClipPolygon()
 {
   // Unit square clipping box
-  Polygon clip_box;
+  const Polygon clip_box;
   clip_box._verts->push_back(vec2(0,0));
   clip_box._verts->push_back(vec2(1,0));
   clip_box._verts->push_back(vec2(1,1));
@@ -103,8 +104,16 @@ void testClipPolygon()
   square._verts->push_back(vec2(0.5,1.5));
   assert(square._verts->size() == 4);
 
-  // TODO
-  assert(false);
+  square.clip(clip_box);
+  assert(square.area() == 0.25);
+
+  // Cookie cut
+  Polygon big_tri;
+  big_tri._verts->push_back(vec2(-100, -100));
+  big_tri._verts->push_back(vec2(100, -100));
+  big_tri._verts->push_back(vec2(15.632, 100));
+  big_tri.clip(clip_box);
+  assert(big_tri.area() == 1);
 }
 
 void testLineIntersection()
@@ -123,17 +132,66 @@ void testLineIntersection()
   assert(a2 == vec2(10,10)); // Leaving original unmodified
 
   // Test simple diagonal intersection
-  vec2 p = Polygon::intersectLineSegments(a1, a2, b1, b2);
+  vec2 p = Polygon::lineIntersect(a1, a2, b1, b2);
   assert(p == vec2(5,5));
 
   // Can't pass in parallel lines
-  p = Polygon::intersectLineSegments(a1, a2, a1, a2);
+  // p = Polygon::lineIntersect(a1, a2, a1, a2);
 
   // Test lines defined by non-overlapping segment arguments
   a1 = vec2(0, 0);
   a2 = vec2(0, 10);
   b1 = vec2(1, 1);
   b2 = vec2(10, 10);
-  p  = Polygon::intersectLineSegments(a1, a2, b1, b2);
+  p  = Polygon::lineIntersect(a1, a2, b1, b2);
   assert(p == vec2(0,0));
+}
+
+void testClipOneSide()
+{
+  Polygon square;
+  square._verts->push_back(vec2(-1,-1));
+  square._verts->push_back(vec2(1,-1));
+  square._verts->push_back(vec2(1,1));
+  square._verts->push_back(vec2(-1,1));
+  // printf("Square area: %f\n", square.area());
+  assert(square.area() == 4);
+
+  Polygon diamond;
+  diamond._verts->push_back(vec2(-1,0));
+  diamond._verts->push_back(vec2(0,-1));
+  diamond._verts->push_back(vec2(1,0));
+  diamond._verts->push_back(vec2(0,1));
+  // printf("Diamond area: %f\n", diamond.area());
+  // printf("Diamond n: %d\n", diamond._verts->size());
+  assert(diamond.area() == 2);
+  assert(diamond._verts->size() == 4);
+  diamond.clipOneSide(vec2(0,0), vec2(0,1)); // Clip along y axis
+  // printf("Diamond area: %f\n", diamond.area());
+  // printf("Diamond n: %d\n", diamond._verts->size());
+  assert(diamond.area() == 1);
+  assert(diamond._verts->size() == 3);
+
+  // Test Clip edge colinear with polygon edge
+  diamond.clipOneSide(vec2(0,0), vec2(0,1)); // Clip along y axis again
+  assert(diamond.area() == 1);
+  assert(diamond._verts->size() == 3);
+
+  diamond.clipOneSide(vec2(0,0), vec2(1,0));
+  assert(diamond.area() == 0.5);
+  assert(diamond._verts->size() == 3);
+
+  // Missed cuts
+  diamond.clipOneSide(vec2(0,0), vec2(1,1));
+  assert(diamond.area() == 0.5);
+  assert(diamond._verts->size() == 3);
+  diamond.clipOneSide(vec2(0,-1), vec2(1,-1));
+  assert(diamond.area() == 0.5);
+  assert(diamond._verts->size() == 3);
+
+  // Cut everything out
+  printf("diamond area: %f\n", diamond.area());
+  diamond.clipOneSide(vec2(1,1), vec2(0,-10));
+  assert(diamond.area() == 0);
+  assert(diamond._verts->size() == 0);
 }

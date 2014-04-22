@@ -5,7 +5,7 @@
  */
 Polygon::Polygon()
 {
-  printf("Polygon created\n");
+  // printf("Polygon created\n");
   _verts = new vector<vec2>();
 }
 
@@ -14,7 +14,7 @@ Polygon::Polygon()
  */
 Polygon::~Polygon()
 {
-  printf("Polygon deconstructed\n");
+  // printf("Polygon deconstructed\n");
   delete _verts;
 }
 
@@ -28,7 +28,7 @@ Polygon::~Polygon()
  *
  * www.ahinson.com/algorithms_general/Sections/Geometry/ParametricLineIntersection.pdf
  */
-vec2 Polygon::intersectLineSegments(vec2 a1, vec2 a2, vec2 b1, vec2 b2)
+vec2 Polygon::lineIntersect(vec2 a1, vec2 a2, vec2 b1, vec2 b2)
 {
   vec2 u   = a2 - a1; // L1 direction vector
   vec2 v   = b2 - b1; // L2 direction vector
@@ -74,11 +74,21 @@ int Polygon::onLeftSide(vec2 a, vec2 b, vec2 p)
 
 /**
  * Mutate this polygon's vertex list so that it is clipped with respect to the
- * clipping box.
+ * clipping box. This is an implementation of the Sutherland-Hodgman
+ * algorithm.
  */
 void Polygon::clip(const Polygon& clip_box)
 {
-  // TODO
+  printf("Entering clip()\n");
+  const vector<vec2>& clip_verts = *(clip_box._verts);
+
+  // 4 clip edges
+  for (int i = 0; i < 4; ++i)
+  {
+    clipOneSide(clip_verts[i], clip_verts[(i+1)%4]);
+  }
+
+  printf("Leaving clip()\n");
 }
 
 /**
@@ -88,7 +98,58 @@ void Polygon::clip(const Polygon& clip_box)
  */
 void Polygon::clipOneSide(vec2 a, vec2 b)
 {
-  // TODO
+  printf("Entering clipOneSide()\n");
+  const vector<vec2>& verts = *_verts;        // Input Poly Vertices
+  vector<vec2>* new_verts = new vector<vec2>; // Output Poly Vertices
+
+  // Walk through
+  vec2 prev = verts.back();
+  for (vec2 curr : verts)
+  {
+    // printf("Inspecting (%f,%f)\n", curr[0], curr[1]);
+    int curr_test = onLeftSide(a, b, curr);
+    int prev_test = onLeftSide(a, b, prev);
+    bool curr_in = curr_test == 1 || curr_test == 0;
+    bool prev_in = prev_test == 1 || prev_test == 0;
+    // printf("\tcurr_test: %d, curr_in: %d\n", curr_test, curr_in);
+    // printf("\tprev_test: %d, prev_in: %d\n", prev_test, prev_in);
+
+    if (curr_in) // curr in
+    {
+      if (!prev_in) // prev out
+      {
+        if (curr_test != 0)
+        {
+          // Calculate and output intersection
+          vec2 i = lineIntersect(a, b, prev, curr);
+          // printf("\tCurr in, Prev out Intersection: (%f,%f)\n", i[0], i[1]);
+          new_verts->push_back(i);
+          // printf("\tOutput (%f,%f)\n", i[0], i[1]);
+        }
+      }
+      new_verts->push_back(curr);
+      // printf("\tOutput (%f,%f)\n", curr[0], curr[1]);
+    }
+    else if (prev_in) // curr out, prev in
+    {
+      // If prev lay on the clipping edge, its already been included.
+      if (prev_test != 0)
+      {
+        vec2 i = lineIntersect(a, b, prev, curr);
+        // printf("\tCurr out, prev in Intersection: (%f,%f)\n", i[0], i[1]);
+        new_verts->push_back(i);
+        // printf("\tOutput (%f,%f)\n", i[0], i[1]);
+      }
+    }
+    // Else curr out and prev out => Ignore
+    prev = curr;
+  }
+
+  // Deallocate the old vertex vector and replace it with the new
+  delete _verts;
+  _verts = new_verts;
+
+  printf("Leaving clipOneSide()\n");
 }
 
 /**
@@ -99,21 +160,26 @@ float Polygon::area()
 {
   const vector<vec2>& verts = *_verts;
   int n = verts.size();
-  assert(n > 2);
+  if (n < 3) return 0.0f;
+  //printf("n = %d\n", n);
 
   // Calculate product sum term
   float prod_sum  = 0.0f;
   for (int i = 0; i < n-1; ++i)
   {
+    //printf("Sum Term: %f * %f = %f\n", verts[i][0], verts[i+1][1], (verts[i][0] * verts[i+1][1]));
     prod_sum += (verts[i][0] * verts[i+1][1]);
   }
+  prod_sum += (verts[n-1][0] * verts[0][1]); // Wrap back to first
 
   // Calculate product difference term
   float prod_diff = 0.0f;
   for (int i = 0; i < n-1; ++i)
   {
     prod_diff -= (verts[i][1] * verts[i+1][0]);
+    //printf("Diff Term = %f\n",(verts[i][1] * verts[i+1][0]));
   }
+  prod_diff -= (verts[n-1][1] * verts[0][0]);
 
   return 0.5 * (prod_sum + prod_diff);
 }

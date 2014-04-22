@@ -23,3 +23,4 @@ void testDynamicPolygon();
 void testClipPolygon();
 void testPolygonArea();
 void testLineIntersection();
+void testClipOneSide();

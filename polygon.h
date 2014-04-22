@@ -33,5 +33,5 @@ class Polygon
 
     // Static Helpers. TODO: Is there a better place for them?
     static int  onLeftSide(vec2 a, vec2 b, vec2 p);
-    static vec2 intersectLineSegments(vec2 a1, vec2 a2, vec2 b1, vec2 b2);
+    static vec2 lineIntersect(vec2 a1, vec2 a2, vec2 b1, vec2 b2);
 };
