@@ -10,12 +10,35 @@ Polygon::Polygon()
 }
 
 /**
+ * Construct a polygon object, dynamically allocating its vertices from
+ * the given vertex list
+ */
+Polygon::Polygon(const vector<vec2>& vertices)
+{
+  // printf("Polygon created\n");
+  _verts = new vector<vec2>();
+
+  for(vec2 v : vertices)
+  {
+    _verts->push_back(v);
+  }
+}
+
+/**
  * Destroy a polygon object, dynamically de-allocating its vertices
  */
 Polygon::~Polygon()
 {
   // printf("Polygon deconstructed\n");
   delete _verts;
+}
+
+/**
+ * Add a vertex to the end of this polygon's vertex list
+ */
+void Polygon::add(vec2 vert)
+{
+  _verts->push_back(vert);
 }
 
 /**

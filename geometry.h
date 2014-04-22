@@ -26,7 +26,7 @@ class Geometry
     // OpenGL-GLSL State Members
     GLuint _vao, _vbo, _vert_pos_loc;
 
-    Geometry(int id, vector<vec2>* vertices, vector<int>* edges);
+    Geometry(int id, const vector<vec2>& vertices, const vector<int>& edges);
     ~Geometry();
 };
 

@@ -9,13 +9,13 @@ BB::BB() : _min(vec2(0.0f, 0.0f)), _max(vec2(0.0f, 0.0f))
 /**
  * Create a bounding box that contains the given vertex set.
  */
-BB::BB(const vector<vec2>* vertices)
+BB::BB(const vector<vec2>& vertices)
 {
   float min_x, min_y;
   min_x = min_y = numeric_limits<int>::max();
   float max_x, max_y;
   max_x = max_y = numeric_limits<int>::min();
-  for (vec2 v : *vertices)
+  for (vec2 v : vertices)
   {
     printf("Vertex: (%f, %f)\n", v[0], v[1]);
     if (v[0] < min_x) min_x = v[0];

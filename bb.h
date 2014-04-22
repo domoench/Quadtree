@@ -18,7 +18,7 @@ class BB
     vec2 _max; //!< Top right corner position
 
     BB();
-    BB(const vector<vec2>* vertices);
+    BB(const vector<vec2>& vertices);
     BB(vec2 min, vec2 max);
 
     bool intersects(const BB& other);

@@ -33,20 +33,20 @@ int main(int argc, char** argv)
   if (DEBUG) runAllTests();
 
   // TEST: Triangle
-  vector<vec2>* tri_verts = new vector<vec2>;
-  tri_verts->push_back(vec2(-0.4f, -1.0f));
-  tri_verts->push_back(vec2(1.0f, -1.0f));
-  tri_verts->push_back(vec2(0.0f, 1.0f));
+  vector<vec2> tri_verts;
+  tri_verts.push_back(vec2(-0.4f, -1.0f));
+  tri_verts.push_back(vec2(1.0f, -1.0f));
+  tri_verts.push_back(vec2(0.0f, 1.0f));
   vector<int> edges;
-  Geometry* triangle = new Geometry(0, tri_verts, &edges); // TODO: Where to free this?
+  Geometry triangle = Geometry(0, tri_verts, edges); // TODO: Where to free this?
   scene.addGeometry(triangle);
 
-  vector<vec2>* sq_verts = new vector<vec2>;
-  sq_verts->push_back(vec2(2.0f, 2.0f));
-  sq_verts->push_back(vec2(3.0f, 2.0f));
-  sq_verts->push_back(vec2(3.0f, 3.0f));
-  sq_verts->push_back(vec2(2.0f, 3.0f));
-  Geometry* square = new Geometry(1, sq_verts, &edges); // TODO: Where to free this?
+  vector<vec2> sq_verts;
+  sq_verts.push_back(vec2(2.0f, 2.0f));
+  sq_verts.push_back(vec2(3.0f, 2.0f));
+  sq_verts.push_back(vec2(3.0f, 3.0f));
+  sq_verts.push_back(vec2(2.0f, 3.0f));
+  Geometry square = Geometry(1, sq_verts, edges); // TODO: Where to free this?
   scene.addGeometry(square);
 
 	do
@@ -57,7 +57,7 @@ int main(int argc, char** argv)
 		// Draw all scene geometries
     for (const Geometry* g : scene._all_geometries)
     {
-      scene.drawGeometry(g);
+      scene.drawGeometry(*g);
     }
 
 		// Swap buffers

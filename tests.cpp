@@ -5,6 +5,9 @@
 #include "tests.h"
 #include <stdio.h>
 
+// TODO: Is this adequate precision?
+#define PRECISION_EPSILON 0.000001
+
 bool runAllTests()
 {
   // Bounding Box
@@ -12,7 +15,7 @@ bool runAllTests()
 
   // Polygons
   testOnLeftSide();
-  testDynamicPolygon();
+  testPolygon();
   testPolygonArea();
   testLineIntersection();
   testClipPolygon();
@@ -20,8 +23,10 @@ bool runAllTests()
 
   // QTNode
   testBasicQTNode();
+  testQTNodeIntersect();
 
   // If we made it here, all tests passed!
+  assert(false);
   return true;
 }
 
@@ -62,15 +67,26 @@ void testOnLeftSide()
   assert(Polygon::onLeftSide(a, b, p) == 0);
 }
 
-void testDynamicPolygon()
+void testPolygon()
 {
   for (int i = 0; i < 3; ++i)
   {
     Polygon poly;
-    poly._verts->push_back(vec2(3,2));
+    poly.add(vec2(3,2));
   }
   // TODO: How to test there is no memory leak of dynamically allocated vertex
   // list?
+
+  // Test constructing from a vertex vector
+  vector<vec2> test_verts;
+  test_verts.push_back(vec2(0,0));
+  test_verts.push_back(vec2(1,0));
+  test_verts.push_back(vec2(2,0));
+  test_verts.push_back(vec2(3,0));
+  test_verts.push_back(vec2(4,4));
+  test_verts.push_back(vec2(3,4));
+  test_verts.push_back(vec2(-1,-1));
+  Polygon p(test_verts);
 }
 
 void testPolygonArea()
@@ -95,18 +111,18 @@ void testClipPolygon()
   printf("testClipPolygon(): \n");
 
   // Unit square clipping box
-  const Polygon clip_box;
-  clip_box._verts->push_back(vec2(0,0));
-  clip_box._verts->push_back(vec2(1,0));
-  clip_box._verts->push_back(vec2(1,1));
-  clip_box._verts->push_back(vec2(0,1));
+  Polygon clip_box;
+  clip_box.add(vec2(0,0));
+  clip_box.add(vec2(1,0));
+  clip_box.add(vec2(1,1));
+  clip_box.add(vec2(0,1));
   assert(clip_box._verts->size() == 4);
 
   Polygon square;
-  square._verts->push_back(vec2(0.5,0.5));
-  square._verts->push_back(vec2(1.5,0.5));
-  square._verts->push_back(vec2(1.5,1.5));
-  square._verts->push_back(vec2(0.5,1.5));
+  square.add(vec2(0.5,0.5));
+  square.add(vec2(1.5,0.5));
+  square.add(vec2(1.5,1.5));
+  square.add(vec2(0.5,1.5));
   assert(square._verts->size() == 4);
 
   square.clip(clip_box);
@@ -114,9 +130,9 @@ void testClipPolygon()
 
   // Cookie cut a square out of a big triangle
   Polygon big_tri;
-  big_tri._verts->push_back(vec2(-100, -100));
-  big_tri._verts->push_back(vec2(100, -100));
-  big_tri._verts->push_back(vec2(15.632, 100));
+  big_tri.add(vec2(-100, -100));
+  big_tri.add(vec2(100, -100));
+  big_tri.add(vec2(15.632, 100));
   big_tri.clip(clip_box);
   assert(big_tri.area() == 1);
 
@@ -157,18 +173,18 @@ void testLineIntersection()
 void testClipOneSide()
 {
   Polygon square;
-  square._verts->push_back(vec2(-1,-1));
-  square._verts->push_back(vec2(1,-1));
-  square._verts->push_back(vec2(1,1));
-  square._verts->push_back(vec2(-1,1));
+  square.add(vec2(-1,-1));
+  square.add(vec2(1,-1));
+  square.add(vec2(1,1));
+  square.add(vec2(-1,1));
   // printf("Square area: %f\n", square.area());
   assert(square.area() == 4);
 
   Polygon diamond;
-  diamond._verts->push_back(vec2(-1,0));
-  diamond._verts->push_back(vec2(0,-1));
-  diamond._verts->push_back(vec2(1,0));
-  diamond._verts->push_back(vec2(0,1));
+  diamond.add(vec2(-1,0));
+  diamond.add(vec2(0,-1));
+  diamond.add(vec2(1,0));
+  diamond.add(vec2(0,1));
   // printf("Diamond area: %f\n", diamond.area());
   // printf("Diamond n: %d\n", diamond._verts->size());
   assert(diamond.area() == 2);
@@ -229,4 +245,22 @@ void testBasicQTNode()
   assert (qt.isLeaf());
 
   printf("testBasicQTNode() Passed.\n");
+}
+
+void testQTNodeIntersect()
+{
+  // TEST: Triangle
+  vector<vec2> tri_verts;
+  tri_verts.push_back(vec2(0.0f, 0.0f));
+  tri_verts.push_back(vec2(100.0f, 0.0f));
+  tri_verts.push_back(vec2(0.0f, 100.0f));
+  vector<int> edges;
+  Geometry tri = Geometry(0, tri_verts, edges);
+
+  vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
+  QTNode qt(0, base, NULL, NULL);
+
+  float ratio = qt.intersects(tri);
+  assert(fabs(ratio - 0.00617328) <= PRECISION_EPSILON);
+  printf("%f\n", ratio);
 }

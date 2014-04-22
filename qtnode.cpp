@@ -1,5 +1,6 @@
 #include "qtnode.h"
 #include "scene.h"
+#include "polygon.h"
 
 extern Scene scene;
 
@@ -27,11 +28,27 @@ bool QTNode::intersects(const BB& box)
 
 /**
  * Check if this node intersects the given Geometry polygon.
- * TODO: Return the area of intersection.
+ * Returns the intersection ratio (geom area / QTNode area)
  */
-bool QTNode::intersects(const Geometry& geom)
+float QTNode::intersects(const Geometry& geom)
 {
-  return false;
+  printf("Entering intersects()\n");
+  // Construct clipping box for this node
+  Polygon qt_clip_box;
+  double w = (double) scene._window_width / pow(2.0, _level);
+  qt_clip_box.add(_base);
+  qt_clip_box.add(_base + vec2(w,0));
+  qt_clip_box.add(_base + vec2(w,w));
+  qt_clip_box.add(_base + vec2(0,w));
+
+  // Generate a temp polygon for intersection test
+  Polygon geom_poly(*(geom._vertices));
+  geom_poly.clip(qt_clip_box);
+
+  printf("geom_poly.area(): %f\n", geom_poly.area());
+  printf("qt_clip_box.area(): %f\n", qt_clip_box.area());
+  printf("Leaving intersects()\n");
+  return geom_poly.area() / qt_clip_box.area();
 }
 
 /**

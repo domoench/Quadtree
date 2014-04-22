@@ -25,8 +25,10 @@ class Polygon
     vector<vec2>* _verts;
 
     Polygon();
+    Polygon(const vector<vec2>& vertices);
     ~Polygon();
 
+    void  add(vec2 vert);
     void  clip(const Polygon& clip_box);
     void  clipOneSide(vec2 a, vec2 b);
     float area();

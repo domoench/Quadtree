@@ -7,10 +7,15 @@ extern Scene scene;
 /**
  * Construct a Geometry and initialize its OpenGL State: VAO and VBOs.
  */
-Geometry::Geometry(int id, vector<vec2>* vertices, vector<int>* edges) :
-  _id(id), _vertices(vertices), _edges(edges)
+Geometry::Geometry(int id, const vector<vec2>& vertices,
+                   const vector<int>& edges) :
+  _id(id)
 {
-  //printf("Constructing Geometry object with %lu vertices\n", vertices->size());
+  // Dynamically make a copy of vertices, edges, and bb
+  _vertices = new vector<vec2>(vertices);
+  _edges = new vector<int>(edges);
+  _bb = new BB(vertices); // TODO: Initialize the BB correctly
+
   // Create VAO to manage Vertex and Color VBOs
   // Find unused VAO ID
   glGenVertexArrays(1, &_vao);
@@ -42,8 +47,6 @@ Geometry::Geometry(int id, vector<vec2>* vertices, vector<int>* edges) :
     0,              // stride
     (void*)0        // array buffer offset
   );
-
-  _bb = new BB(vertices); // TODO: Initialize the BB correctly
 }
 
 /**
@@ -51,7 +54,16 @@ Geometry::Geometry(int id, vector<vec2>* vertices, vector<int>* edges) :
  */
 Geometry::~Geometry()
 {
-  // TODO: Find out if we need to delet the VAO on the GPU
+  // Delete dynamic data from heap
+  delete _vertices;
+  delete _edges;
+  delete _bb;
+  _vertices = NULL;
+  _edges = NULL;
+  _bb = NULL;
+
+  // TODO: Find out if we need to delete the VAO on the GPU
 	glDisableVertexAttribArray(_vert_pos_loc);
 	glDeleteBuffers(1, &_vbo);
+  printf("Geometry DESTROYED!\n");
 }
