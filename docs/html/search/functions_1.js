@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['display',['Display',['../class_scene.html#af2d712797e49a9137311d92caf9f8df5',1,'Scene::Display()'],['../main_8cpp.html#a5d3fb9b91b5c167b70a1a0557e67f271',1,'Display():&#160;main.cpp']]]
+  ['bb',['BB',['../class_b_b.html#a2a4045c7f1088d63abbd3d54dbe985d5',1,'BB::BB()'],['../class_b_b.html#a6e7aa56c3e9c2621a95161b4d7d0629b',1,'BB::BB(const vector&lt; vec2 &gt; &amp;vertices)'],['../class_b_b.html#a56418218da01e8e85e376b44ca79693a',1,'BB::BB(vec2 min, vec2 max)']]]
 ];

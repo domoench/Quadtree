@@ -8,64 +8,136 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_q_t_node_a991c8c64236bd40cda2065d4df6826ef}{Q\+T\+Node} (unsigned int \+\_\+level, vec2 \+\_\+base, \hyperlink{class_q_t_node}{Q\+T\+Node} $\ast$\+\_\+parent, vector$<$ \hyperlink{class_geometry}{Geometry} $>$ geometries)
+\hyperlink{class_q_t_node_a9052ae467de820a39e60ceea901773ad}{Q\+T\+Node} (unsigned int level, vec2 base, \hyperlink{class_q_t_node}{Q\+T\+Node} $\ast$parent, const \hyperlink{class_geometry}{Geometry} $\ast$occupier)
+\item 
+bool \hyperlink{class_q_t_node_ae53c16153e6a475951631b11d44255fe}{intersects} (const \hyperlink{class_b_b}{B\+B} \&box)
+\item 
+float \hyperlink{class_q_t_node_ac41137dbf5e7ce94fcd73687f8f286b9}{intersects} (const \hyperlink{class_geometry}{Geometry} \&geom)
+\item 
+bool \hyperlink{class_q_t_node_a202f7f3dea37652fa789dd2d1e3936ff}{insert} (const \hyperlink{class_geometry}{Geometry} \&geom)
+\item 
+void \hyperlink{class_q_t_node_ab570871d686ec0259441ae53969214cb}{clear} ()
+\item 
+void \hyperlink{class_q_t_node_aa2407622dcf020ec462853f0733c5ecc}{subdivide} ()
+\item 
+bool \hyperlink{class_q_t_node_a88da0613a83f215265eed249c9b46559}{is\+Leaf} ()
+\item 
+float \hyperlink{class_q_t_node_a2e22bf4a02893452199b73ef0c22f016}{area} () const 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-unsigned int \hyperlink{class_q_t_node_a40d33fe4103a3a895137cfb08c246010}{level}
+unsigned int \hyperlink{class_q_t_node_a80d41a086f3020f670732d0c7971afb0}{\+\_\+level}
 \item 
-vec2 \hyperlink{class_q_t_node_a81dfd9fcf4b01c740ef373c1dca38765}{base}
+vec2 \hyperlink{class_q_t_node_a363a5d722a667387d637aa5dc1c7789d}{\+\_\+base}
 \begin{DoxyCompactList}\small\item\em (x,y) coordinate of this node's bottom left corner \end{DoxyCompactList}\item 
-\hyperlink{class_q_t_node}{Q\+T\+Node} $\ast$ \hyperlink{class_q_t_node_a1d8821384dae11149cb108440b108176}{parent}
+\hyperlink{class_q_t_node}{Q\+T\+Node} $\ast$ \hyperlink{class_q_t_node_a47f01353c3e4f66ab1006a7dbc2be797}{\+\_\+parent}
 \item 
-\hyperlink{class_q_t_node}{Q\+T\+Node} $\ast$ \hyperlink{class_q_t_node_aacf4c1618f753633cb7ea9ddb76690f9}{children}
+\hyperlink{class_q_t_node}{Q\+T\+Node} $\ast$ \hyperlink{class_q_t_node_ab908d2ab924e7e53f2a1d0d8373833d2}{\+\_\+children} \mbox{[}4\mbox{]}
 \item 
-bool \hyperlink{class_q_t_node_aaa8bd41ed3407ecad40f52659ecb84b8}{occupied}
+bool \hyperlink{class_q_t_node_ae8721982666788f10f11d4545a77bf61}{\+\_\+occupied}
 \item 
-\hyperlink{class_geometry}{Geometry} \hyperlink{class_q_t_node_aa101f25c611e27299a96f510567c9516}{occupier}
+const \hyperlink{class_geometry}{Geometry} $\ast$ \hyperlink{class_q_t_node_aa61ac86e1264835162e6101d70b7883e}{\+\_\+occupier}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-A class to represent dynamic region quadtrees. 
+A class to represent dynamic region quadtrees.
+
+Quadrant ordering\+: +–––––––+–––––––+ $\vert$ $\vert$ $\vert$ $\vert$ I\+I $\vert$ I $\vert$ $\vert$ $\vert$ $\vert$ +–––––––––––––––+ $\vert$ $\vert$ $\vert$ $\vert$ I\+I\+I $\vert$ I\+V $\vert$ $\vert$ $\vert$ $\vert$ +–––––––+–––––––+ 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_q_t_node_a991c8c64236bd40cda2065d4df6826ef}{\index{Q\+T\+Node@{Q\+T\+Node}!Q\+T\+Node@{Q\+T\+Node}}
+\hypertarget{class_q_t_node_a9052ae467de820a39e60ceea901773ad}{\index{Q\+T\+Node@{Q\+T\+Node}!Q\+T\+Node@{Q\+T\+Node}}
 \index{Q\+T\+Node@{Q\+T\+Node}!Q\+T\+Node@{Q\+T\+Node}}
 \subsubsection[{Q\+T\+Node}]{\setlength{\rightskip}{0pt plus 5cm}Q\+T\+Node\+::\+Q\+T\+Node (
 \begin{DoxyParamCaption}
-\item[{unsigned int}]{\+\_\+level, }
-\item[{vec2}]{\+\_\+base, }
-\item[{{\bf Q\+T\+Node} $\ast$}]{\+\_\+parent, }
-\item[{vector$<$ {\bf Geometry} $>$}]{\+\_\+geometries}
+\item[{unsigned int}]{level, }
+\item[{vec2}]{base, }
+\item[{{\bf Q\+T\+Node} $\ast$}]{parent, }
+\item[{const {\bf Geometry} $\ast$}]{occupier}
 \end{DoxyParamCaption}
-)}}\label{class_q_t_node_a991c8c64236bd40cda2065d4df6826ef}
-Construct an leaf quadtree node. Consists of a single node with no children. 
+)}}\label{class_q_t_node_a9052ae467de820a39e60ceea901773ad}
+Construct a leaf quadtree node. Consists of a single node with no children. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_q_t_node_a2e22bf4a02893452199b73ef0c22f016}{\index{Q\+T\+Node@{Q\+T\+Node}!area@{area}}
+\index{area@{area}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{area}]{\setlength{\rightskip}{0pt plus 5cm}float Q\+T\+Node\+::area (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_q_t_node_a2e22bf4a02893452199b73ef0c22f016}
+Return the area of this \hyperlink{class_q_t_node}{Q\+T\+Node} instance \hypertarget{class_q_t_node_ab570871d686ec0259441ae53969214cb}{\index{Q\+T\+Node@{Q\+T\+Node}!clear@{clear}}
+\index{clear@{clear}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+T\+Node\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_t_node_ab570871d686ec0259441ae53969214cb}
+\hypertarget{class_q_t_node_a202f7f3dea37652fa789dd2d1e3936ff}{\index{Q\+T\+Node@{Q\+T\+Node}!insert@{insert}}
+\index{insert@{insert}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::insert (
+\begin{DoxyParamCaption}
+\item[{const {\bf Geometry} \&}]{geom}
+\end{DoxyParamCaption}
+)}}\label{class_q_t_node_a202f7f3dea37652fa789dd2d1e3936ff}
+Recursively insert the given \hyperlink{class_geometry}{Geometry} into this quadtree node.
+
+Returns true if successfully inserted, false if it can't be inserted. Insertion fails if the geometry overlaps an existing geometry maintained by the Quadtree.
+
+Pre\+: \hyperlink{class_geometry}{Geometry} intersects this node \hypertarget{class_q_t_node_ae53c16153e6a475951631b11d44255fe}{\index{Q\+T\+Node@{Q\+T\+Node}!intersects@{intersects}}
+\index{intersects@{intersects}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{intersects}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::intersects (
+\begin{DoxyParamCaption}
+\item[{const {\bf B\+B} \&}]{box}
+\end{DoxyParamCaption}
+)}}\label{class_q_t_node_ae53c16153e6a475951631b11d44255fe}
+Check if this node intersects the given bounding box. \hypertarget{class_q_t_node_ac41137dbf5e7ce94fcd73687f8f286b9}{\index{Q\+T\+Node@{Q\+T\+Node}!intersects@{intersects}}
+\index{intersects@{intersects}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{intersects}]{\setlength{\rightskip}{0pt plus 5cm}float Q\+T\+Node\+::intersects (
+\begin{DoxyParamCaption}
+\item[{const {\bf Geometry} \&}]{geom}
+\end{DoxyParamCaption}
+)}}\label{class_q_t_node_ac41137dbf5e7ce94fcd73687f8f286b9}
+Check if this node intersects the given \hyperlink{class_geometry}{Geometry} polygon. Returns the intersection ratio (geom area / \hyperlink{class_q_t_node}{Q\+T\+Node} area) \hypertarget{class_q_t_node_a88da0613a83f215265eed249c9b46559}{\index{Q\+T\+Node@{Q\+T\+Node}!is\+Leaf@{is\+Leaf}}
+\index{is\+Leaf@{is\+Leaf}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{is\+Leaf}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::is\+Leaf (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_t_node_a88da0613a83f215265eed249c9b46559}
+Check if this node is a leaf node. \hypertarget{class_q_t_node_aa2407622dcf020ec462853f0733c5ecc}{\index{Q\+T\+Node@{Q\+T\+Node}!subdivide@{subdivide}}
+\index{subdivide@{subdivide}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{subdivide}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+T\+Node\+::subdivide (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_q_t_node_aa2407622dcf020ec462853f0733c5ecc}
+
 
 \subsection{Member Data Documentation}
-\hypertarget{class_q_t_node_a81dfd9fcf4b01c740ef373c1dca38765}{\index{Q\+T\+Node@{Q\+T\+Node}!base@{base}}
-\index{base@{base}!Q\+T\+Node@{Q\+T\+Node}}
-\subsubsection[{base}]{\setlength{\rightskip}{0pt plus 5cm}vec2 Q\+T\+Node\+::base}}\label{class_q_t_node_a81dfd9fcf4b01c740ef373c1dca38765}
+\hypertarget{class_q_t_node_a363a5d722a667387d637aa5dc1c7789d}{\index{Q\+T\+Node@{Q\+T\+Node}!\+\_\+base@{\+\_\+base}}
+\index{\+\_\+base@{\+\_\+base}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{\+\_\+base}]{\setlength{\rightskip}{0pt plus 5cm}vec2 Q\+T\+Node\+::\+\_\+base}}\label{class_q_t_node_a363a5d722a667387d637aa5dc1c7789d}
 
 
 (x,y) coordinate of this node's bottom left corner 
 
-\hypertarget{class_q_t_node_aacf4c1618f753633cb7ea9ddb76690f9}{\index{Q\+T\+Node@{Q\+T\+Node}!children@{children}}
-\index{children@{children}!Q\+T\+Node@{Q\+T\+Node}}
-\subsubsection[{children}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+T\+Node}$\ast$ Q\+T\+Node\+::children}}\label{class_q_t_node_aacf4c1618f753633cb7ea9ddb76690f9}
-Array of 4 child pointers. If children == N\+U\+L\+L, then this node is a leafnode. \hypertarget{class_q_t_node_a40d33fe4103a3a895137cfb08c246010}{\index{Q\+T\+Node@{Q\+T\+Node}!level@{level}}
-\index{level@{level}!Q\+T\+Node@{Q\+T\+Node}}
-\subsubsection[{level}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Q\+T\+Node\+::level}}\label{class_q_t_node_a40d33fe4103a3a895137cfb08c246010}
-\hypertarget{class_q_t_node_aaa8bd41ed3407ecad40f52659ecb84b8}{\index{Q\+T\+Node@{Q\+T\+Node}!occupied@{occupied}}
-\index{occupied@{occupied}!Q\+T\+Node@{Q\+T\+Node}}
-\subsubsection[{occupied}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::occupied}}\label{class_q_t_node_aaa8bd41ed3407ecad40f52659ecb84b8}
-True if this is an occupied leaf node. False if this is an interior node or unoccupied. \hypertarget{class_q_t_node_aa101f25c611e27299a96f510567c9516}{\index{Q\+T\+Node@{Q\+T\+Node}!occupier@{occupier}}
-\index{occupier@{occupier}!Q\+T\+Node@{Q\+T\+Node}}
-\subsubsection[{occupier}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Geometry} Q\+T\+Node\+::occupier}}\label{class_q_t_node_aa101f25c611e27299a96f510567c9516}
-The geometry that occupies this node. N\+U\+L\+L if this is an interior node or unoccupied. \hypertarget{class_q_t_node_a1d8821384dae11149cb108440b108176}{\index{Q\+T\+Node@{Q\+T\+Node}!parent@{parent}}
-\index{parent@{parent}!Q\+T\+Node@{Q\+T\+Node}}
-\subsubsection[{parent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+T\+Node}$\ast$ Q\+T\+Node\+::parent}}\label{class_q_t_node_a1d8821384dae11149cb108440b108176}
+\hypertarget{class_q_t_node_ab908d2ab924e7e53f2a1d0d8373833d2}{\index{Q\+T\+Node@{Q\+T\+Node}!\+\_\+children@{\+\_\+children}}
+\index{\+\_\+children@{\+\_\+children}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{\+\_\+children}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+T\+Node}$\ast$ Q\+T\+Node\+::\+\_\+children\mbox{[}4\mbox{]}}}\label{class_q_t_node_ab908d2ab924e7e53f2a1d0d8373833d2}
+Array of 4 child pointers. If children == N\+U\+L\+L, then this node is a leafnode. \hypertarget{class_q_t_node_a80d41a086f3020f670732d0c7971afb0}{\index{Q\+T\+Node@{Q\+T\+Node}!\+\_\+level@{\+\_\+level}}
+\index{\+\_\+level@{\+\_\+level}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{\+\_\+level}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Q\+T\+Node\+::\+\_\+level}}\label{class_q_t_node_a80d41a086f3020f670732d0c7971afb0}
+\hypertarget{class_q_t_node_ae8721982666788f10f11d4545a77bf61}{\index{Q\+T\+Node@{Q\+T\+Node}!\+\_\+occupied@{\+\_\+occupied}}
+\index{\+\_\+occupied@{\+\_\+occupied}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{\+\_\+occupied}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::\+\_\+occupied}}\label{class_q_t_node_ae8721982666788f10f11d4545a77bf61}
+True if this is an occupied leaf node. False if this is an interior node or unoccupied. \hypertarget{class_q_t_node_aa61ac86e1264835162e6101d70b7883e}{\index{Q\+T\+Node@{Q\+T\+Node}!\+\_\+occupier@{\+\_\+occupier}}
+\index{\+\_\+occupier@{\+\_\+occupier}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{\+\_\+occupier}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Geometry}$\ast$ Q\+T\+Node\+::\+\_\+occupier}}\label{class_q_t_node_aa61ac86e1264835162e6101d70b7883e}
+The \hyperlink{class_geometry}{Geometry} that occupies this node. N\+U\+L\+L if this is an interior node or unoccupied. \hypertarget{class_q_t_node_a47f01353c3e4f66ab1006a7dbc2be797}{\index{Q\+T\+Node@{Q\+T\+Node}!\+\_\+parent@{\+\_\+parent}}
+\index{\+\_\+parent@{\+\_\+parent}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{\+\_\+parent}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+T\+Node}$\ast$ Q\+T\+Node\+::\+\_\+parent}}\label{class_q_t_node_a47f01353c3e4f66ab1006a7dbc2be797}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

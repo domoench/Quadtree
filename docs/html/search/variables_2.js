@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['children',['children',['../class_q_t_node.html#aacf4c1618f753633cb7ea9ddb76690f9',1,'QTNode']]]
+  ['window',['window',['../main_8cpp.html#a80de27bd7dc4e2b2ad3d5895b97a70f0',1,'main.cpp']]]
 ];

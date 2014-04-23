@@ -8,18 +8,28 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{class_geometry_a40be9a25c6c2f1f232980a3a776e6b80}{Geometry} (int \+\_\+id, vector$<$ vec2 $>$ \+\_\+vertices, vector$<$ int $>$ \+\_\+edges)
+\hyperlink{class_geometry_a75dcc4432a7296189d625717b808c451}{Geometry} (int id, const vector$<$ vec2 $>$ \&vertices, const vector$<$ int $>$ \&edges)
+\item 
+\hyperlink{class_geometry_ad55e832122ab3a2833dcaa6507867678}{$\sim$\+Geometry} ()
+\item 
+float \hyperlink{class_geometry_a41f3f2954a86d1f2e09bdd59b4c6d62e}{area} () const 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-unsigned int \hyperlink{class_geometry_aad8da7cd260eff56d34895126f04b75d}{id}
+unsigned int \hyperlink{class_geometry_afdd3cb26908cc8cd257caeb1af9376ef}{\+\_\+id}
 \item 
-vector$<$ vec2 $>$ \hyperlink{class_geometry_a30086a92b88740f2ca9253f708a6639a}{vertices}
+vector$<$ vec2 $>$ $\ast$ \hyperlink{class_geometry_a6bba14459d18ceb7000fe8e36c96b509}{\+\_\+vertices}
 \item 
-vector$<$ int $>$ \hyperlink{class_geometry_a81016e7d24d062ea51dd6842ee576c17}{edges}
+vector$<$ int $>$ $\ast$ \hyperlink{class_geometry_af7d427b2dd365204c7d8cd8d94b20a80}{\+\_\+edges}
 \item 
-\hyperlink{class_b_b}{B\+B} $\ast$ \hyperlink{class_geometry_ad222ed59c2681a71bd33c6db85c025c2}{bb}
+\hyperlink{class_b_b}{B\+B} $\ast$ \hyperlink{class_geometry_a6b3ca6d44997ee99d548a19bc39e0c72}{\+\_\+bb}
+\item 
+G\+Luint \hyperlink{class_geometry_ae8c3a8b756c681aa95bf7e0998f0a37d}{\+\_\+vao}
+\item 
+G\+Luint \hyperlink{class_geometry_a66c15fff8a8a614e5f9734974354fd2e}{\+\_\+vbo}
+\item 
+G\+Luint \hyperlink{class_geometry_a547d84fcd9258557891da46d19985544}{\+\_\+vert\+\_\+pos\+\_\+loc}
 \end{DoxyCompactItemize}
 
 
@@ -27,30 +37,56 @@ vector$<$ int $>$ \hyperlink{class_geometry_a81016e7d24d062ea51dd6842ee576c17}{e
 A class representing convex hull geometries. 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{class_geometry_a40be9a25c6c2f1f232980a3a776e6b80}{\index{Geometry@{Geometry}!Geometry@{Geometry}}
+\hypertarget{class_geometry_a75dcc4432a7296189d625717b808c451}{\index{Geometry@{Geometry}!Geometry@{Geometry}}
 \index{Geometry@{Geometry}!Geometry@{Geometry}}
 \subsubsection[{Geometry}]{\setlength{\rightskip}{0pt plus 5cm}Geometry\+::\+Geometry (
 \begin{DoxyParamCaption}
-\item[{int}]{\+\_\+id, }
-\item[{vector$<$ vec2 $>$}]{\+\_\+vertices, }
-\item[{vector$<$ int $>$}]{\+\_\+edges}
+\item[{int}]{id, }
+\item[{const vector$<$ vec2 $>$ \&}]{vertices, }
+\item[{const vector$<$ int $>$ \&}]{edges}
 \end{DoxyParamCaption}
-)}}\label{class_geometry_a40be9a25c6c2f1f232980a3a776e6b80}
-T\+O\+D\+O 
+)}}\label{class_geometry_a75dcc4432a7296189d625717b808c451}
+Construct a \hyperlink{class_geometry}{Geometry} and initialize its Open\+G\+L State\+: V\+A\+O and V\+B\+Os. \hypertarget{class_geometry_ad55e832122ab3a2833dcaa6507867678}{\index{Geometry@{Geometry}!````~Geometry@{$\sim$\+Geometry}}
+\index{````~Geometry@{$\sim$\+Geometry}!Geometry@{Geometry}}
+\subsubsection[{$\sim$\+Geometry}]{\setlength{\rightskip}{0pt plus 5cm}Geometry\+::$\sim$\+Geometry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_geometry_ad55e832122ab3a2833dcaa6507867678}
+Destroy this \hyperlink{class_geometry}{Geometry} object and clean up its Open\+G\+L state. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_geometry_a41f3f2954a86d1f2e09bdd59b4c6d62e}{\index{Geometry@{Geometry}!area@{area}}
+\index{area@{area}!Geometry@{Geometry}}
+\subsubsection[{area}]{\setlength{\rightskip}{0pt plus 5cm}float Geometry\+::area (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_geometry_a41f3f2954a86d1f2e09bdd59b4c6d62e}
+Return the area of this geometry 
 
 \subsection{Member Data Documentation}
-\hypertarget{class_geometry_ad222ed59c2681a71bd33c6db85c025c2}{\index{Geometry@{Geometry}!bb@{bb}}
-\index{bb@{bb}!Geometry@{Geometry}}
-\subsubsection[{bb}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+B}$\ast$ Geometry\+::bb}}\label{class_geometry_ad222ed59c2681a71bd33c6db85c025c2}
-\hypertarget{class_geometry_a81016e7d24d062ea51dd6842ee576c17}{\index{Geometry@{Geometry}!edges@{edges}}
-\index{edges@{edges}!Geometry@{Geometry}}
-\subsubsection[{edges}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$ Geometry\+::edges}}\label{class_geometry_a81016e7d24d062ea51dd6842ee576c17}
-\hypertarget{class_geometry_aad8da7cd260eff56d34895126f04b75d}{\index{Geometry@{Geometry}!id@{id}}
-\index{id@{id}!Geometry@{Geometry}}
-\subsubsection[{id}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Geometry\+::id}}\label{class_geometry_aad8da7cd260eff56d34895126f04b75d}
-\hypertarget{class_geometry_a30086a92b88740f2ca9253f708a6639a}{\index{Geometry@{Geometry}!vertices@{vertices}}
-\index{vertices@{vertices}!Geometry@{Geometry}}
-\subsubsection[{vertices}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$vec2$>$ Geometry\+::vertices}}\label{class_geometry_a30086a92b88740f2ca9253f708a6639a}
+\hypertarget{class_geometry_a6b3ca6d44997ee99d548a19bc39e0c72}{\index{Geometry@{Geometry}!\+\_\+bb@{\+\_\+bb}}
+\index{\+\_\+bb@{\+\_\+bb}!Geometry@{Geometry}}
+\subsubsection[{\+\_\+bb}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+B}$\ast$ Geometry\+::\+\_\+bb}}\label{class_geometry_a6b3ca6d44997ee99d548a19bc39e0c72}
+\hypertarget{class_geometry_af7d427b2dd365204c7d8cd8d94b20a80}{\index{Geometry@{Geometry}!\+\_\+edges@{\+\_\+edges}}
+\index{\+\_\+edges@{\+\_\+edges}!Geometry@{Geometry}}
+\subsubsection[{\+\_\+edges}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$$\ast$ Geometry\+::\+\_\+edges}}\label{class_geometry_af7d427b2dd365204c7d8cd8d94b20a80}
+\hypertarget{class_geometry_afdd3cb26908cc8cd257caeb1af9376ef}{\index{Geometry@{Geometry}!\+\_\+id@{\+\_\+id}}
+\index{\+\_\+id@{\+\_\+id}!Geometry@{Geometry}}
+\subsubsection[{\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Geometry\+::\+\_\+id}}\label{class_geometry_afdd3cb26908cc8cd257caeb1af9376ef}
+\hypertarget{class_geometry_ae8c3a8b756c681aa95bf7e0998f0a37d}{\index{Geometry@{Geometry}!\+\_\+vao@{\+\_\+vao}}
+\index{\+\_\+vao@{\+\_\+vao}!Geometry@{Geometry}}
+\subsubsection[{\+\_\+vao}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Geometry\+::\+\_\+vao}}\label{class_geometry_ae8c3a8b756c681aa95bf7e0998f0a37d}
+\hypertarget{class_geometry_a66c15fff8a8a614e5f9734974354fd2e}{\index{Geometry@{Geometry}!\+\_\+vbo@{\+\_\+vbo}}
+\index{\+\_\+vbo@{\+\_\+vbo}!Geometry@{Geometry}}
+\subsubsection[{\+\_\+vbo}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Geometry\+::\+\_\+vbo}}\label{class_geometry_a66c15fff8a8a614e5f9734974354fd2e}
+\hypertarget{class_geometry_a547d84fcd9258557891da46d19985544}{\index{Geometry@{Geometry}!\+\_\+vert\+\_\+pos\+\_\+loc@{\+\_\+vert\+\_\+pos\+\_\+loc}}
+\index{\+\_\+vert\+\_\+pos\+\_\+loc@{\+\_\+vert\+\_\+pos\+\_\+loc}!Geometry@{Geometry}}
+\subsubsection[{\+\_\+vert\+\_\+pos\+\_\+loc}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Geometry\+::\+\_\+vert\+\_\+pos\+\_\+loc}}\label{class_geometry_a547d84fcd9258557891da46d19985544}
+\hypertarget{class_geometry_a6bba14459d18ceb7000fe8e36c96b509}{\index{Geometry@{Geometry}!\+\_\+vertices@{\+\_\+vertices}}
+\index{\+\_\+vertices@{\+\_\+vertices}!Geometry@{Geometry}}
+\subsubsection[{\+\_\+vertices}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$vec2$>$$\ast$ Geometry\+::\+\_\+vertices}}\label{class_geometry_a6bba14459d18ceb7000fe8e36c96b509}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

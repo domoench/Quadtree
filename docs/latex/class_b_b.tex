@@ -10,19 +10,23 @@
 \item 
 \hyperlink{class_b_b_a2a4045c7f1088d63abbd3d54dbe985d5}{B\+B} ()
 \item 
-\hyperlink{class_b_b_a5c43a5dc11191dc114ab101d52ea7905}{B\+B} (vec2 \+\_\+min, vec2 \+\_\+max)
+\hyperlink{class_b_b_a6e7aa56c3e9c2621a95161b4d7d0629b}{B\+B} (const vector$<$ vec2 $>$ \&vertices)
+\item 
+\hyperlink{class_b_b_a56418218da01e8e85e376b44ca79693a}{B\+B} (vec2 min, vec2 max)
+\item 
+bool \hyperlink{class_b_b_a4fac3908f12a10c7ce39529c16688a6f}{intersects} (const \hyperlink{class_b_b}{B\+B} \&other)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-vec2 \hyperlink{class_b_b_ae7c37d7bd7024bf0077ab1b884aac982}{min}
+vec2 \hyperlink{class_b_b_a4b3364614ae922eefae03a902422c289}{\+\_\+min}
 \begin{DoxyCompactList}\small\item\em Bottom left corner position. \end{DoxyCompactList}\item 
-vec2 \hyperlink{class_b_b_a460ea90989913b4fe860f404404ef650}{max}
+vec2 \hyperlink{class_b_b_af3061cea04192cbe6f1ff43cea019a2d}{\+\_\+max}
 \begin{DoxyCompactList}\small\item\em Top right corner position. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-A class to represent square bounding boxes. 
+A class to represent bounding boxes. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{class_b_b_a2a4045c7f1088d63abbd3d54dbe985d5}{\index{B\+B@{B\+B}!B\+B@{B\+B}}
@@ -32,27 +36,44 @@ A class to represent square bounding boxes.
 {}
 \end{DoxyParamCaption}
 )}}\label{class_b_b_a2a4045c7f1088d63abbd3d54dbe985d5}
-\hypertarget{class_b_b_a5c43a5dc11191dc114ab101d52ea7905}{\index{B\+B@{B\+B}!B\+B@{B\+B}}
+\hypertarget{class_b_b_a6e7aa56c3e9c2621a95161b4d7d0629b}{\index{B\+B@{B\+B}!B\+B@{B\+B}}
 \index{B\+B@{B\+B}!B\+B@{B\+B}}
 \subsubsection[{B\+B}]{\setlength{\rightskip}{0pt plus 5cm}B\+B\+::\+B\+B (
 \begin{DoxyParamCaption}
-\item[{vec2}]{\+\_\+min, }
-\item[{vec2}]{\+\_\+max}
+\item[{const vector$<$ vec2 $>$ \&}]{vertices}
 \end{DoxyParamCaption}
-)}}\label{class_b_b_a5c43a5dc11191dc114ab101d52ea7905}
+)}}\label{class_b_b_a6e7aa56c3e9c2621a95161b4d7d0629b}
+\hypertarget{class_b_b_a56418218da01e8e85e376b44ca79693a}{\index{B\+B@{B\+B}!B\+B@{B\+B}}
+\index{B\+B@{B\+B}!B\+B@{B\+B}}
+\subsubsection[{B\+B}]{\setlength{\rightskip}{0pt plus 5cm}B\+B\+::\+B\+B (
+\begin{DoxyParamCaption}
+\item[{vec2}]{min, }
+\item[{vec2}]{max}
+\end{DoxyParamCaption}
+)}}\label{class_b_b_a56418218da01e8e85e376b44ca79693a}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_b_b_a4fac3908f12a10c7ce39529c16688a6f}{\index{B\+B@{B\+B}!intersects@{intersects}}
+\index{intersects@{intersects}!B\+B@{B\+B}}
+\subsubsection[{intersects}]{\setlength{\rightskip}{0pt plus 5cm}bool B\+B\+::intersects (
+\begin{DoxyParamCaption}
+\item[{const {\bf B\+B} \&}]{other}
+\end{DoxyParamCaption}
+)}}\label{class_b_b_a4fac3908f12a10c7ce39529c16688a6f}
 
 
 \subsection{Member Data Documentation}
-\hypertarget{class_b_b_a460ea90989913b4fe860f404404ef650}{\index{B\+B@{B\+B}!max@{max}}
-\index{max@{max}!B\+B@{B\+B}}
-\subsubsection[{max}]{\setlength{\rightskip}{0pt plus 5cm}vec2 B\+B\+::max}}\label{class_b_b_a460ea90989913b4fe860f404404ef650}
+\hypertarget{class_b_b_af3061cea04192cbe6f1ff43cea019a2d}{\index{B\+B@{B\+B}!\+\_\+max@{\+\_\+max}}
+\index{\+\_\+max@{\+\_\+max}!B\+B@{B\+B}}
+\subsubsection[{\+\_\+max}]{\setlength{\rightskip}{0pt plus 5cm}vec2 B\+B\+::\+\_\+max}}\label{class_b_b_af3061cea04192cbe6f1ff43cea019a2d}
 
 
 Top right corner position. 
 
-\hypertarget{class_b_b_ae7c37d7bd7024bf0077ab1b884aac982}{\index{B\+B@{B\+B}!min@{min}}
-\index{min@{min}!B\+B@{B\+B}}
-\subsubsection[{min}]{\setlength{\rightskip}{0pt plus 5cm}vec2 B\+B\+::min}}\label{class_b_b_ae7c37d7bd7024bf0077ab1b884aac982}
+\hypertarget{class_b_b_a4b3364614ae922eefae03a902422c289}{\index{B\+B@{B\+B}!\+\_\+min@{\+\_\+min}}
+\index{\+\_\+min@{\+\_\+min}!B\+B@{B\+B}}
+\subsubsection[{\+\_\+min}]{\setlength{\rightskip}{0pt plus 5cm}vec2 B\+B\+::\+\_\+min}}\label{class_b_b_a4b3364614ae922eefae03a902422c289}
 
 
 Bottom left corner position. 

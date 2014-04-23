@@ -2,8 +2,6 @@ var searchData=
 [
   ['main',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
   ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['max',['max',['../class_b_b.html#a460ea90989913b4fe860f404404ef650',1,'BB']]],
-  ['min',['min',['../class_b_b.html#ae7c37d7bd7024bf0077ab1b884aac982',1,'BB']]],
-  ['mousebutton',['MouseButton',['../class_scene.html#a782d14ce62ac9ff75f7f20974eac9f65',1,'Scene::MouseButton()'],['../main_8cpp.html#ada77d394faf5133fe3d45156b9d2d757',1,'MouseButton():&#160;main.cpp']]],
-  ['mousemotion',['MouseMotion',['../class_scene.html#ab7cbe464954b9782c6a6163d2b5b82b2',1,'Scene::MouseMotion()'],['../main_8cpp.html#af309f9e2f3200984661be99b288ded39',1,'MouseMotion():&#160;main.cpp']]]
+  ['mousebutton',['mouseButton',['../class_scene.html#aa7342d108ff80f49d39b89570d6be4aa',1,'Scene::mouseButton()'],['../main_8cpp.html#a860764943be2099746afc7196999de52',1,'mouseButton():&#160;main.cpp']]],
+  ['mousemotion',['mouseMotion',['../class_scene.html#a479536d524e9879442b9c59d3c8d7e2e',1,'Scene::mouseMotion()'],['../main_8cpp.html#a11fc0d976fb75147ac3c87c28159f861',1,'mouseMotion():&#160;main.cpp']]]
 ];

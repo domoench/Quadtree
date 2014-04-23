@@ -267,11 +267,12 @@ void testQTNodeIntersect()
 
 void testQTNodeInsert()
 {
+  printf("Entering testQTNodeInsert()\n");
   // Triangle Geometry
   vector<vec2> tri_verts;
   tri_verts.push_back(vec2(0.0f, 0.0f));
-  tri_verts.push_back(vec2(700.0f, 0.0f));
-  tri_verts.push_back(vec2(0.0f, 700.0f));
+  tri_verts.push_back(vec2(100.0f, 0.0f));
+  tri_verts.push_back(vec2(0.0f, 100.0f));
   vector<int> edges;
   Geometry triangle = Geometry(0, tri_verts, edges);
 
@@ -279,5 +280,6 @@ void testQTNodeInsert()
   vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
   QTNode qt(0, base, NULL, NULL);
 
+  printf("Time to insert...\n");
   bool inserted = qt.insert(triangle);
 }

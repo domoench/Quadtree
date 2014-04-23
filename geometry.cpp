@@ -66,7 +66,7 @@ Geometry::~Geometry()
   // TODO: Find out if we need to delete the VAO on the GPU
 	glDisableVertexAttribArray(_vert_pos_loc);
 	glDeleteBuffers(1, &_vbo);
-  printf("Geometry DESTROYED!\n");
+  // printf("Geometry DESTROYED!\n");
 }
 
 /**

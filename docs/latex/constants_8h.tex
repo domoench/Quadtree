@@ -4,33 +4,56 @@
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
+\#define \hyperlink{constants_8h_ad72dbcf6d0153db1b8d8a58001feed83}{D\+E\+B\+U\+G}~true
+\begin{DoxyCompactList}\small\item\em Debug mode flag. \end{DoxyCompactList}\item 
 \#define \hyperlink{constants_8h_ad9f6b02038dcb2b0ca06c2ae4e83507c}{Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S}~32
-\begin{DoxyCompactList}\small\item\em The maximum number of quadtree levels. Root is Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S -\/ 1. Deepest level is 0. \end{DoxyCompactList}\item 
-\#define \hyperlink{constants_8h_aea492520b4d3637c36d824ee3cf38044}{D\+E\+F\+A\+U\+L\+T\+\_\+\+W}~600
+\begin{DoxyCompactList}\small\item\em The maximum number of quadtree levels. Root is 0, Deepest is Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S -\/ 1. \end{DoxyCompactList}\item 
+\#define \hyperlink{constants_8h_a277ba15778f7c00b9c9b09559daec660}{Q\+T\+\_\+\+M\+A\+X\+\_\+\+L\+E\+V\+E\+L}~31
+\item 
+\#define \hyperlink{constants_8h_a31e6cfdd3f609ae26a41f830565da78c}{S\+U\+B\+D\+I\+V\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D}~0.\+90f
+\begin{DoxyCompactList}\small\item\em The ratio of a \hyperlink{class_q_t_node}{Q\+T\+Node} that must be filled to mark it as occupied. \end{DoxyCompactList}\item 
+\#define \hyperlink{constants_8h_aea492520b4d3637c36d824ee3cf38044}{D\+E\+F\+A\+U\+L\+T\+\_\+\+W}~900
 \begin{DoxyCompactList}\small\item\em Default window width in pixels. \end{DoxyCompactList}\item 
-\#define \hyperlink{constants_8h_a9550a89ddce281766ed87ce4f62373e6}{D\+E\+F\+A\+U\+L\+T\+\_\+\+H}~450
+\#define \hyperlink{constants_8h_a9550a89ddce281766ed87ce4f62373e6}{D\+E\+F\+A\+U\+L\+T\+\_\+\+H}~900
 \begin{DoxyCompactList}\small\item\em Default window height in pixels. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Macro Definition Documentation}
+\hypertarget{constants_8h_ad72dbcf6d0153db1b8d8a58001feed83}{\index{constants.\+h@{constants.\+h}!D\+E\+B\+U\+G@{D\+E\+B\+U\+G}}
+\index{D\+E\+B\+U\+G@{D\+E\+B\+U\+G}!constants.\+h@{constants.\+h}}
+\subsubsection[{D\+E\+B\+U\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+B\+U\+G~true}}\label{constants_8h_ad72dbcf6d0153db1b8d8a58001feed83}
+
+
+Debug mode flag. 
+
 \hypertarget{constants_8h_a9550a89ddce281766ed87ce4f62373e6}{\index{constants.\+h@{constants.\+h}!D\+E\+F\+A\+U\+L\+T\+\_\+\+H@{D\+E\+F\+A\+U\+L\+T\+\_\+\+H}}
 \index{D\+E\+F\+A\+U\+L\+T\+\_\+\+H@{D\+E\+F\+A\+U\+L\+T\+\_\+\+H}!constants.\+h@{constants.\+h}}
-\subsubsection[{D\+E\+F\+A\+U\+L\+T\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+A\+U\+L\+T\+\_\+\+H~450}}\label{constants_8h_a9550a89ddce281766ed87ce4f62373e6}
+\subsubsection[{D\+E\+F\+A\+U\+L\+T\+\_\+\+H}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+A\+U\+L\+T\+\_\+\+H~900}}\label{constants_8h_a9550a89ddce281766ed87ce4f62373e6}
 
 
 Default window height in pixels. 
 
 \hypertarget{constants_8h_aea492520b4d3637c36d824ee3cf38044}{\index{constants.\+h@{constants.\+h}!D\+E\+F\+A\+U\+L\+T\+\_\+\+W@{D\+E\+F\+A\+U\+L\+T\+\_\+\+W}}
 \index{D\+E\+F\+A\+U\+L\+T\+\_\+\+W@{D\+E\+F\+A\+U\+L\+T\+\_\+\+W}!constants.\+h@{constants.\+h}}
-\subsubsection[{D\+E\+F\+A\+U\+L\+T\+\_\+\+W}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+A\+U\+L\+T\+\_\+\+W~600}}\label{constants_8h_aea492520b4d3637c36d824ee3cf38044}
+\subsubsection[{D\+E\+F\+A\+U\+L\+T\+\_\+\+W}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+F\+A\+U\+L\+T\+\_\+\+W~900}}\label{constants_8h_aea492520b4d3637c36d824ee3cf38044}
 
 
 Default window width in pixels. 
 
+\hypertarget{constants_8h_a277ba15778f7c00b9c9b09559daec660}{\index{constants.\+h@{constants.\+h}!Q\+T\+\_\+\+M\+A\+X\+\_\+\+L\+E\+V\+E\+L@{Q\+T\+\_\+\+M\+A\+X\+\_\+\+L\+E\+V\+E\+L}}
+\index{Q\+T\+\_\+\+M\+A\+X\+\_\+\+L\+E\+V\+E\+L@{Q\+T\+\_\+\+M\+A\+X\+\_\+\+L\+E\+V\+E\+L}!constants.\+h@{constants.\+h}}
+\subsubsection[{Q\+T\+\_\+\+M\+A\+X\+\_\+\+L\+E\+V\+E\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+M\+A\+X\+\_\+\+L\+E\+V\+E\+L~31}}\label{constants_8h_a277ba15778f7c00b9c9b09559daec660}
 \hypertarget{constants_8h_ad9f6b02038dcb2b0ca06c2ae4e83507c}{\index{constants.\+h@{constants.\+h}!Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S@{Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S}}
 \index{Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S@{Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S}!constants.\+h@{constants.\+h}}
 \subsubsection[{Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S~32}}\label{constants_8h_ad9f6b02038dcb2b0ca06c2ae4e83507c}
 
 
-The maximum number of quadtree levels. Root is Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S -\/ 1. Deepest level is 0. 
+The maximum number of quadtree levels. Root is 0, Deepest is Q\+T\+\_\+\+N\+\_\+\+L\+E\+V\+E\+L\+S -\/ 1. 
+
+\hypertarget{constants_8h_a31e6cfdd3f609ae26a41f830565da78c}{\index{constants.\+h@{constants.\+h}!S\+U\+B\+D\+I\+V\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D@{S\+U\+B\+D\+I\+V\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D}}
+\index{S\+U\+B\+D\+I\+V\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D@{S\+U\+B\+D\+I\+V\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D}!constants.\+h@{constants.\+h}}
+\subsubsection[{S\+U\+B\+D\+I\+V\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+U\+B\+D\+I\+V\+\_\+\+T\+H\+R\+E\+S\+H\+O\+L\+D~0.\+90f}}\label{constants_8h_a31e6cfdd3f609ae26a41f830565da78c}
+
+
+The ratio of a \hyperlink{class_q_t_node}{Q\+T\+Node} that must be filled to mark it as occupied. 
 

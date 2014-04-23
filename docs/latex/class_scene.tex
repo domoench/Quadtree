@@ -8,102 +8,124 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \hyperlink{class_scene_a3f438127648e421aa60f541c0170a3bd}{set\+Dimensions} (unsigned int \+\_\+w, unsigned int \+\_\+h)
+void \hyperlink{class_scene_a42b1481ada95342cfb71d6a6e6bcc3c5}{set\+Dimensions} (unsigned int w, unsigned int h)
 \item 
-void \hyperlink{class_scene_a0f3009b2ffcd55c44ebb1d571bbdd101}{Init} ()
+void \hyperlink{class_scene_acbf85916173784558177e62dfba7acb9}{add\+Geometry} (const \hyperlink{class_geometry}{Geometry} \&geometry)
 \item 
-void \hyperlink{class_scene_af2d712797e49a9137311d92caf9f8df5}{Display} ()
+void \hyperlink{class_scene_a5bdd3d2cbdd1defd8d46d05f9db85ee2}{draw\+Geometry} (const \hyperlink{class_geometry}{Geometry} \&geometry)
 \item 
-void \hyperlink{class_scene_aec6d468fc9622d54014b70be497e3d96}{Key\+Handler} ()
+void \hyperlink{class_scene_abb3b6efc6fdba03cd96436edaf08a967}{init} ()
 \item 
-void \hyperlink{class_scene_a782d14ce62ac9ff75f7f20974eac9f65}{Mouse\+Button} ()
+void \hyperlink{class_scene_ae1dc07ec420ecd407a3a47910438167a}{display} ()
 \item 
-void \hyperlink{class_scene_ab7cbe464954b9782c6a6163d2b5b82b2}{Mouse\+Motion} ()
+void \hyperlink{class_scene_a59f325fa74a642ebeb27f59f0455e06e}{key\+Handler} ()
+\item 
+void \hyperlink{class_scene_aa7342d108ff80f49d39b89570d6be4aa}{mouse\+Button} ()
+\item 
+void \hyperlink{class_scene_a479536d524e9879442b9c59d3c8d7e2e}{mouse\+Motion} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-unsigned int \hyperlink{class_scene_a08bdf1d4c4029eeb14fe0ac8db9026e5}{window\+\_\+width}
+unsigned int \hyperlink{class_scene_a9857688fb9c3a52be5e6b7551d7e3af8}{\+\_\+window\+\_\+width}
 \item 
-unsigned int \hyperlink{class_scene_a3ed2bc793472186b711ade7e851ad7d4}{window\+\_\+height}
+unsigned int \hyperlink{class_scene_a4a9a7b4b69981efd9ffddfb7d4205806}{\+\_\+window\+\_\+height}
 \item 
-float \hyperlink{class_scene_a9bbc3cf3eba479ce7ce0e9cb57df5a7c}{window\+\_\+aspect}
+float \hyperlink{class_scene_aa5d5f322f50e6518e88501fa5481eca9}{\+\_\+window\+\_\+aspect}
+\item 
+G\+Luint \hyperlink{class_scene_a30e431c913372130cd9f97c0c1e3d75e}{\+\_\+prog\+\_\+\+I\+D}
 \begin{DoxyCompactList}\small\item\em A list of all the \hyperlink{class_geometry}{Geometry} objects contained in the scene. \end{DoxyCompactList}\item 
-vector$<$ \hyperlink{class_geometry}{Geometry} $>$ \hyperlink{class_scene_afbf20a560a77d55a72716aebc2a90e37}{all\+\_\+geometries}
-\item 
-\hyperlink{class_b_b}{B\+B} \hyperlink{class_scene_a6dd9231972e2cf613be69f51000f0a89}{top\+\_\+bb}
-\end{DoxyCompactItemize}
+vector$<$ const \hyperlink{class_geometry}{Geometry} $\ast$ $>$ \hyperlink{class_scene_ae4e39aee440d748c4dc14a5aad13825d}{\+\_\+all\+\_\+geometries}
+\begin{DoxyCompactList}\small\item\em The quadtree node representing all geometries in the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A class to package information about a scene to be rendered, including the scene's geometries, associated quadtree, and window dimensions. 
 
 \subsection{Member Function Documentation}
-\hypertarget{class_scene_af2d712797e49a9137311d92caf9f8df5}{\index{Scene@{Scene}!Display@{Display}}
-\index{Display@{Display}!Scene@{Scene}}
-\subsubsection[{Display}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::\+Display (
+\hypertarget{class_scene_acbf85916173784558177e62dfba7acb9}{\index{Scene@{Scene}!add\+Geometry@{add\+Geometry}}
+\index{add\+Geometry@{add\+Geometry}!Scene@{Scene}}
+\subsubsection[{add\+Geometry}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::add\+Geometry (
+\begin{DoxyParamCaption}
+\item[{const {\bf Geometry} \&}]{g}
+\end{DoxyParamCaption}
+)}}\label{class_scene_acbf85916173784558177e62dfba7acb9}
+Add a reference to the given \hyperlink{class_geometry}{Geometry} object to the scene. \hypertarget{class_scene_ae1dc07ec420ecd407a3a47910438167a}{\index{Scene@{Scene}!display@{display}}
+\index{display@{display}!Scene@{Scene}}
+\subsubsection[{display}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::display (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_scene_af2d712797e49a9137311d92caf9f8df5}
-T\+O\+D\+O \hypertarget{class_scene_a0f3009b2ffcd55c44ebb1d571bbdd101}{\index{Scene@{Scene}!Init@{Init}}
-\index{Init@{Init}!Scene@{Scene}}
-\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::\+Init (
+)}}\label{class_scene_ae1dc07ec420ecd407a3a47910438167a}
+T\+O\+D\+O \hypertarget{class_scene_a5bdd3d2cbdd1defd8d46d05f9db85ee2}{\index{Scene@{Scene}!draw\+Geometry@{draw\+Geometry}}
+\index{draw\+Geometry@{draw\+Geometry}!Scene@{Scene}}
+\subsubsection[{draw\+Geometry}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::draw\+Geometry (
+\begin{DoxyParamCaption}
+\item[{const {\bf Geometry} \&}]{g}
+\end{DoxyParamCaption}
+)}}\label{class_scene_a5bdd3d2cbdd1defd8d46d05f9db85ee2}
+Render the referenced \hyperlink{class_geometry}{Geometry} object. \hypertarget{class_scene_abb3b6efc6fdba03cd96436edaf08a967}{\index{Scene@{Scene}!init@{init}}
+\index{init@{init}!Scene@{Scene}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::init (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_scene_a0f3009b2ffcd55c44ebb1d571bbdd101}
-T\+O\+D\+O \hypertarget{class_scene_aec6d468fc9622d54014b70be497e3d96}{\index{Scene@{Scene}!Key\+Handler@{Key\+Handler}}
-\index{Key\+Handler@{Key\+Handler}!Scene@{Scene}}
-\subsubsection[{Key\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::\+Key\+Handler (
+)}}\label{class_scene_abb3b6efc6fdba03cd96436edaf08a967}
+T\+O\+D\+O \hypertarget{class_scene_a59f325fa74a642ebeb27f59f0455e06e}{\index{Scene@{Scene}!key\+Handler@{key\+Handler}}
+\index{key\+Handler@{key\+Handler}!Scene@{Scene}}
+\subsubsection[{key\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::key\+Handler (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_scene_aec6d468fc9622d54014b70be497e3d96}
-T\+O\+D\+O \hypertarget{class_scene_a782d14ce62ac9ff75f7f20974eac9f65}{\index{Scene@{Scene}!Mouse\+Button@{Mouse\+Button}}
-\index{Mouse\+Button@{Mouse\+Button}!Scene@{Scene}}
-\subsubsection[{Mouse\+Button}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::\+Mouse\+Button (
+)}}\label{class_scene_a59f325fa74a642ebeb27f59f0455e06e}
+T\+O\+D\+O \hypertarget{class_scene_aa7342d108ff80f49d39b89570d6be4aa}{\index{Scene@{Scene}!mouse\+Button@{mouse\+Button}}
+\index{mouse\+Button@{mouse\+Button}!Scene@{Scene}}
+\subsubsection[{mouse\+Button}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::mouse\+Button (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_scene_a782d14ce62ac9ff75f7f20974eac9f65}
-T\+O\+D\+O \hypertarget{class_scene_ab7cbe464954b9782c6a6163d2b5b82b2}{\index{Scene@{Scene}!Mouse\+Motion@{Mouse\+Motion}}
-\index{Mouse\+Motion@{Mouse\+Motion}!Scene@{Scene}}
-\subsubsection[{Mouse\+Motion}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::\+Mouse\+Motion (
+)}}\label{class_scene_aa7342d108ff80f49d39b89570d6be4aa}
+T\+O\+D\+O \hypertarget{class_scene_a479536d524e9879442b9c59d3c8d7e2e}{\index{Scene@{Scene}!mouse\+Motion@{mouse\+Motion}}
+\index{mouse\+Motion@{mouse\+Motion}!Scene@{Scene}}
+\subsubsection[{mouse\+Motion}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::mouse\+Motion (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_scene_ab7cbe464954b9782c6a6163d2b5b82b2}
-T\+O\+D\+O \hypertarget{class_scene_a3f438127648e421aa60f541c0170a3bd}{\index{Scene@{Scene}!set\+Dimensions@{set\+Dimensions}}
+)}}\label{class_scene_a479536d524e9879442b9c59d3c8d7e2e}
+T\+O\+D\+O \hypertarget{class_scene_a42b1481ada95342cfb71d6a6e6bcc3c5}{\index{Scene@{Scene}!set\+Dimensions@{set\+Dimensions}}
 \index{set\+Dimensions@{set\+Dimensions}!Scene@{Scene}}
 \subsubsection[{set\+Dimensions}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::set\+Dimensions (
 \begin{DoxyParamCaption}
-\item[{unsigned int}]{\+\_\+w, }
-\item[{unsigned int}]{\+\_\+h}
+\item[{unsigned int}]{w, }
+\item[{unsigned int}]{h}
 \end{DoxyParamCaption}
-)}}\label{class_scene_a3f438127648e421aa60f541c0170a3bd}
+)}}\label{class_scene_a42b1481ada95342cfb71d6a6e6bcc3c5}
 Reset this scene's window dimensions 
 
 \subsection{Member Data Documentation}
-\hypertarget{class_scene_afbf20a560a77d55a72716aebc2a90e37}{\index{Scene@{Scene}!all\+\_\+geometries@{all\+\_\+geometries}}
-\index{all\+\_\+geometries@{all\+\_\+geometries}!Scene@{Scene}}
-\subsubsection[{all\+\_\+geometries}]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Geometry}$>$ Scene\+::all\+\_\+geometries}}\label{class_scene_afbf20a560a77d55a72716aebc2a90e37}
-A bounding box for all the Geometries in the scene. Serves as the root level octree \hypertarget{class_scene_a6dd9231972e2cf613be69f51000f0a89}{\index{Scene@{Scene}!top\+\_\+bb@{top\+\_\+bb}}
-\index{top\+\_\+bb@{top\+\_\+bb}!Scene@{Scene}}
-\subsubsection[{top\+\_\+bb}]{\setlength{\rightskip}{0pt plus 5cm}{\bf B\+B} Scene\+::top\+\_\+bb}}\label{class_scene_a6dd9231972e2cf613be69f51000f0a89}
-\hypertarget{class_scene_a9bbc3cf3eba479ce7ce0e9cb57df5a7c}{\index{Scene@{Scene}!window\+\_\+aspect@{window\+\_\+aspect}}
-\index{window\+\_\+aspect@{window\+\_\+aspect}!Scene@{Scene}}
-\subsubsection[{window\+\_\+aspect}]{\setlength{\rightskip}{0pt plus 5cm}float Scene\+::window\+\_\+aspect}}\label{class_scene_a9bbc3cf3eba479ce7ce0e9cb57df5a7c}
+\hypertarget{class_scene_ae4e39aee440d748c4dc14a5aad13825d}{\index{Scene@{Scene}!\+\_\+all\+\_\+geometries@{\+\_\+all\+\_\+geometries}}
+\index{\+\_\+all\+\_\+geometries@{\+\_\+all\+\_\+geometries}!Scene@{Scene}}
+\subsubsection[{\+\_\+all\+\_\+geometries}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$const {\bf Geometry}$\ast$$>$ Scene\+::\+\_\+all\+\_\+geometries}}\label{class_scene_ae4e39aee440d748c4dc14a5aad13825d}
+
+
+The quadtree node representing all geometries in the scene. 
+
+\hypertarget{class_scene_a30e431c913372130cd9f97c0c1e3d75e}{\index{Scene@{Scene}!\+\_\+prog\+\_\+\+I\+D@{\+\_\+prog\+\_\+\+I\+D}}
+\index{\+\_\+prog\+\_\+\+I\+D@{\+\_\+prog\+\_\+\+I\+D}!Scene@{Scene}}
+\subsubsection[{\+\_\+prog\+\_\+\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Scene\+::\+\_\+prog\+\_\+\+I\+D}}\label{class_scene_a30e431c913372130cd9f97c0c1e3d75e}
 
 
 A list of all the \hyperlink{class_geometry}{Geometry} objects contained in the scene. 
 
-\hypertarget{class_scene_a3ed2bc793472186b711ade7e851ad7d4}{\index{Scene@{Scene}!window\+\_\+height@{window\+\_\+height}}
-\index{window\+\_\+height@{window\+\_\+height}!Scene@{Scene}}
-\subsubsection[{window\+\_\+height}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Scene\+::window\+\_\+height}}\label{class_scene_a3ed2bc793472186b711ade7e851ad7d4}
-\hypertarget{class_scene_a08bdf1d4c4029eeb14fe0ac8db9026e5}{\index{Scene@{Scene}!window\+\_\+width@{window\+\_\+width}}
-\index{window\+\_\+width@{window\+\_\+width}!Scene@{Scene}}
-\subsubsection[{window\+\_\+width}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Scene\+::window\+\_\+width}}\label{class_scene_a08bdf1d4c4029eeb14fe0ac8db9026e5}
+\hypertarget{class_scene_aa5d5f322f50e6518e88501fa5481eca9}{\index{Scene@{Scene}!\+\_\+window\+\_\+aspect@{\+\_\+window\+\_\+aspect}}
+\index{\+\_\+window\+\_\+aspect@{\+\_\+window\+\_\+aspect}!Scene@{Scene}}
+\subsubsection[{\+\_\+window\+\_\+aspect}]{\setlength{\rightskip}{0pt plus 5cm}float Scene\+::\+\_\+window\+\_\+aspect}}\label{class_scene_aa5d5f322f50e6518e88501fa5481eca9}
+\hypertarget{class_scene_a4a9a7b4b69981efd9ffddfb7d4205806}{\index{Scene@{Scene}!\+\_\+window\+\_\+height@{\+\_\+window\+\_\+height}}
+\index{\+\_\+window\+\_\+height@{\+\_\+window\+\_\+height}!Scene@{Scene}}
+\subsubsection[{\+\_\+window\+\_\+height}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Scene\+::\+\_\+window\+\_\+height}}\label{class_scene_a4a9a7b4b69981efd9ffddfb7d4205806}
+\hypertarget{class_scene_a9857688fb9c3a52be5e6b7551d7e3af8}{\index{Scene@{Scene}!\+\_\+window\+\_\+width@{\+\_\+window\+\_\+width}}
+\index{\+\_\+window\+\_\+width@{\+\_\+window\+\_\+width}!Scene@{Scene}}
+\subsubsection[{\+\_\+window\+\_\+width}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Scene\+::\+\_\+window\+\_\+width}}\label{class_scene_a9857688fb9c3a52be5e6b7551d7e3af8}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}

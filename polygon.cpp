@@ -102,7 +102,7 @@ int Polygon::onLeftSide(vec2 a, vec2 b, vec2 p)
  */
 void Polygon::clip(const Polygon& clip_box)
 {
-  // printf("Entering clip()\n");
+  printf("Entering clip()\n");
   const vector<vec2>& clip_verts = *(clip_box._verts);
 
   // 4 clip edges
@@ -122,6 +122,10 @@ void Polygon::clip(const Polygon& clip_box)
 void Polygon::clipOneSide(vec2 a, vec2 b)
 {
   // printf("Entering clipOneSide()\n");
+
+  // Can't clip nothing
+  if (_verts->empty()) return;
+
   vector<vec2>* new_verts = new vector<vec2>; // Output Poly Vertices
 
   // Walk through
@@ -135,7 +139,6 @@ void Polygon::clipOneSide(vec2 a, vec2 b)
     bool prev_in = prev_test == 1 || prev_test == 0;
     // printf("\tcurr_test: %d, curr_in: %d\n", curr_test, curr_in);
     // printf("\tprev_test: %d, prev_in: %d\n", prev_test, prev_in);
-
     if (curr_in) // curr in
     {
       if (!prev_in) // prev out

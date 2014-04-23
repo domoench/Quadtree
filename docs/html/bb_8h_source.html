@@ -87,30 +87,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a href="bb_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __DOM_BB_H__</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __DOM_BB_H__</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="constants_8h.html">constants.h</a>&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">using namespace </span>glm;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_b_b.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_b_b.html">BB</a></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_b_b.html#ae7c37d7bd7024bf0077ab1b884aac982">   15</a></span>&#160;    vec2 <a class="code" href="class_b_b.html#ae7c37d7bd7024bf0077ab1b884aac982">min</a>; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_b_b.html#a460ea90989913b4fe860f404404ef650">   16</a></span>&#160;    vec2 <a class="code" href="class_b_b.html#a460ea90989913b4fe860f404404ef650">max</a>; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="class_b_b.html">BB</a>();</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="class_b_b.html">BB</a>(vec2 _min, vec2 _max);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_b_b_html_ae7c37d7bd7024bf0077ab1b884aac982"><div class="ttname"><a href="class_b_b.html#ae7c37d7bd7024bf0077ab1b884aac982">BB::min</a></div><div class="ttdeci">vec2 min</div><div class="ttdoc">Bottom left corner position. </div><div class="ttdef"><b>Definition:</b> bb.h:15</div></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="constants_8h.html">constants.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using namespace </span>glm;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_b_b.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_b_b.html">BB</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_b_b.html#a4b3364614ae922eefae03a902422c289">   17</a></span>&#160;    vec2 <a class="code" href="class_b_b.html#a4b3364614ae922eefae03a902422c289">_min</a>; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_b_b.html#af3061cea04192cbe6f1ff43cea019a2d">   18</a></span>&#160;    vec2 <a class="code" href="class_b_b.html#af3061cea04192cbe6f1ff43cea019a2d">_max</a>; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="class_b_b.html">BB</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="class_b_b.html">BB</a>(<span class="keyword">const</span> vector&lt;vec2&gt;&amp; vertices);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="class_b_b.html">BB</a>(vec2 min, vec2 max);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">bool</span> intersects(<span class="keyword">const</span> <a class="code" href="class_b_b.html">BB</a>&amp; other);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="constants_8h_html"><div class="ttname"><a href="constants_8h.html">constants.h</a></div></div>
-<div class="ttc" id="class_b_b_html"><div class="ttname"><a href="class_b_b.html">BB</a></div><div class="ttdef"><b>Definition:</b> bb.h:12</div></div>
-<div class="ttc" id="class_b_b_html_a460ea90989913b4fe860f404404ef650"><div class="ttname"><a href="class_b_b.html#a460ea90989913b4fe860f404404ef650">BB::max</a></div><div class="ttdeci">vec2 max</div><div class="ttdoc">Top right corner position. </div><div class="ttdef"><b>Definition:</b> bb.h:16</div></div>
+<div class="ttc" id="class_b_b_html_a4b3364614ae922eefae03a902422c289"><div class="ttname"><a href="class_b_b.html#a4b3364614ae922eefae03a902422c289">BB::_min</a></div><div class="ttdeci">vec2 _min</div><div class="ttdoc">Bottom left corner position. </div><div class="ttdef"><b>Definition:</b> bb.h:17</div></div>
+<div class="ttc" id="class_b_b_html"><div class="ttname"><a href="class_b_b.html">BB</a></div><div class="ttdef"><b>Definition:</b> bb.h:14</div></div>
+<div class="ttc" id="class_b_b_html_af3061cea04192cbe6f1ff43cea019a2d"><div class="ttname"><a href="class_b_b.html#af3061cea04192cbe6f1ff43cea019a2d">BB::_max</a></div><div class="ttdeci">vec2 _max</div><div class="ttdoc">Top right corner position. </div><div class="ttdef"><b>Definition:</b> bb.h:18</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 16 2014 17:48:11 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 22 2014 15:34:38 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

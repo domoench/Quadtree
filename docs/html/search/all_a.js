@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['occupied',['occupied',['../class_q_t_node.html#aaa8bd41ed3407ecad40f52659ecb84b8',1,'QTNode']]],
-  ['occupier',['occupier',['../class_q_t_node.html#aa101f25c611e27299a96f510567c9516',1,'QTNode']]]
+  ['onleftside',['onLeftSide',['../class_polygon.html#a48b6c7cbddc1ef0e6f4043abf52b67cb',1,'Polygon']]]
 ];

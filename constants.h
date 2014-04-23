@@ -9,7 +9,7 @@
 #define QT_MAX_LEVEL 31
 
 //! The ratio of a QTNode that must be filled to mark it as occupied
-#define SUBDIV_THRESHOLD 0.90f
+#define SUBDIV_THRESHOLD 0.95f
 
 //! Default window width in pixels
 #define DEFAULT_W 900

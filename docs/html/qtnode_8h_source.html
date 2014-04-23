@@ -89,43 +89,50 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="constants_8h.html">constants.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="geometry_8h.html">geometry.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="geometry_8h.html">geometry.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using namespace </span>glm;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_q_t_node.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_q_t_node.html">QTNode</a></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_q_t_node.html#a40d33fe4103a3a895137cfb08c246010">   18</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_q_t_node.html#a40d33fe4103a3a895137cfb08c246010">level</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_q_t_node.html#a81dfd9fcf4b01c740ef373c1dca38765">   19</a></span>&#160;    vec2 <a class="code" href="class_q_t_node.html#a81dfd9fcf4b01c740ef373c1dca38765">base</a>;          </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_q_t_node.html#a1d8821384dae11149cb108440b108176">   20</a></span>&#160;    <a class="code" href="class_q_t_node.html">QTNode</a>* <a class="code" href="class_q_t_node.html#a1d8821384dae11149cb108440b108176">parent</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_q_t_node.html#aacf4c1618f753633cb7ea9ddb76690f9">   26</a></span>&#160;    <a class="code" href="class_q_t_node.html">QTNode</a>* <a class="code" href="class_q_t_node.html#aacf4c1618f753633cb7ea9ddb76690f9">children</a>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_q_t_node.html#aaa8bd41ed3407ecad40f52659ecb84b8">   32</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_q_t_node.html#aaa8bd41ed3407ecad40f52659ecb84b8">occupied</a>;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="class_q_t_node.html#aa101f25c611e27299a96f510567c9516">   38</a></span>&#160;    <a class="code" href="class_geometry.html">Geometry</a> <a class="code" href="class_q_t_node.html#aa101f25c611e27299a96f510567c9516">occupier</a>;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="class_q_t_node.html">QTNode</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> _level, vec2 _base, <a class="code" href="class_q_t_node.html">QTNode</a>* _parent,</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;           vector&lt;Geometry&gt; geometries);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="class_q_t_node_html_a1d8821384dae11149cb108440b108176"><div class="ttname"><a href="class_q_t_node.html#a1d8821384dae11149cb108440b108176">QTNode::parent</a></div><div class="ttdeci">QTNode * parent</div><div class="ttdef"><b>Definition:</b> qtnode.h:20</div></div>
-<div class="ttc" id="class_q_t_node_html"><div class="ttname"><a href="class_q_t_node.html">QTNode</a></div><div class="ttdef"><b>Definition:</b> qtnode.h:15</div></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_q_t_node.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_q_t_node.html">QTNode</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="class_q_t_node.html#a80d41a086f3020f670732d0c7971afb0">   29</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_q_t_node.html#a80d41a086f3020f670732d0c7971afb0">_level</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="class_q_t_node.html#a363a5d722a667387d637aa5dc1c7789d">   30</a></span>&#160;    vec2 <a class="code" href="class_q_t_node.html#a363a5d722a667387d637aa5dc1c7789d">_base</a>;          </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_q_t_node.html#a47f01353c3e4f66ab1006a7dbc2be797">   31</a></span>&#160;    <a class="code" href="class_q_t_node.html">QTNode</a>* <a class="code" href="class_q_t_node.html#a47f01353c3e4f66ab1006a7dbc2be797">_parent</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="class_q_t_node.html#ab908d2ab924e7e53f2a1d0d8373833d2">   37</a></span>&#160;    <a class="code" href="class_q_t_node.html">QTNode</a>* _children[4];</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="class_q_t_node.html#ae8721982666788f10f11d4545a77bf61">   43</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_q_t_node.html#ae8721982666788f10f11d4545a77bf61">_occupied</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_q_t_node.html#aa61ac86e1264835162e6101d70b7883e">   49</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>* <a class="code" href="class_q_t_node.html#aa61ac86e1264835162e6101d70b7883e">_occupier</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="class_q_t_node.html">QTNode</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> level, vec2 base, <a class="code" href="class_q_t_node.html">QTNode</a>* parent,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;           <span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>* occupier);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span>  intersects(<span class="keyword">const</span> <a class="code" href="class_b_b.html">BB</a>&amp; box);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">float</span> intersects(<span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>&amp; geom);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span>  insert(<span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>&amp; geom);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span>  clear();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span>  subdivide();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span>  isLeaf();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">float</span> area() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="class_q_t_node_html_a80d41a086f3020f670732d0c7971afb0"><div class="ttname"><a href="class_q_t_node.html#a80d41a086f3020f670732d0c7971afb0">QTNode::_level</a></div><div class="ttdeci">unsigned int _level</div><div class="ttdef"><b>Definition:</b> qtnode.h:29</div></div>
+<div class="ttc" id="class_q_t_node_html_a47f01353c3e4f66ab1006a7dbc2be797"><div class="ttname"><a href="class_q_t_node.html#a47f01353c3e4f66ab1006a7dbc2be797">QTNode::_parent</a></div><div class="ttdeci">QTNode * _parent</div><div class="ttdef"><b>Definition:</b> qtnode.h:31</div></div>
+<div class="ttc" id="class_q_t_node_html"><div class="ttname"><a href="class_q_t_node.html">QTNode</a></div><div class="ttdef"><b>Definition:</b> qtnode.h:26</div></div>
+<div class="ttc" id="class_q_t_node_html_a363a5d722a667387d637aa5dc1c7789d"><div class="ttname"><a href="class_q_t_node.html#a363a5d722a667387d637aa5dc1c7789d">QTNode::_base</a></div><div class="ttdeci">vec2 _base</div><div class="ttdoc">(x,y) coordinate of this node&#39;s bottom left corner </div><div class="ttdef"><b>Definition:</b> qtnode.h:30</div></div>
 <div class="ttc" id="constants_8h_html"><div class="ttname"><a href="constants_8h.html">constants.h</a></div></div>
-<div class="ttc" id="class_q_t_node_html_aaa8bd41ed3407ecad40f52659ecb84b8"><div class="ttname"><a href="class_q_t_node.html#aaa8bd41ed3407ecad40f52659ecb84b8">QTNode::occupied</a></div><div class="ttdeci">bool occupied</div><div class="ttdef"><b>Definition:</b> qtnode.h:32</div></div>
-<div class="ttc" id="class_q_t_node_html_a40d33fe4103a3a895137cfb08c246010"><div class="ttname"><a href="class_q_t_node.html#a40d33fe4103a3a895137cfb08c246010">QTNode::level</a></div><div class="ttdeci">unsigned int level</div><div class="ttdef"><b>Definition:</b> qtnode.h:18</div></div>
-<div class="ttc" id="class_q_t_node_html_aa101f25c611e27299a96f510567c9516"><div class="ttname"><a href="class_q_t_node.html#aa101f25c611e27299a96f510567c9516">QTNode::occupier</a></div><div class="ttdeci">Geometry occupier</div><div class="ttdef"><b>Definition:</b> qtnode.h:38</div></div>
-<div class="ttc" id="class_q_t_node_html_aacf4c1618f753633cb7ea9ddb76690f9"><div class="ttname"><a href="class_q_t_node.html#aacf4c1618f753633cb7ea9ddb76690f9">QTNode::children</a></div><div class="ttdeci">QTNode * children</div><div class="ttdef"><b>Definition:</b> qtnode.h:26</div></div>
-<div class="ttc" id="class_q_t_node_html_a81dfd9fcf4b01c740ef373c1dca38765"><div class="ttname"><a href="class_q_t_node.html#a81dfd9fcf4b01c740ef373c1dca38765">QTNode::base</a></div><div class="ttdeci">vec2 base</div><div class="ttdoc">(x,y) coordinate of this node&#39;s bottom left corner </div><div class="ttdef"><b>Definition:</b> qtnode.h:19</div></div>
-<div class="ttc" id="class_geometry_html"><div class="ttname"><a href="class_geometry.html">Geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:15</div></div>
+<div class="ttc" id="class_b_b_html"><div class="ttname"><a href="class_b_b.html">BB</a></div><div class="ttdef"><b>Definition:</b> bb.h:14</div></div>
+<div class="ttc" id="class_q_t_node_html_ae8721982666788f10f11d4545a77bf61"><div class="ttname"><a href="class_q_t_node.html#ae8721982666788f10f11d4545a77bf61">QTNode::_occupied</a></div><div class="ttdeci">bool _occupied</div><div class="ttdef"><b>Definition:</b> qtnode.h:43</div></div>
+<div class="ttc" id="class_geometry_html"><div class="ttname"><a href="class_geometry.html">Geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:17</div></div>
 <div class="ttc" id="geometry_8h_html"><div class="ttname"><a href="geometry_8h.html">geometry.h</a></div></div>
+<div class="ttc" id="class_q_t_node_html_aa61ac86e1264835162e6101d70b7883e"><div class="ttname"><a href="class_q_t_node.html#aa61ac86e1264835162e6101d70b7883e">QTNode::_occupier</a></div><div class="ttdeci">const Geometry * _occupier</div><div class="ttdef"><b>Definition:</b> qtnode.h:49</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 16 2014 17:48:11 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 22 2014 15:34:38 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

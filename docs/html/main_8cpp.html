@@ -92,21 +92,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="constants_8h_source.html">constants.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="scene_8h_source.html">scene.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="shader_8hpp_source.html">shader.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="tests_8h_source.html">tests.h</a>&quot;</code><br />
 <code>#include &quot;glm/glm.hpp&quot;</code><br />
+<code>#include &quot;glm/gtc/matrix_transform.hpp&quot;</code><br />
 <code>#include &lt;GLFW/glfw3.h&gt;</code><br />
+<code>#include &lt;OpenGL/gl3.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1e3b6d38df0786ccf7f938d60e386aae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1e3b6d38df0786ccf7f938d60e386aae">Init</a> ()</td></tr>
-<tr class="separator:a1e3b6d38df0786ccf7f938d60e386aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d3fb9b91b5c167b70a1a0557e67f271"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5d3fb9b91b5c167b70a1a0557e67f271">Display</a> ()</td></tr>
-<tr class="separator:a5d3fb9b91b5c167b70a1a0557e67f271"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60afb0f45e230d70b2ccd4ea1f29f40b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a60afb0f45e230d70b2ccd4ea1f29f40b">KeyHandler</a> ()</td></tr>
-<tr class="separator:a60afb0f45e230d70b2ccd4ea1f29f40b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada77d394faf5133fe3d45156b9d2d757"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ada77d394faf5133fe3d45156b9d2d757">MouseButton</a> ()</td></tr>
-<tr class="separator:ada77d394faf5133fe3d45156b9d2d757"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af309f9e2f3200984661be99b288ded39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#af309f9e2f3200984661be99b288ded39">MouseMotion</a> ()</td></tr>
-<tr class="separator:af309f9e2f3200984661be99b288ded39"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05848de25ac2dbec233935058a1d24b4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a05848de25ac2dbec233935058a1d24b4">init</a> ()</td></tr>
+<tr class="separator:a05848de25ac2dbec233935058a1d24b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae900b054a1598c54acaa67902f87185d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae900b054a1598c54acaa67902f87185d">cleanUp</a> ()</td></tr>
+<tr class="separator:ae900b054a1598c54acaa67902f87185d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e5b20fed15743656bb6d2e6a6ea6269"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269">display</a> ()</td></tr>
+<tr class="separator:a1e5b20fed15743656bb6d2e6a6ea6269"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95797fc4b624770c98d08de93881f98b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a95797fc4b624770c98d08de93881f98b">keyHandler</a> ()</td></tr>
+<tr class="separator:a95797fc4b624770c98d08de93881f98b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a860764943be2099746afc7196999de52"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a860764943be2099746afc7196999de52">mouseButton</a> ()</td></tr>
+<tr class="separator:a860764943be2099746afc7196999de52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11fc0d976fb75147ac3c87c28159f861"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a11fc0d976fb75147ac3c87c28159f861">mouseMotion</a> ()</td></tr>
+<tr class="separator:a11fc0d976fb75147ac3c87c28159f861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
 <tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -118,12 +123,28 @@ Variables</h2></td></tr>
 <tr class="separator:a316ef80f2dad1200569390e1dc3ce5e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a5d3fb9b91b5c167b70a1a0557e67f271"></a>
+<a class="anchor" id="ae900b054a1598c54acaa67902f87185d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Display </td>
+          <td class="memname">void cleanUp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Deletes the GLSL shaders and buffers from the GPU. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1e5b20fed15743656bb6d2e6a6ea6269"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void display </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -133,27 +154,28 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a1e3b6d38df0786ccf7f938d60e386aae"></a>
+<a class="anchor" id="a05848de25ac2dbec233935058a1d24b4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Init </td>
+          <td class="memname">int init </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Sets up GLFW and initializes GLSL shaders and buffers and saves them to the scene. </p>
 
 </div>
 </div>
-<a class="anchor" id="a60afb0f45e230d70b2ccd4ea1f29f40b"></a>
+<a class="anchor" id="a95797fc4b624770c98d08de93881f98b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void KeyHandler </td>
+          <td class="memname">void keyHandler </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -189,12 +211,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ada77d394faf5133fe3d45156b9d2d757"></a>
+<a class="anchor" id="a860764943be2099746afc7196999de52"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MouseButton </td>
+          <td class="memname">void mouseButton </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -204,12 +226,12 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af309f9e2f3200984661be99b288ded39"></a>
+<a class="anchor" id="a11fc0d976fb75147ac3c87c28159f861"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void MouseMotion </td>
+          <td class="memname">void mouseMotion </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -247,7 +269,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 16 2014 17:48:11 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 22 2014 15:34:38 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

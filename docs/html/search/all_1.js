@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['base',['base',['../class_q_t_node.html#a81dfd9fcf4b01c740ef373c1dca38765',1,'QTNode']]],
-  ['bb',['BB',['../class_b_b.html',1,'BB'],['../class_geometry.html#ad222ed59c2681a71bd33c6db85c025c2',1,'Geometry::bb()'],['../class_b_b.html#a2a4045c7f1088d63abbd3d54dbe985d5',1,'BB::BB()'],['../class_b_b.html#a5c43a5dc11191dc114ab101d52ea7905',1,'BB::BB(vec2 _min, vec2 _max)']]],
-  ['bb_2ecpp',['bb.cpp',['../bb_8cpp.html',1,'']]],
-  ['bb_2eh',['bb.h',['../bb_8h.html',1,'']]]
+  ['add',['add',['../class_polygon.html#ade0d363edfbd441e8702cc775f545672',1,'Polygon']]],
+  ['addgeometry',['addGeometry',['../class_scene.html#acbf85916173784558177e62dfba7acb9',1,'Scene']]],
+  ['area',['area',['../class_geometry.html#a41f3f2954a86d1f2e09bdd59b4c6d62e',1,'Geometry::area()'],['../class_polygon.html#a96836d26febd39fd44efcbe481454a31',1,'Polygon::area()'],['../class_q_t_node.html#a2e22bf4a02893452199b73ef0c22f016',1,'QTNode::area()']]]
 ];

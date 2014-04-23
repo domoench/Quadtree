@@ -11,6 +11,8 @@ QTNode::QTNode(unsigned int level, vec2 base, QTNode* parent,
                const Geometry* occupier) :
   _level(level), _base(base), _parent(parent), _occupier(occupier)
 {
+  assert (level < 32);
+  printf("Constructing level %d node\n", level);
   for (int i = 0; i < 4; i++) {
     _children[i] = NULL;
   }
@@ -32,7 +34,6 @@ bool QTNode::intersects(const BB& box)
  */
 float QTNode::intersects(const Geometry& geom)
 {
-  // printf("Entering intersects()\n");
   // Construct clipping box for this node
   Polygon qt_clip_box;
   double w = (double) scene._window_width / pow(2.0, _level);
@@ -62,22 +63,27 @@ float QTNode::intersects(const Geometry& geom)
  */
 bool QTNode::insert(const Geometry& geom)
 {
+  printf("Inserting into node of level %d\n", _level);
   // This is an occupied leaf node
   if (_occupied) return false;
 
   // This is an unoccupied leaf
   if (isLeaf())
   {
+    printf("\tIts a leaf\n");
     float ratio = geom.area() / this->area();
 
     if (ratio > SUBDIV_THRESHOLD) // Become an occupied leaf
     {
+      printf("\tOccupied.\n");
       _occupier = &geom;
       _occupied = true;
       return true;
     }
     else // geom can't fully occupy, must subdivide
     {
+      printf("\tMust Subdivide.\n");
+      assert(_level != QT_MAX_LEVEL);
       subdivide(); // => Now we've got kids!
       // TODO: What if we've reached max level
     }
@@ -85,20 +91,21 @@ bool QTNode::insert(const Geometry& geom)
 
   // Find which of the 4 children geom intersects with. We must insert geom
   // into them.
-  bool insert_result[4];
   for (int i = 0; i < 4; ++i)
   {
     QTNode& child = *(_children[i]);
-    if (child.intersects(geom) > 0)
+    float intersect_area = child.intersects(geom);
+    printf("Intersection area with Quadrant %d: %f\n", i+1, intersect_area);
+    // If geom intersects this child, we must recursively insert
+    if (intersect_area > 0)
     {
-      insert_result[i] = child.insert(geom);
+      bool insert_success = child.insert(geom);
+      if (!insert_success) return false; // Any failure => Complete failure
     }
-    else insert_result[i] = false;
   }
 
-  bool insert_success = insert_result[0] || insert_result[1] ||
-                        insert_result[2] || insert_result[3];
-  return insert_success;
+  // We made it
+  return true;
 }
 
 /*
@@ -106,10 +113,10 @@ bool QTNode::insert(const Geometry& geom)
  */
 void QTNode::subdivide()
 {
-  printf("Entering subdivide()\n");
+  // printf("Entering subdivide()\n");
   assert(_level != QT_MAX_LEVEL);
   // TODO: Create lookup table for qtnode dimensions, and calc just once
-  double half_width = (double) scene._window_width / pow(2.0, _level);
+  double half_width = (double) scene._window_width / pow(2.0, _level + 1);
 
   _children[0] = new QTNode(_level+1, _base + vec2(half_width, half_width),
                             this, NULL);

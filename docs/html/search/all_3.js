@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['default_5fh',['DEFAULT_H',['../constants_8h.html#a9550a89ddce281766ed87ce4f62373e6',1,'constants.h']]],
-  ['default_5fw',['DEFAULT_W',['../constants_8h.html#aea492520b4d3637c36d824ee3cf38044',1,'constants.h']]],
-  ['display',['Display',['../class_scene.html#af2d712797e49a9137311d92caf9f8df5',1,'Scene::Display()'],['../main_8cpp.html#a5d3fb9b91b5c167b70a1a0557e67f271',1,'Display():&#160;main.cpp']]]
+  ['cleanup',['cleanUp',['../main_8cpp.html#ae900b054a1598c54acaa67902f87185d',1,'main.cpp']]],
+  ['clear',['clear',['../class_q_t_node.html#ab570871d686ec0259441ae53969214cb',1,'QTNode']]],
+  ['clip',['clip',['../class_polygon.html#ad3790a500dce442c82548f118bde57ce',1,'Polygon']]],
+  ['cliponeside',['clipOneSide',['../class_polygon.html#a42dd7d2ce172ef742b8f4284b490085a',1,'Polygon']]],
+  ['constants_2eh',['constants.h',['../constants_8h.html',1,'']]]
 ];
