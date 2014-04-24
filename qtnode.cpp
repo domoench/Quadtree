@@ -171,7 +171,7 @@ float QTNode::area() const
  */
 void QTNode::draw() const
 {
-  // Set up GL stuff
+  // Set up OpenGL stuff
   // Unit square for our instancing
   vector<vec2> square;
   square.push_back(vec2(0,0));
@@ -179,6 +179,7 @@ void QTNode::draw() const
   square.push_back(vec2(1,1));
   square.push_back(vec2(0,1));
 
+  // Use the default shader program
   glUseProgram(scene._prog_ID);
 
   // Create VAO to manage Vertex and Color VBOs
@@ -206,6 +207,10 @@ void QTNode::draw() const
     (void*)0        // array buffer offset
   );
 
+  // QTNode boundaries are blue
+  GLuint color_loc = glGetUniformLocation(scene._prog_ID, "color");
+  glUniform4f(color_loc, 0.0f, 0.0f, 1.0f, 1.0f);
+
   // Recursively render
   draw_r(vao_ID);
 }
@@ -215,8 +220,7 @@ void QTNode::draw() const
  */
 void QTNode::draw_r(GLuint vao_ID) const
 {
-  // Draw this node
-  printf("Drawing a level %d node\n", _level);
+  // printf("Drawing a level %d node\n", _level);
 
   // Calculate MVP for this Node - Translate and Scale
   mat4 Model = scene._model;
@@ -225,14 +229,15 @@ void QTNode::draw_r(GLuint vao_ID) const
   // Scale according to this node's size
   double w = (double) scene._window_width / pow(2.0, _level);
   Model = scale(Model, vec3(w,w,w));
+  // Form new MVP and send it to the vertex shader
   mat4 MVP = scene._proj * scene._view * Model;
   GLuint MVP_ID = glGetUniformLocation(scene._prog_ID, "MVP");
   glUniformMatrix4fv(MVP_ID, 1, GL_FALSE, &MVP[0][0]);
 
-  // Render
+  // Render the transformed square for this node
   glDrawArrays(GL_LINE_LOOP, 0, 4);
 
-  // Draw its children
+  // Recursively draw children
   if (!isLeaf())
   {
     // printf("Not A Leaf\n");
@@ -256,57 +261,6 @@ int QTNode::size() const
     {
       num_children += _children[i]->size();
     }
-    // printf("Interior Node at Level %d with %d children\n", _level, num_children);
     return 1 + num_children;
   }
-}
-
-// TODO: Delete this shit
-void QTNode::dumbDraw() const
-{
-  // Set up GL stuff
-  // A unit square for our instancing
-  vector<vec2> square;
-  square.push_back(vec2(0,0));
-  square.push_back(vec2(1,0));
-  square.push_back(vec2(1,1));
-  square.push_back(vec2(0,1));
-
-  glUseProgram(scene._prog_ID);
-
-  // Create VAO to manage Vertex and Color VBOs
-  GLuint vao_ID;
-  glGenVertexArrays(1, &vao_ID);
-  glBindVertexArray(vao_ID);
-
-  // Create VBOs // TODO: Add color VBO
-  GLuint vbo_ID;
-	glGenBuffers(1, &vbo_ID);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_ID);
-  glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(vec2), square.data(),
-               GL_STATIC_DRAW);
-	GLuint vert_pos_loc = glGetAttribLocation(scene._prog_ID, "vertex_pos");
-	glEnableVertexAttribArray(vert_pos_loc); // TODO: Find out if you need to enable and disable for each call to scene.drawGeometry(g)
-
-  // Bind our vertex VBO to current VAO
-	glBindBuffer(GL_ARRAY_BUFFER, vbo_ID);
-  glVertexAttribPointer(
-    vert_pos_loc,  // The attribute we want to configure
-    2,              // Number of elems per vertex for this attribute
-    GL_FLOAT,       // type
-    GL_FALSE,       // normalized?
-    0,              // stride
-    (void*)0        // array buffer offset
-  );
-  double w = (double) scene._window_width / pow(2.0, _level);
-  printf("W is: %f\n", w);
-
-  mat4 Model = scene._model;
-  Model = translate(Model, vec3(_base[0],_base[0],0));
-  Model = scale(Model, vec3(w,w,w));
-  mat4 MVP = scene._proj * scene._view * Model;
-  GLuint MVP_ID = glGetUniformLocation(scene._prog_ID, "MVP");
-  glUniformMatrix4fv(MVP_ID, 1, GL_FALSE, &MVP[0][0]);
-
-  glDrawArrays(GL_LINE_LOOP, 0, 4);
 }
