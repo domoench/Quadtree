@@ -64,7 +64,7 @@ int main(int argc, char** argv)
 		// Draw all scene geometries
     for (const Geometry* g : scene._all_geometries)
     {
-      scene.drawGeometry(*g);
+      g->draw();
     }
 
     qt.draw();

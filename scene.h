@@ -40,7 +40,6 @@ class Scene
 
     void setDimensions(unsigned int w, unsigned int h);
     void addGeometry(const Geometry& geometry);
-    void drawGeometry(const Geometry& geometry);
 
     void init();
     void display();
