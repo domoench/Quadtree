@@ -59,11 +59,45 @@ float QTNode::intersects(const Geometry& geom)
  * Insertion fails if the geometry overlaps an existing geometry maintained
  * by the Quadtree.
  *
- * Pre: Geometry intersects this node
+ * Pre: Geometry intersects this node. TODO: Really?
  */
 bool QTNode::insert(const Geometry& geom)
 {
-  insert_r(geom, -1);
+  // TODO: We're double computing intersections down the quadree in canInsert and
+  //       insert_r(). How to avoid that?
+  if (canInsert(geom))
+  {
+    insert_r(geom, -1);
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Determine if geom can be inserted into this Quadtree without overlapping
+ * any previously inserted geometries.
+ */
+bool QTNode::canInsert(const Geometry& geom) const
+{
+  // Occupied Leaf
+  if (_occupied) return false;
+
+  // Unoccupied Leaf
+  if (isLeaf()) return true;
+
+  // Interior Node. Find what quadrants geom wants to get into
+  for (int i = 0; i < 4; ++i)
+  {
+    QTNode& child = *(_children[i]);
+    float intersect_ratio = child.intersects(geom);
+    if (intersect_ratio > 0)
+    {
+      // If any child insertion is impossible => All is lost
+      if(!child.canInsert(geom)) return false;
+    }
+  }
+  // All sub insertions will work
+  return true;
 }
 
 /**
@@ -73,18 +107,19 @@ bool QTNode::insert(const Geometry& geom)
  * Insertion fails if the geometry overlaps an existing geometry maintained
  * by the Quadtree.
  *
- * Pre: Geometry intersects this node
+ * Pre: Geometry intersects this quadtree and doesn't conflict with any
+ *      existing other geometries.
  *
  * @param geom The Geometry instance we're inserting into this quadtree
  * @param intersect_ratio The ratio (geom area / quadtree node area). Set to -1
  *        if ratio is unknown.
  * @return True if insertion successful. False if it can't be inserted.
  */
-bool QTNode::insert_r(const Geometry& geom, float intersect_ratio)
+void QTNode::insert_r(const Geometry& geom, float intersect_ratio)
 {
   printf("Inserting into (%f, %f). level %d. ratio %f\n", _base[0], _base[1], _level, intersect_ratio);
   // This is an occupied leaf node
-  if (_occupied) return false;
+  if (_occupied) return;
 
   // This is an unoccupied leaf
   if (isLeaf())
@@ -101,7 +136,7 @@ bool QTNode::insert_r(const Geometry& geom, float intersect_ratio)
       //printf("\tOccupied. Base: (%f, %f)\n", _base[0],_base[1]);
       _occupier = &geom;
       _occupied = true;
-      return true;
+      return;
     }
     else // geom can't fully occupy, must subdivide
     {
@@ -112,30 +147,22 @@ bool QTNode::insert_r(const Geometry& geom, float intersect_ratio)
         // Can't subdivide further, just mark this node as occupied
         _occupier = &geom;
         _occupied = true;
-        return true;
+        return;
       }
       subdivide(); // => Now we've got kids!
-      // TODO: What if we've reached max level
     }
   }
 
-  // Find which of the 4 children geom intersects with. We must insert geom
-  // into them.
+  // Find which of the 4 children geom intersects with. We want to insert
+  // geom into them.
   for (int i = 0; i < 4; ++i)
   {
     QTNode& child = *(_children[i]);
     float intersect_ratio = child.intersects(geom);
-    printf("\tIntersection ratio with Quadrant %d: %f\n", i, intersect_ratio);
+    // printf("\tIntersection ratio with Quadrant %d: %f\n", i, intersect_ratio);
     // If geom intersects this child, we must recursively insert
-    if (intersect_ratio > 0)
-    {
-      bool insert_success = child.insert_r(geom, intersect_ratio);
-      if (!insert_success) return false; // Any failure => Complete failure
-    }
+    if (intersect_ratio > 0) child.insert_r(geom, intersect_ratio);
   }
-
-  // We made it
-  return true;
 }
 
 /*

@@ -32,6 +32,10 @@ int main(int argc, char** argv)
   // Run Tests
   if (DEBUG) runAllTests();
 
+  // TEST: Empty Subdivided Quadtree
+  vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
+  QTNode qt(0, base, NULL, NULL);
+
   // TEST: Triangle
   vector<vec2> tri_verts;
   tri_verts.push_back(vec2(-449, -449));
@@ -39,22 +43,16 @@ int main(int argc, char** argv)
   tri_verts.push_back(vec2(-449, 449));
   vector<int> edges;
   Geometry triangle = Geometry(0, tri_verts, edges); // TODO: Where to free this?
-  scene.addGeometry(triangle);
+  if(qt.insert(triangle)) scene.addGeometry(triangle);
 
   // TEST: Square
   vector<vec2> sq_verts;
-  sq_verts.push_back(vec2(0, 225));
+  sq_verts.push_back(vec2(-100, -225));
   sq_verts.push_back(vec2(225 + 112, 225));
   sq_verts.push_back(vec2(225 + 112, 225 + 112));
   sq_verts.push_back(vec2(225, 225 + 112));
   Geometry square = Geometry(1, sq_verts, edges); // TODO: Where to free this?
-  scene.addGeometry(square);
-
-  // TEST: Empty Subdivided Quadtree
-  vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
-  QTNode qt(0, base, NULL, NULL);
-  qt.insert(triangle);
-  qt.insert(square);
+  if (qt.insert(square)) scene.addGeometry(square);
 
 	do
   {
