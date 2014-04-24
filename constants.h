@@ -2,7 +2,7 @@
 #define __DOM_CONSTANTS_H__
 
 //! Debug mode flag
-#define DEBUG true
+#define DEBUG false
 
 //! The maximum number of quadtree levels. Root is 0, Deepest is QT_N_LEVELS - 1.
 #define QT_N_LEVELS  32

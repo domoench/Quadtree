@@ -55,7 +55,11 @@ class QTNode
     bool  insert(const Geometry& geom);
     void  clear();
     void  subdivide();
-    bool  isLeaf();
+    bool  isLeaf() const;
     float area() const;
+    void  draw() const;
+    void  draw_r(GLuint vao_ID) const;
+    int   size() const;
+    void  dumbDraw() const;
 };
 #endif

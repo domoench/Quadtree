@@ -34,20 +34,28 @@ int main(int argc, char** argv)
 
   // TEST: Triangle
   vector<vec2> tri_verts;
-  tri_verts.push_back(vec2(-0.4f, -1.0f));
-  tri_verts.push_back(vec2(1.0f, -1.0f));
-  tri_verts.push_back(vec2(0.0f, 1.0f));
+  tri_verts.push_back(vec2(0.0f, 0.0f));
+  tri_verts.push_back(vec2(225.0f, 0.0f));
+  tri_verts.push_back(vec2(0.0f, 225.0f));
   vector<int> edges;
   Geometry triangle = Geometry(0, tri_verts, edges); // TODO: Where to free this?
   scene.addGeometry(triangle);
 
+  // TEST: Square
+  /*
   vector<vec2> sq_verts;
-  sq_verts.push_back(vec2(2.0f, 2.0f));
-  sq_verts.push_back(vec2(3.0f, 2.0f));
-  sq_verts.push_back(vec2(3.0f, 3.0f));
-  sq_verts.push_back(vec2(2.0f, 3.0f));
+  sq_verts.push_back(vec2(200.0f, 200.0f));
+  sq_verts.push_back(vec2(300.0f, 200.0f));
+  sq_verts.push_back(vec2(300.0f, 300.0f));
+  sq_verts.push_back(vec2(200.0f, 300.0f));
   Geometry square = Geometry(1, sq_verts, edges); // TODO: Where to free this?
   scene.addGeometry(square);
+  */
+
+  // TEST: Empty Subdivided Quadtree
+  vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
+  QTNode qt(0, base, NULL, NULL);
+  qt.insert(triangle);
 
 	do
   {
@@ -59,6 +67,8 @@ int main(int argc, char** argv)
     {
       scene.drawGeometry(*g);
     }
+
+    qt.draw();
 
 		// Swap buffers
 		glfwSwapBuffers(window);
@@ -117,31 +127,23 @@ int init()
 	scene._prog_ID = LoadShaders("../shaders/VertexShader.glsl",
                                "../shaders/FragmentShader.glsl");
 
-  // Make shaders current
-  glUseProgram(scene._prog_ID);
-
   // Set up Model-View-Projection.
   // As far as Shaders know, we work with 3D homogeneous coords => 4D Matrices
-  mat4 Projection = perspective(
-    60.0f,                // Field of View
+  scene._proj = perspective(
+    97.0f,                // Field of View
     scene._window_aspect, // Apsect Ratio
-    0.1f, 100.0f          // Display range down Z axis: 0.1 unit <-> 100 units
+    0.1f, 500.0f          // Display range down Z axis
   );
 
   // Camera matrix
-	mat4 View = lookAt(
-    vec3(0,0,6), // Camera is at (4,3,3), in World Space
+	scene._view = lookAt(
+    vec3(0,0,400), // Camera position in world space
     vec3(0,0,0), // Looks at the origin
     vec3(0,1,0)  // Head is up
 	);
 
   // Model Matrix is Identity matrix: models are what and where they are
-  mat4 Model = mat4(1.0f);
-  mat4 MVP = Projection * View * Model;
-
-  // Pass to the GPU
-  GLuint MatrixID = glGetUniformLocation(scene._prog_ID, "MVP");
-  glUniformMatrix4fv(MatrixID, 1, GL_FALSE, &MVP[0][0]);
+  scene._model = mat4(1.0f);
 
   scene.init();
 

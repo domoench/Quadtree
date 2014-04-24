@@ -133,7 +133,7 @@ void QTNode::subdivide()
 void QTNode::clear()
 {
   // Base
-  if (_children == NULL) return;
+  if (isLeaf()) return;
 
   // Recursive
   for (int i = 0; i < 4; ++i)
@@ -146,7 +146,7 @@ void QTNode::clear()
 /**
  * Check if this node is a leaf node.
  */
-bool QTNode::isLeaf()
+bool QTNode::isLeaf() const
 {
   return _children[0] == NULL;
 }
@@ -164,4 +164,149 @@ float QTNode::area() const
   qt_poly.add(_base + vec2(0,w));
 
   return qt_poly.area();
+}
+
+/**
+ * Render this quadtree.
+ */
+void QTNode::draw() const
+{
+  // Set up GL stuff
+  // Unit square for our instancing
+  vector<vec2> square;
+  square.push_back(vec2(0,0));
+  square.push_back(vec2(1,0));
+  square.push_back(vec2(1,1));
+  square.push_back(vec2(0,1));
+
+  glUseProgram(scene._prog_ID);
+
+  // Create VAO to manage Vertex and Color VBOs
+  GLuint vao_ID;
+  glGenVertexArrays(1, &vao_ID);
+  glBindVertexArray(vao_ID);
+
+  // Create VBOs // TODO: Add color VBO
+  GLuint vbo_ID;
+	glGenBuffers(1, &vbo_ID);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_ID);
+  glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(vec2), square.data(),
+               GL_STATIC_DRAW);
+	GLuint vert_pos_loc = glGetAttribLocation(scene._prog_ID, "vertex_pos");
+	glEnableVertexAttribArray(vert_pos_loc); // TODO: Find out if you need to enable and disable for each call to scene.drawGeometry(g)
+
+  // Bind our vertex VBO to current VAO
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_ID);
+  glVertexAttribPointer(
+    vert_pos_loc,  // The attribute we want to configure
+    2,              // Number of elems per vertex for this attribute
+    GL_FLOAT,       // type
+    GL_FALSE,       // normalized?
+    0,              // stride
+    (void*)0        // array buffer offset
+  );
+
+  // Recursively render
+  draw_r(vao_ID);
+}
+
+/**
+ * Recursive helper: Render this quadtree.
+ */
+void QTNode::draw_r(GLuint vao_ID) const
+{
+  // Draw this node
+  printf("Drawing a level %d node\n", _level);
+
+  // Calculate MVP for this Node - Translate and Scale
+  mat4 Model = scene._model;
+  // Translate according to this node's position
+  Model = translate(Model, vec3(_base[0],_base[0],0));
+  // Scale according to this node's size
+  double w = (double) scene._window_width / pow(2.0, _level);
+  Model = scale(Model, vec3(w,w,w));
+  mat4 MVP = scene._proj * scene._view * Model;
+  GLuint MVP_ID = glGetUniformLocation(scene._prog_ID, "MVP");
+  glUniformMatrix4fv(MVP_ID, 1, GL_FALSE, &MVP[0][0]);
+
+  // Render
+  glDrawArrays(GL_LINE_LOOP, 0, 4);
+
+  // Draw its children
+  if (!isLeaf())
+  {
+    // printf("Not A Leaf\n");
+    for (int i = 0; i < 4; ++i)
+    {
+      _children[i]->draw_r(vao_ID);
+    }
+  }
+}
+
+/**
+ * Return the number of node objects in this quadtree
+ */
+int QTNode::size() const
+{
+  if (isLeaf()) return 1;
+  else
+  {
+    int num_children = 0;
+    for (int i = 0; i < 4; ++i)
+    {
+      num_children += _children[i]->size();
+    }
+    // printf("Interior Node at Level %d with %d children\n", _level, num_children);
+    return 1 + num_children;
+  }
+}
+
+// TODO: Delete this shit
+void QTNode::dumbDraw() const
+{
+  // Set up GL stuff
+  // A unit square for our instancing
+  vector<vec2> square;
+  square.push_back(vec2(0,0));
+  square.push_back(vec2(1,0));
+  square.push_back(vec2(1,1));
+  square.push_back(vec2(0,1));
+
+  glUseProgram(scene._prog_ID);
+
+  // Create VAO to manage Vertex and Color VBOs
+  GLuint vao_ID;
+  glGenVertexArrays(1, &vao_ID);
+  glBindVertexArray(vao_ID);
+
+  // Create VBOs // TODO: Add color VBO
+  GLuint vbo_ID;
+	glGenBuffers(1, &vbo_ID);
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_ID);
+  glBufferData(GL_ARRAY_BUFFER, 4 * sizeof(vec2), square.data(),
+               GL_STATIC_DRAW);
+	GLuint vert_pos_loc = glGetAttribLocation(scene._prog_ID, "vertex_pos");
+	glEnableVertexAttribArray(vert_pos_loc); // TODO: Find out if you need to enable and disable for each call to scene.drawGeometry(g)
+
+  // Bind our vertex VBO to current VAO
+	glBindBuffer(GL_ARRAY_BUFFER, vbo_ID);
+  glVertexAttribPointer(
+    vert_pos_loc,  // The attribute we want to configure
+    2,              // Number of elems per vertex for this attribute
+    GL_FLOAT,       // type
+    GL_FALSE,       // normalized?
+    0,              // stride
+    (void*)0        // array buffer offset
+  );
+  double w = (double) scene._window_width / pow(2.0, _level);
+  printf("W is: %f\n", w);
+
+  mat4 Model = scene._model;
+  Model = translate(Model, vec3(_base[0],_base[0],0));
+  Model = scale(Model, vec3(w,w,w));
+  mat4 MVP = scene._proj * scene._view * Model;
+  GLuint MVP_ID = glGetUniformLocation(scene._prog_ID, "MVP");
+  glUniformMatrix4fv(MVP_ID, 1, GL_FALSE, &MVP[0][0]);
+
+  glDrawArrays(GL_LINE_LOOP, 0, 4);
 }
