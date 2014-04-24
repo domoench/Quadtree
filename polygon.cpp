@@ -102,7 +102,7 @@ int Polygon::onLeftSide(vec2 a, vec2 b, vec2 p)
  */
 void Polygon::clip(const Polygon& clip_box)
 {
-  printf("Entering clip()\n");
+  // printf("Entering clip()\n");
   const vector<vec2>& clip_verts = *(clip_box._verts);
 
   // 4 clip edges

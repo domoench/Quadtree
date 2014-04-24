@@ -12,7 +12,7 @@ QTNode::QTNode(unsigned int level, vec2 base, QTNode* parent,
   _level(level), _base(base), _parent(parent), _occupier(occupier)
 {
   assert (level < 32);
-  printf("Constructing level %d node\n", level);
+  // printf("Constructing level %d node\n", level);
   for (int i = 0; i < 4; i++) {
     _children[i] = NULL;
   }
@@ -53,7 +53,7 @@ float QTNode::intersects(const Geometry& geom)
 }
 
 /**
- * Recursively insert the given Geometry into this quadtree node.
+ * Insert the given Geometry into this quadtree node.
  *
  * Returns true if successfully inserted, false if it can't be inserted.
  * Insertion fails if the geometry overlaps an existing geometry maintained
@@ -63,19 +63,42 @@ float QTNode::intersects(const Geometry& geom)
  */
 bool QTNode::insert(const Geometry& geom)
 {
-  printf("Inserting into node of level %d\n", _level);
+  insert_r(geom, -1);
+}
+
+/**
+ * Recursive Insert Helper
+ *
+ * Returns true if successfully inserted, false if it can't be inserted.
+ * Insertion fails if the geometry overlaps an existing geometry maintained
+ * by the Quadtree.
+ *
+ * Pre: Geometry intersects this node
+ *
+ * @param geom The Geometry instance we're inserting into this quadtree
+ * @param intersect_ratio The ratio (geom area / quadtree node area). Set to -1
+ *        if ratio is unknown.
+ * @return True if insertion successful. False if it can't be inserted.
+ */
+bool QTNode::insert_r(const Geometry& geom, float intersect_ratio)
+{
+  printf("Inserting into (%f, %f). level %d. ratio %f\n", _base[0], _base[1], _level, intersect_ratio);
   // This is an occupied leaf node
   if (_occupied) return false;
 
   // This is an unoccupied leaf
   if (isLeaf())
   {
-    printf("\tIts a leaf\n");
-    float ratio = geom.area() / this->area();
-
-    if (ratio > SUBDIV_THRESHOLD) // Become an occupied leaf
+    //printf("\tIts a leaf\n");
+    if (intersect_ratio == -1)
     {
-      printf("\tOccupied.\n");
+      intersect_ratio = intersects(geom);
+    }
+    // printf("intersect_ratio: %f\n", intersect_ratio);
+
+    if (intersect_ratio > SUBDIV_THRESHOLD) // Become an occupied leaf
+    {
+      //printf("\tOccupied. Base: (%f, %f)\n", _base[0],_base[1]);
       _occupier = &geom;
       _occupied = true;
       return true;
@@ -83,7 +106,14 @@ bool QTNode::insert(const Geometry& geom)
     else // geom can't fully occupy, must subdivide
     {
       printf("\tMust Subdivide.\n");
-      assert(_level != QT_MAX_LEVEL);
+      if (_level == QT_MAX_LEVEL)
+      {
+        // printf("Reached max subdivision level %d\n", QT_MAX_LEVEL);
+        // Can't subdivide further, just mark this node as occupied
+        _occupier = &geom;
+        _occupied = true;
+        return true;
+      }
       subdivide(); // => Now we've got kids!
       // TODO: What if we've reached max level
     }
@@ -94,12 +124,12 @@ bool QTNode::insert(const Geometry& geom)
   for (int i = 0; i < 4; ++i)
   {
     QTNode& child = *(_children[i]);
-    float intersect_area = child.intersects(geom);
-    printf("Intersection area with Quadrant %d: %f\n", i+1, intersect_area);
+    float intersect_ratio = child.intersects(geom);
+    printf("\tIntersection ratio with Quadrant %d: %f\n", i, intersect_ratio);
     // If geom intersects this child, we must recursively insert
-    if (intersect_area > 0)
+    if (intersect_ratio > 0)
     {
-      bool insert_success = child.insert(geom);
+      bool insert_success = child.insert_r(geom, intersect_ratio);
       if (!insert_success) return false; // Any failure => Complete failure
     }
   }
@@ -122,9 +152,10 @@ void QTNode::subdivide()
                             this, NULL);
   _children[1] = new QTNode(_level+1, _base + vec2(0, half_width),
                             this, NULL);
-  _children[2] = new QTNode(_level+1, _base + vec2(half_width, 0),
+  _children[2] = new QTNode(_level+1, _base,
                             this, NULL);
-  _children[3] = new QTNode(_level+1, _base, this, NULL);
+  _children[3] = new QTNode(_level+1, _base + vec2(half_width, 0),
+                            this, NULL);
 }
 
 /*
@@ -225,7 +256,7 @@ void QTNode::draw_r(GLuint vao_ID) const
   // Calculate MVP for this Node - Translate and Scale
   mat4 Model = scene._model;
   // Translate according to this node's position
-  Model = translate(Model, vec3(_base[0],_base[0],0));
+  Model = translate(Model, vec3(_base[0],_base[1],0));
   // Scale according to this node's size
   double w = (double) scene._window_width / pow(2.0, _level);
   Model = scale(Model, vec3(w,w,w));

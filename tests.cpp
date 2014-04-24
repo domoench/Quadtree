@@ -236,8 +236,13 @@ void testBasicQTNode()
   QTNode qt(0, base, NULL, NULL);
   assert(qt.size() == 1);
   qt.subdivide();
+  assert(qt._children[0]->_base == vec2(base[0] + DEFAULT_W/2, base[1] + DEFAULT_W/2));
+  assert(qt._children[1]->_base == vec2(base[0], base[1] + DEFAULT_W/2));
+  assert(qt._children[2]->_base == vec2(base[0], base[1]));
+  assert(qt._children[3]->_base == vec2(base[0] + DEFAULT_W/2, base[1]));
   assert(qt.size() == 5);
   qt._children[1]->subdivide();
+  assert(qt._children[1]->_children[2]->_base == vec2(base[0], base[1] + DEFAULT_W/2));
   assert(qt.size() == 9);
 
   assert(qt._level == 0);

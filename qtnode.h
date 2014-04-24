@@ -53,6 +53,7 @@ class QTNode
     bool  intersects(const BB& box);
     float intersects(const Geometry& geom);
     bool  insert(const Geometry& geom);
+    bool  insert_r(const Geometry& geom, float intersect_ratio);
     void  clear();
     void  subdivide();
     bool  isLeaf() const;

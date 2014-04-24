@@ -5,8 +5,8 @@
 #define DEBUG false
 
 //! The maximum number of quadtree levels. Root is 0, Deepest is QT_N_LEVELS - 1.
-#define QT_N_LEVELS  32
-#define QT_MAX_LEVEL 31
+#define QT_N_LEVELS  8
+#define QT_MAX_LEVEL 7
 
 //! The ratio of a QTNode that must be filled to mark it as occupied
 #define SUBDIV_THRESHOLD 0.95f
