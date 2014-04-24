@@ -12,8 +12,6 @@ void \hyperlink{class_scene_a42b1481ada95342cfb71d6a6e6bcc3c5}{set\+Dimensions} 
 \item 
 void \hyperlink{class_scene_acbf85916173784558177e62dfba7acb9}{add\+Geometry} (const \hyperlink{class_geometry}{Geometry} \&geometry)
 \item 
-void \hyperlink{class_scene_a5bdd3d2cbdd1defd8d46d05f9db85ee2}{draw\+Geometry} (const \hyperlink{class_geometry}{Geometry} \&geometry)
-\item 
 void \hyperlink{class_scene_abb3b6efc6fdba03cd96436edaf08a967}{init} ()
 \item 
 void \hyperlink{class_scene_ae1dc07ec420ecd407a3a47910438167a}{display} ()
@@ -34,6 +32,12 @@ unsigned int \hyperlink{class_scene_a4a9a7b4b69981efd9ffddfb7d4205806}{\+\_\+win
 float \hyperlink{class_scene_aa5d5f322f50e6518e88501fa5481eca9}{\+\_\+window\+\_\+aspect}
 \item 
 G\+Luint \hyperlink{class_scene_a30e431c913372130cd9f97c0c1e3d75e}{\+\_\+prog\+\_\+\+I\+D}
+\item 
+mat4 \hyperlink{class_scene_a7e980fe501bcaf6f173497d0a2190887}{\+\_\+proj}
+\item 
+mat4 \hyperlink{class_scene_a2eea7478321942ad8f26f4555e1202c9}{\+\_\+model}
+\item 
+mat4 \hyperlink{class_scene_ae1b9af3642d66e6eff7d849c20aafdc5}{\+\_\+view}
 \begin{DoxyCompactList}\small\item\em A list of all the \hyperlink{class_geometry}{Geometry} objects contained in the scene. \end{DoxyCompactList}\item 
 vector$<$ const \hyperlink{class_geometry}{Geometry} $\ast$ $>$ \hyperlink{class_scene_ae4e39aee440d748c4dc14a5aad13825d}{\+\_\+all\+\_\+geometries}
 \begin{DoxyCompactList}\small\item\em The quadtree node representing all geometries in the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -57,14 +61,7 @@ Add a reference to the given \hyperlink{class_geometry}{Geometry} object to the 
 {}
 \end{DoxyParamCaption}
 )}}\label{class_scene_ae1dc07ec420ecd407a3a47910438167a}
-T\+O\+D\+O \hypertarget{class_scene_a5bdd3d2cbdd1defd8d46d05f9db85ee2}{\index{Scene@{Scene}!draw\+Geometry@{draw\+Geometry}}
-\index{draw\+Geometry@{draw\+Geometry}!Scene@{Scene}}
-\subsubsection[{draw\+Geometry}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::draw\+Geometry (
-\begin{DoxyParamCaption}
-\item[{const {\bf Geometry} \&}]{g}
-\end{DoxyParamCaption}
-)}}\label{class_scene_a5bdd3d2cbdd1defd8d46d05f9db85ee2}
-Render the referenced \hyperlink{class_geometry}{Geometry} object. \hypertarget{class_scene_abb3b6efc6fdba03cd96436edaf08a967}{\index{Scene@{Scene}!init@{init}}
+T\+O\+D\+O \hypertarget{class_scene_abb3b6efc6fdba03cd96436edaf08a967}{\index{Scene@{Scene}!init@{init}}
 \index{init@{init}!Scene@{Scene}}
 \subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::init (
 \begin{DoxyParamCaption}
@@ -110,9 +107,18 @@ Reset this scene's window dimensions
 
 The quadtree node representing all geometries in the scene. 
 
+\hypertarget{class_scene_a2eea7478321942ad8f26f4555e1202c9}{\index{Scene@{Scene}!\+\_\+model@{\+\_\+model}}
+\index{\+\_\+model@{\+\_\+model}!Scene@{Scene}}
+\subsubsection[{\+\_\+model}]{\setlength{\rightskip}{0pt plus 5cm}mat4 Scene\+::\+\_\+model}}\label{class_scene_a2eea7478321942ad8f26f4555e1202c9}
 \hypertarget{class_scene_a30e431c913372130cd9f97c0c1e3d75e}{\index{Scene@{Scene}!\+\_\+prog\+\_\+\+I\+D@{\+\_\+prog\+\_\+\+I\+D}}
 \index{\+\_\+prog\+\_\+\+I\+D@{\+\_\+prog\+\_\+\+I\+D}!Scene@{Scene}}
 \subsubsection[{\+\_\+prog\+\_\+\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Scene\+::\+\_\+prog\+\_\+\+I\+D}}\label{class_scene_a30e431c913372130cd9f97c0c1e3d75e}
+\hypertarget{class_scene_a7e980fe501bcaf6f173497d0a2190887}{\index{Scene@{Scene}!\+\_\+proj@{\+\_\+proj}}
+\index{\+\_\+proj@{\+\_\+proj}!Scene@{Scene}}
+\subsubsection[{\+\_\+proj}]{\setlength{\rightskip}{0pt plus 5cm}mat4 Scene\+::\+\_\+proj}}\label{class_scene_a7e980fe501bcaf6f173497d0a2190887}
+\hypertarget{class_scene_ae1b9af3642d66e6eff7d849c20aafdc5}{\index{Scene@{Scene}!\+\_\+view@{\+\_\+view}}
+\index{\+\_\+view@{\+\_\+view}!Scene@{Scene}}
+\subsubsection[{\+\_\+view}]{\setlength{\rightskip}{0pt plus 5cm}mat4 Scene\+::\+\_\+view}}\label{class_scene_ae1b9af3642d66e6eff7d849c20aafdc5}
 
 
 A list of all the \hyperlink{class_geometry}{Geometry} objects contained in the scene. 

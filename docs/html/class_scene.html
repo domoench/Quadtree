@@ -98,8 +98,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a42b1481ada95342cfb71d6a6e6bcc3c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbf85916173784558177e62dfba7acb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#acbf85916173784558177e62dfba7acb9">addGeometry</a> (const <a class="el" href="class_geometry.html">Geometry</a> &amp;geometry)</td></tr>
 <tr class="separator:acbf85916173784558177e62dfba7acb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bdd3d2cbdd1defd8d46d05f9db85ee2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a5bdd3d2cbdd1defd8d46d05f9db85ee2">drawGeometry</a> (const <a class="el" href="class_geometry.html">Geometry</a> &amp;geometry)</td></tr>
-<tr class="separator:a5bdd3d2cbdd1defd8d46d05f9db85ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb3b6efc6fdba03cd96436edaf08a967"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#abb3b6efc6fdba03cd96436edaf08a967">init</a> ()</td></tr>
 <tr class="separator:abb3b6efc6fdba03cd96436edaf08a967"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1dc07ec420ecd407a3a47910438167a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ae1dc07ec420ecd407a3a47910438167a">display</a> ()</td></tr>
@@ -120,8 +118,14 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aa5d5f322f50e6518e88501fa5481eca9"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#aa5d5f322f50e6518e88501fa5481eca9">_window_aspect</a></td></tr>
 <tr class="separator:aa5d5f322f50e6518e88501fa5481eca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30e431c913372130cd9f97c0c1e3d75e"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a30e431c913372130cd9f97c0c1e3d75e">_prog_ID</a></td></tr>
-<tr class="memdesc:a30e431c913372130cd9f97c0c1e3d75e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of all the <a class="el" href="class_geometry.html">Geometry</a> objects contained in the scene.  <a href="#a30e431c913372130cd9f97c0c1e3d75e">More...</a><br /></td></tr>
 <tr class="separator:a30e431c913372130cd9f97c0c1e3d75e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e980fe501bcaf6f173497d0a2190887"><td class="memItemLeft" align="right" valign="top">mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a7e980fe501bcaf6f173497d0a2190887">_proj</a></td></tr>
+<tr class="separator:a7e980fe501bcaf6f173497d0a2190887"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eea7478321942ad8f26f4555e1202c9"><td class="memItemLeft" align="right" valign="top">mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#a2eea7478321942ad8f26f4555e1202c9">_model</a></td></tr>
+<tr class="separator:a2eea7478321942ad8f26f4555e1202c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1b9af3642d66e6eff7d849c20aafdc5"><td class="memItemLeft" align="right" valign="top">mat4&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ae1b9af3642d66e6eff7d849c20aafdc5">_view</a></td></tr>
+<tr class="memdesc:ae1b9af3642d66e6eff7d849c20aafdc5"><td class="mdescLeft">&#160;</td><td class="mdescRight">A list of all the <a class="el" href="class_geometry.html">Geometry</a> objects contained in the scene.  <a href="#ae1b9af3642d66e6eff7d849c20aafdc5">More...</a><br /></td></tr>
+<tr class="separator:ae1b9af3642d66e6eff7d849c20aafdc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4e39aee440d748c4dc14a5aad13825d"><td class="memItemLeft" align="right" valign="top">vector&lt; const <a class="el" href="class_geometry.html">Geometry</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_scene.html#ae4e39aee440d748c4dc14a5aad13825d">_all_geometries</a></td></tr>
 <tr class="memdesc:ae4e39aee440d748c4dc14a5aad13825d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The quadtree node representing all geometries in the scene.  <a href="#ae4e39aee440d748c4dc14a5aad13825d">More...</a><br /></td></tr>
 <tr class="separator:ae4e39aee440d748c4dc14a5aad13825d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -159,23 +163,6 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>TODO </p>
-
-</div>
-</div>
-<a class="anchor" id="a5bdd3d2cbdd1defd8d46d05f9db85ee2"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Scene::drawGeometry </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="class_geometry.html">Geometry</a> &amp;&#160;</td>
-          <td class="paramname"><em>g</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Render the referenced <a class="el" href="class_geometry.html">Geometry</a> object. </p>
 
 </div>
 </div>
@@ -285,12 +272,48 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a2eea7478321942ad8f26f4555e1202c9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mat4 Scene::_model</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a30e431c913372130cd9f97c0c1e3d75e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">GLuint Scene::_prog_ID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7e980fe501bcaf6f173497d0a2190887"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mat4 Scene::_proj</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae1b9af3642d66e6eff7d849c20aafdc5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mat4 Scene::_view</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -342,7 +365,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 22 2014 15:34:38 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 24 2014 16:18:34 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

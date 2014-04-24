@@ -16,13 +16,23 @@ float \hyperlink{class_q_t_node_ac41137dbf5e7ce94fcd73687f8f286b9}{intersects} (
 \item 
 bool \hyperlink{class_q_t_node_a202f7f3dea37652fa789dd2d1e3936ff}{insert} (const \hyperlink{class_geometry}{Geometry} \&geom)
 \item 
+bool \hyperlink{class_q_t_node_a5ade3c5bbd83b900be2a3eae3606a557}{can\+Insert} (const \hyperlink{class_geometry}{Geometry} \&geom) const 
+\item 
+void \hyperlink{class_q_t_node_a7a7a188e70551f5a60ccebf4c8b59ee2}{insert\+\_\+r} (const \hyperlink{class_geometry}{Geometry} \&geom, float intersect\+\_\+ratio)
+\item 
 void \hyperlink{class_q_t_node_ab570871d686ec0259441ae53969214cb}{clear} ()
 \item 
 void \hyperlink{class_q_t_node_aa2407622dcf020ec462853f0733c5ecc}{subdivide} ()
 \item 
-bool \hyperlink{class_q_t_node_a88da0613a83f215265eed249c9b46559}{is\+Leaf} ()
+bool \hyperlink{class_q_t_node_ad7d5ff814ecec37be03263c2a087bfa5}{is\+Leaf} () const 
 \item 
 float \hyperlink{class_q_t_node_a2e22bf4a02893452199b73ef0c22f016}{area} () const 
+\item 
+void \hyperlink{class_q_t_node_a40d374c445bbb92e76067c783f591ce5}{draw} () const 
+\item 
+void \hyperlink{class_q_t_node_a92b79357dfde8058bfe895691916f98d}{draw\+\_\+r} (G\+Luint vao\+\_\+\+I\+D) const 
+\item 
+int \hyperlink{class_q_t_node_af0c11fa1f7678c48cf0c2a3a3bb349b5}{size} () const 
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -67,25 +77,70 @@ Construct a leaf quadtree node. Consists of a single node with no children.
 {}
 \end{DoxyParamCaption}
 ) const}}\label{class_q_t_node_a2e22bf4a02893452199b73ef0c22f016}
-Return the area of this \hyperlink{class_q_t_node}{Q\+T\+Node} instance \hypertarget{class_q_t_node_ab570871d686ec0259441ae53969214cb}{\index{Q\+T\+Node@{Q\+T\+Node}!clear@{clear}}
+Return the area of this \hyperlink{class_q_t_node}{Q\+T\+Node} instance \hypertarget{class_q_t_node_a5ade3c5bbd83b900be2a3eae3606a557}{\index{Q\+T\+Node@{Q\+T\+Node}!can\+Insert@{can\+Insert}}
+\index{can\+Insert@{can\+Insert}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{can\+Insert}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::can\+Insert (
+\begin{DoxyParamCaption}
+\item[{const {\bf Geometry} \&}]{geom}
+\end{DoxyParamCaption}
+) const}}\label{class_q_t_node_a5ade3c5bbd83b900be2a3eae3606a557}
+Determine if geom can be inserted into this Quadtree without overlapping any previously inserted geometries. \hypertarget{class_q_t_node_ab570871d686ec0259441ae53969214cb}{\index{Q\+T\+Node@{Q\+T\+Node}!clear@{clear}}
 \index{clear@{clear}!Q\+T\+Node@{Q\+T\+Node}}
 \subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+T\+Node\+::clear (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{class_q_t_node_ab570871d686ec0259441ae53969214cb}
-\hypertarget{class_q_t_node_a202f7f3dea37652fa789dd2d1e3936ff}{\index{Q\+T\+Node@{Q\+T\+Node}!insert@{insert}}
+\hypertarget{class_q_t_node_a40d374c445bbb92e76067c783f591ce5}{\index{Q\+T\+Node@{Q\+T\+Node}!draw@{draw}}
+\index{draw@{draw}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{draw}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+T\+Node\+::draw (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_q_t_node_a40d374c445bbb92e76067c783f591ce5}
+Render this quadtree. \hypertarget{class_q_t_node_a92b79357dfde8058bfe895691916f98d}{\index{Q\+T\+Node@{Q\+T\+Node}!draw\+\_\+r@{draw\+\_\+r}}
+\index{draw\+\_\+r@{draw\+\_\+r}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{draw\+\_\+r}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+T\+Node\+::draw\+\_\+r (
+\begin{DoxyParamCaption}
+\item[{G\+Luint}]{vao\+\_\+\+I\+D}
+\end{DoxyParamCaption}
+) const}}\label{class_q_t_node_a92b79357dfde8058bfe895691916f98d}
+Recursive helper\+: Render this quadtree. \hypertarget{class_q_t_node_a202f7f3dea37652fa789dd2d1e3936ff}{\index{Q\+T\+Node@{Q\+T\+Node}!insert@{insert}}
 \index{insert@{insert}!Q\+T\+Node@{Q\+T\+Node}}
 \subsubsection[{insert}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::insert (
 \begin{DoxyParamCaption}
 \item[{const {\bf Geometry} \&}]{geom}
 \end{DoxyParamCaption}
 )}}\label{class_q_t_node_a202f7f3dea37652fa789dd2d1e3936ff}
-Recursively insert the given \hyperlink{class_geometry}{Geometry} into this quadtree node.
+Insert the given \hyperlink{class_geometry}{Geometry} into this quadtree node.
 
 Returns true if successfully inserted, false if it can't be inserted. Insertion fails if the geometry overlaps an existing geometry maintained by the Quadtree.
 
-Pre\+: \hyperlink{class_geometry}{Geometry} intersects this node \hypertarget{class_q_t_node_ae53c16153e6a475951631b11d44255fe}{\index{Q\+T\+Node@{Q\+T\+Node}!intersects@{intersects}}
+Pre\+: \hyperlink{class_geometry}{Geometry} intersects this node. T\+O\+D\+O\+: Really? \hypertarget{class_q_t_node_a7a7a188e70551f5a60ccebf4c8b59ee2}{\index{Q\+T\+Node@{Q\+T\+Node}!insert\+\_\+r@{insert\+\_\+r}}
+\index{insert\+\_\+r@{insert\+\_\+r}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{insert\+\_\+r}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+T\+Node\+::insert\+\_\+r (
+\begin{DoxyParamCaption}
+\item[{const {\bf Geometry} \&}]{geom, }
+\item[{float}]{intersect\+\_\+ratio}
+\end{DoxyParamCaption}
+)}}\label{class_q_t_node_a7a7a188e70551f5a60ccebf4c8b59ee2}
+Recursive Insert Helper
+
+Returns true if successfully inserted, false if it can't be inserted. Insertion fails if the geometry overlaps an existing geometry maintained by the Quadtree.
+
+Pre\+: \hyperlink{class_geometry}{Geometry} intersects this quadtree and doesn't conflict with any existing other geometries.
+
+
+\begin{DoxyParams}{Parameters}
+{\em geom} & The \hyperlink{class_geometry}{Geometry} instance we're inserting into this quadtree \\
+\hline
+{\em intersect\+\_\+ratio} & The ratio (geom area / quadtree node area). Set to -\/1 if ratio is unknown. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if insertion successful. False if it can't be inserted. 
+\end{DoxyReturn}
+\hypertarget{class_q_t_node_ae53c16153e6a475951631b11d44255fe}{\index{Q\+T\+Node@{Q\+T\+Node}!intersects@{intersects}}
 \index{intersects@{intersects}!Q\+T\+Node@{Q\+T\+Node}}
 \subsubsection[{intersects}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::intersects (
 \begin{DoxyParamCaption}
@@ -99,14 +154,21 @@ Check if this node intersects the given bounding box. \hypertarget{class_q_t_nod
 \item[{const {\bf Geometry} \&}]{geom}
 \end{DoxyParamCaption}
 )}}\label{class_q_t_node_ac41137dbf5e7ce94fcd73687f8f286b9}
-Check if this node intersects the given \hyperlink{class_geometry}{Geometry} polygon. Returns the intersection ratio (geom area / \hyperlink{class_q_t_node}{Q\+T\+Node} area) \hypertarget{class_q_t_node_a88da0613a83f215265eed249c9b46559}{\index{Q\+T\+Node@{Q\+T\+Node}!is\+Leaf@{is\+Leaf}}
+Check if this node intersects the given \hyperlink{class_geometry}{Geometry} polygon. Returns the intersection ratio (geom area / \hyperlink{class_q_t_node}{Q\+T\+Node} area) \hypertarget{class_q_t_node_ad7d5ff814ecec37be03263c2a087bfa5}{\index{Q\+T\+Node@{Q\+T\+Node}!is\+Leaf@{is\+Leaf}}
 \index{is\+Leaf@{is\+Leaf}!Q\+T\+Node@{Q\+T\+Node}}
 \subsubsection[{is\+Leaf}]{\setlength{\rightskip}{0pt plus 5cm}bool Q\+T\+Node\+::is\+Leaf (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_q_t_node_a88da0613a83f215265eed249c9b46559}
-Check if this node is a leaf node. \hypertarget{class_q_t_node_aa2407622dcf020ec462853f0733c5ecc}{\index{Q\+T\+Node@{Q\+T\+Node}!subdivide@{subdivide}}
+) const}}\label{class_q_t_node_ad7d5ff814ecec37be03263c2a087bfa5}
+Check if this node is a leaf node. \hypertarget{class_q_t_node_af0c11fa1f7678c48cf0c2a3a3bb349b5}{\index{Q\+T\+Node@{Q\+T\+Node}!size@{size}}
+\index{size@{size}!Q\+T\+Node@{Q\+T\+Node}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int Q\+T\+Node\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_q_t_node_af0c11fa1f7678c48cf0c2a3a3bb349b5}
+Return the number of node objects in this quadtree \hypertarget{class_q_t_node_aa2407622dcf020ec462853f0733c5ecc}{\index{Q\+T\+Node@{Q\+T\+Node}!subdivide@{subdivide}}
 \index{subdivide@{subdivide}!Q\+T\+Node@{Q\+T\+Node}}
 \subsubsection[{subdivide}]{\setlength{\rightskip}{0pt plus 5cm}void Q\+T\+Node\+::subdivide (
 \begin{DoxyParamCaption}

@@ -102,14 +102,24 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac41137dbf5e7ce94fcd73687f8f286b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a202f7f3dea37652fa789dd2d1e3936ff"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a202f7f3dea37652fa789dd2d1e3936ff">insert</a> (const <a class="el" href="class_geometry.html">Geometry</a> &amp;geom)</td></tr>
 <tr class="separator:a202f7f3dea37652fa789dd2d1e3936ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ade3c5bbd83b900be2a3eae3606a557"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a5ade3c5bbd83b900be2a3eae3606a557">canInsert</a> (const <a class="el" href="class_geometry.html">Geometry</a> &amp;geom) const </td></tr>
+<tr class="separator:a5ade3c5bbd83b900be2a3eae3606a557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a7a188e70551f5a60ccebf4c8b59ee2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a7a7a188e70551f5a60ccebf4c8b59ee2">insert_r</a> (const <a class="el" href="class_geometry.html">Geometry</a> &amp;geom, float intersect_ratio)</td></tr>
+<tr class="separator:a7a7a188e70551f5a60ccebf4c8b59ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab570871d686ec0259441ae53969214cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#ab570871d686ec0259441ae53969214cb">clear</a> ()</td></tr>
 <tr class="separator:ab570871d686ec0259441ae53969214cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2407622dcf020ec462853f0733c5ecc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#aa2407622dcf020ec462853f0733c5ecc">subdivide</a> ()</td></tr>
 <tr class="separator:aa2407622dcf020ec462853f0733c5ecc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a88da0613a83f215265eed249c9b46559"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a88da0613a83f215265eed249c9b46559">isLeaf</a> ()</td></tr>
-<tr class="separator:a88da0613a83f215265eed249c9b46559"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7d5ff814ecec37be03263c2a087bfa5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#ad7d5ff814ecec37be03263c2a087bfa5">isLeaf</a> () const </td></tr>
+<tr class="separator:ad7d5ff814ecec37be03263c2a087bfa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e22bf4a02893452199b73ef0c22f016"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a2e22bf4a02893452199b73ef0c22f016">area</a> () const </td></tr>
 <tr class="separator:a2e22bf4a02893452199b73ef0c22f016"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40d374c445bbb92e76067c783f591ce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a40d374c445bbb92e76067c783f591ce5">draw</a> () const </td></tr>
+<tr class="separator:a40d374c445bbb92e76067c783f591ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a92b79357dfde8058bfe895691916f98d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#a92b79357dfde8058bfe895691916f98d">draw_r</a> (GLuint vao_ID) const </td></tr>
+<tr class="separator:a92b79357dfde8058bfe895691916f98d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0c11fa1f7678c48cf0c2a3a3bb349b5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_q_t_node.html#af0c11fa1f7678c48cf0c2a3a3bb349b5">size</a> () const </td></tr>
+<tr class="separator:af0c11fa1f7678c48cf0c2a3a3bb349b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -187,6 +197,23 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a5ade3c5bbd83b900be2a3eae3606a557"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool QTNode::canInsert </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_geometry.html">Geometry</a> &amp;&#160;</td>
+          <td class="paramname"><em>geom</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determine if geom can be inserted into this Quadtree without overlapping any previously inserted geometries. </p>
+
+</div>
+</div>
 <a class="anchor" id="ab570871d686ec0259441ae53969214cb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -199,6 +226,39 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a40d374c445bbb92e76067c783f591ce5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QTNode::draw </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Render this quadtree. </p>
+
+</div>
+</div>
+<a class="anchor" id="a92b79357dfde8058bfe895691916f98d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QTNode::draw_r </td>
+          <td>(</td>
+          <td class="paramtype">GLuint&#160;</td>
+          <td class="paramname"><em>vao_ID</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Recursive helper: Render this quadtree. </p>
 
 </div>
 </div>
@@ -215,9 +275,46 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Recursively insert the given <a class="el" href="class_geometry.html">Geometry</a> into this quadtree node.</p>
+<p>Insert the given <a class="el" href="class_geometry.html">Geometry</a> into this quadtree node.</p>
 <p>Returns true if successfully inserted, false if it can't be inserted. Insertion fails if the geometry overlaps an existing geometry maintained by the Quadtree.</p>
-<p>Pre: <a class="el" href="class_geometry.html">Geometry</a> intersects this node </p>
+<p>Pre: <a class="el" href="class_geometry.html">Geometry</a> intersects this node. TODO: Really? </p>
+
+</div>
+</div>
+<a class="anchor" id="a7a7a188e70551f5a60ccebf4c8b59ee2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void QTNode::insert_r </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_geometry.html">Geometry</a> &amp;&#160;</td>
+          <td class="paramname"><em>geom</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>intersect_ratio</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Recursive Insert Helper</p>
+<p>Returns true if successfully inserted, false if it can't be inserted. Insertion fails if the geometry overlaps an existing geometry maintained by the Quadtree.</p>
+<p>Pre: <a class="el" href="class_geometry.html">Geometry</a> intersects this quadtree and doesn't conflict with any existing other geometries.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">geom</td><td>The <a class="el" href="class_geometry.html">Geometry</a> instance we're inserting into this quadtree </td></tr>
+    <tr><td class="paramname">intersect_ratio</td><td>The ratio (geom area / quadtree node area). Set to -1 if ratio is unknown. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if insertion successful. False if it can't be inserted. </dd></dl>
 
 </div>
 </div>
@@ -255,7 +352,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a88da0613a83f215265eed249c9b46559"></a>
+<a class="anchor" id="ad7d5ff814ecec37be03263c2a087bfa5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -263,11 +360,27 @@ Public Attributes</h2></td></tr>
           <td class="memname">bool QTNode::isLeaf </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Check if this node is a leaf node. </p>
+
+</div>
+</div>
+<a class="anchor" id="af0c11fa1f7678c48cf0c2a3a3bb349b5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int QTNode::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return the number of node objects in this quadtree </p>
 
 </div>
 </div>
@@ -371,7 +484,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 22 2014 15:34:38 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 24 2014 16:18:34 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

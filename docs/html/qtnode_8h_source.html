@@ -113,12 +113,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">bool</span>  intersects(<span class="keyword">const</span> <a class="code" href="class_b_b.html">BB</a>&amp; box);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">float</span> intersects(<span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>&amp; geom);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">bool</span>  insert(<span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>&amp; geom);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span>  clear();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span>  subdivide();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span>  isLeaf();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">float</span> area() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">bool</span>  canInsert(<span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>&amp; geom) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span>  insert_r(<span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>&amp; geom, <span class="keywordtype">float</span> intersect_ratio);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span>  clear();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span>  subdivide();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">bool</span>  isLeaf() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">float</span> area() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span>  draw() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span>  draw_r(GLuint vao_ID) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">int</span>   size() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_q_t_node_html_a80d41a086f3020f670732d0c7971afb0"><div class="ttname"><a href="class_q_t_node.html#a80d41a086f3020f670732d0c7971afb0">QTNode::_level</a></div><div class="ttdeci">unsigned int _level</div><div class="ttdef"><b>Definition:</b> qtnode.h:29</div></div>
 <div class="ttc" id="class_q_t_node_html_a47f01353c3e4f66ab1006a7dbc2be797"><div class="ttname"><a href="class_q_t_node.html#a47f01353c3e4f66ab1006a7dbc2be797">QTNode::_parent</a></div><div class="ttdeci">QTNode * _parent</div><div class="ttdef"><b>Definition:</b> qtnode.h:31</div></div>
 <div class="ttc" id="class_q_t_node_html"><div class="ttname"><a href="class_q_t_node.html">QTNode</a></div><div class="ttdef"><b>Definition:</b> qtnode.h:26</div></div>
@@ -132,7 +137,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 22 2014 15:34:38 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 24 2014 16:18:34 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

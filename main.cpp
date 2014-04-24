@@ -36,17 +36,9 @@ int main(int argc, char** argv)
   vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
   QTNode qt(0, base, NULL, NULL);
 
-  // TEST: Triangle
-  vector<vec2> tri_verts;
-  tri_verts.push_back(vec2(-449, -449));
-  tri_verts.push_back(vec2(449, -449));
-  tri_verts.push_back(vec2(-449, 449));
-  vector<int> edges;
-  Geometry triangle = Geometry(0, tri_verts, edges); // TODO: Where to free this?
-  if(qt.insert(triangle)) scene.addGeometry(triangle);
-
   // TEST: Square
   vector<vec2> sq_verts;
+  vector<int> edges;
   sq_verts.push_back(vec2(-100, -225));
   sq_verts.push_back(vec2(225 + 112, 225));
   sq_verts.push_back(vec2(225 + 112, 225 + 112));
@@ -54,18 +46,27 @@ int main(int argc, char** argv)
   Geometry square = Geometry(1, sq_verts, edges); // TODO: Where to free this?
   if (qt.insert(square)) scene.addGeometry(square);
 
+  // TEST: Triangle
+  vector<vec2> tri_verts;
+  tri_verts.push_back(vec2(-449, -449));
+  tri_verts.push_back(vec2(449, -449));
+  tri_verts.push_back(vec2(-449, 449));
+  Geometry triangle = Geometry(0, tri_verts, edges); // TODO: Where to free this?
+  if(qt.insert(triangle)) scene.addGeometry(triangle);
+
 	do
   {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
+
+    // Draw the quadtree
+    qt.draw();
 
 		// Draw all scene geometries
     for (const Geometry* g : scene._all_geometries)
     {
       g->draw();
     }
-
-    qt.draw();
 
 		// Swap buffers
 		glfwSwapBuffers(window);
