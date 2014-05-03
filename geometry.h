@@ -4,6 +4,7 @@
 #include <vector>
 #include "constants.h"
 #include "bb.h"
+#include "polygon.h"
 #include "glm/glm.hpp"
 #include <GLFW/glfw3.h> // Leads to inclusion of gl.h
 #include <OpenGL/gl3.h> // For mac
@@ -12,15 +13,15 @@ using namespace std;
 using namespace glm;
 
 /**
- * A class representing convex hull geometries.
+ * A class representing convex hull polygon and the OpenGL state needed to
+ * render it.
  */
 class Geometry
 {
   public:
     unsigned int  _id;
-    // TODO: Change member to a Polygon object
-    vector<vec2>* _vertices;
-    vector<int>*  _edges;
+    Polygon       _poly;
+    vector<int>*  _edges; // TODO: Delete this?
     BB*           _bb;
 
     // OpenGL-GLSL State Members

@@ -10,8 +10,8 @@ Polygon::Polygon()
 }
 
 /**
- * Construct a polygon object, dynamically allocating its vertices from
- * the given vertex list
+ * Construct a polygon object, dynamically allocating a copy of the given
+ * vertex list
  */
 Polygon::Polygon(const vector<vec2>& vertices)
 {
@@ -25,12 +25,41 @@ Polygon::Polygon(const vector<vec2>& vertices)
 }
 
 /**
+ * Copy Constructor
+ */
+Polygon::Polygon(const Polygon& other)
+{
+  _verts = new vector<vec2>();
+
+  for(vec2 v : *(other._verts))
+  {
+    _verts->push_back(v);
+  }
+}
+
+/**
  * Destroy a polygon object, dynamically de-allocating its vertices
  */
 Polygon::~Polygon()
 {
   // printf("Polygon deconstructed\n");
   delete _verts;
+}
+
+/**
+ * Assignment Operator Overload
+ */
+Polygon& Polygon::operator=(const Polygon& other)
+{
+  if (this != &other)
+  {
+    _verts->clear();
+    for(vec2 v : *(other._verts))
+    {
+      _verts->push_back(v);
+    }
+  }
+  return *this;
 }
 
 /**
@@ -181,7 +210,7 @@ void Polygon::clipOneSide(vec2 a, vec2 b)
  * Return the area of this simple polygon. Follows technique described in
  * Graphic Gems II, pg 7.
  */
-float Polygon::area()
+float Polygon::area() const
 {
   const vector<vec2>& verts = *_verts;
   int n = verts.size();

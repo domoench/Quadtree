@@ -1,6 +1,8 @@
+#ifndef __DOM_POLYGON_H__
+#define __DOM_POLYGON_H__
+
 #include <vector>
 #include "glm/glm.hpp"
-#include "qtnode.h"
 
 using namespace std;
 using namespace glm;
@@ -26,14 +28,18 @@ class Polygon
 
     Polygon();
     Polygon(const vector<vec2>& vertices);
+    Polygon(const Polygon& other);
     ~Polygon();
+    Polygon& operator=(const Polygon& other);
 
     void  add(vec2 vert);
     void  clip(const Polygon& clip_box);
     void  clipOneSide(vec2 a, vec2 b);
-    float area();
+    float area() const;
 
     // Static Helpers. TODO: Is there a better place for them?
     static int  onLeftSide(vec2 a, vec2 b, vec2 p);
     static vec2 lineIntersect(vec2 a1, vec2 a2, vec2 b1, vec2 b2);
 };
+
+#endif

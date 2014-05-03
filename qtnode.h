@@ -38,7 +38,7 @@ class QTNode
 
     /*!
       True if this is an occupied leaf node. False if this is an interior node
-      or unoccupied.
+      or unoccupied. TODO: Get rid of this, _occupier can be used by itself.
      */
     bool _occupied;
 

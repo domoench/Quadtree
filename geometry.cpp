@@ -1,6 +1,5 @@
 #include "geometry.h"
 #include "scene.h"
-#include "polygon.h"
 
 // The scene state is global
 extern Scene scene;
@@ -13,7 +12,7 @@ Geometry::Geometry(int id, const vector<vec2>& vertices,
   _id(id)
 {
   // Dynamically make a copy of vertices, edges, and bb
-  _vertices = new vector<vec2>(vertices);
+  _poly = Polygon(vertices);
   _edges = new vector<int>(edges);
   _bb = new BB(vertices); // TODO: Initialize the BB correctly
 
@@ -30,8 +29,8 @@ Geometry::Geometry(int id, const vector<vec2>& vertices,
   // Allocate memory on the GPU and transfer the app data to it
   glBufferData(
     GL_ARRAY_BUFFER,
-    _vertices->size() * sizeof(vec2),
-    _vertices->data(),
+    _poly._verts->size() * sizeof(vec2),
+    _poly._verts->data(),
     GL_STATIC_DRAW
   );
   // Look up where on the GPU we can access our vertex position attribute buffer
@@ -56,10 +55,9 @@ Geometry::Geometry(int id, const vector<vec2>& vertices,
 Geometry::~Geometry()
 {
   // Delete dynamic data from heap
-  delete _vertices;
   delete _edges;
   delete _bb;
-  _vertices = NULL;
+  // _poly destructor will take care of deallocating its vertices
   _edges = NULL;
   _bb = NULL;
 
@@ -75,7 +73,7 @@ Geometry::~Geometry()
 float Geometry::area() const
 {
   // TODO: Consider just making the vertices member of a Geometry object a Polygon
-  Polygon geom_poly(*_vertices);
+  Polygon geom_poly(_poly);
   return geom_poly.area();
 }
 
@@ -98,6 +96,6 @@ void Geometry::draw() const
 
   // Make this geometry's VAO current
   glBindVertexArray(_vao);
-  glDrawArrays(GL_LINE_LOOP, 0, _vertices->size());
+  glDrawArrays(GL_LINE_LOOP, 0, _poly._verts->size());
 }
 

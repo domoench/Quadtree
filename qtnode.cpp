@@ -42,12 +42,10 @@ float QTNode::intersects(const Geometry& geom)
   qt_clip_box.add(_base + vec2(w,w));
   qt_clip_box.add(_base + vec2(0,w));
 
-  // Generate a temp polygon for intersection test
-  Polygon geom_poly(*(geom._vertices));
+  // Create clippable temp polygon for geom
+  Polygon geom_poly = geom._poly;
   geom_poly.clip(qt_clip_box);
 
-  // printf("geom_poly.area(): %f\n", geom_poly.area());
-  // printf("qt_clip_box.area(): %f\n", qt_clip_box.area());
   // printf("Leaving intersects()\n");
   return geom_poly.area() / qt_clip_box.area();
 }
