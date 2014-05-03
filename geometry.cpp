@@ -14,7 +14,7 @@ Geometry::Geometry(int id, const vector<vec2>& vertices,
   // Dynamically make a copy of vertices, edges, and bb
   _poly = Polygon(vertices);
   _edges = new vector<int>(edges);
-  _bb = new BB(vertices); // TODO: Initialize the BB correctly
+  _bb = BB(vertices);
 
   // Create VAO to manage Vertex and Color VBOs
   // Find unused VAO ID
@@ -56,10 +56,8 @@ Geometry::~Geometry()
 {
   // Delete dynamic data from heap
   delete _edges;
-  delete _bb;
   // _poly destructor will take care of deallocating its vertices
   _edges = NULL;
-  _bb = NULL;
 
   // TODO: Find out if we need to delete the VAO on the GPU
 	glDisableVertexAttribArray(_vert_pos_loc);

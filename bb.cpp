@@ -17,7 +17,6 @@ BB::BB(const vector<vec2>& vertices)
   max_x = max_y = numeric_limits<int>::min();
   for (vec2 v : vertices)
   {
-    printf("Vertex: (%f, %f)\n", v[0], v[1]);
     if (v[0] < min_x) min_x = v[0];
     else if (v[0] > max_x) max_x = v[0];
 

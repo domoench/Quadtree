@@ -288,6 +288,27 @@ void testQTNodeInsert()
   vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
   QTNode qt(0, base, NULL, NULL);
 
-  printf("Time to insert...\n");
   bool inserted = qt.insert(triangle);
+  assert(inserted);
+  qt.clear();
+
+  // Insert all the squares of a grid
+  printf("Testing Grid Cell Insertion\n");
+  int n = 10;
+  int w = DEFAULT_W / n;
+  for (int i = 0; i < n; ++i)
+  {
+    for (int j = 0; j < n; ++j)
+    {
+      vector<vec2> grid_unit_verts;
+      grid_unit_verts.push_back(qt._base + vec2(i * w, j * w));
+      grid_unit_verts.push_back(qt._base + vec2(i * w + w * .99, j * w));
+      grid_unit_verts.push_back(qt._base + vec2(i * w + w * .99, j * w + w * .99));
+      grid_unit_verts.push_back(qt._base + vec2(i * w, j * w + w * .99));
+      Geometry grid_unit = Geometry(i*n+j, grid_unit_verts, edges);
+
+      assert(qt.insert(grid_unit));
+    }
+  }
+
 }

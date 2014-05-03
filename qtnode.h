@@ -50,7 +50,7 @@ class QTNode
 
     QTNode(unsigned int level, vec2 base, QTNode* parent,
            const Geometry* occupier);
-    bool  intersects(const BB& box);
+    bool  intersectsBB(const BB& box);
     float intersects(const Geometry& geom);
     bool  insert(const Geometry& geom);
     bool  canInsert(const Geometry& geom) const;

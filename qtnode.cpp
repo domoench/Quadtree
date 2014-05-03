@@ -22,10 +22,22 @@ QTNode::QTNode(unsigned int level, vec2 base, QTNode* parent,
 /**
  * Check if this node intersects the given bounding box.
  */
-bool QTNode::intersects(const BB& box)
+bool QTNode::intersectsBB(const BB& box)
 {
   // TODO: SAT intersection test
-  return false;
+  double w = (double) scene._window_width / pow(2.0, _level);
+  vec2 min = _base;
+  vec2 max = _base + vec2(w, w);
+
+  // Check X axis projection
+  bool x_intersect = (min[0] <= box._max[0]) &&
+                     (max[0] >= box._min[0]);
+  // Check Y axis projection
+  bool y_intersect = (min[1] <= box._max[1]) &&
+                     (max[1] >= box._min[1]);
+
+  // If both axes projections intersect, then BBs intersect
+  return x_intersect && y_intersect;
 }
 
 /**
@@ -34,6 +46,9 @@ bool QTNode::intersects(const BB& box)
  */
 float QTNode::intersects(const Geometry& geom)
 {
+  // Quick Check. TODO: Test if this really gives a speedup
+  if (!this->intersectsBB(geom._bb)) return false;
+
   // Construct clipping box for this node
   Polygon qt_clip_box;
   double w = (double) scene._window_width / pow(2.0, _level);
@@ -115,7 +130,6 @@ bool QTNode::canInsert(const Geometry& geom) const
  */
 void QTNode::insert_r(const Geometry& geom, float intersect_ratio)
 {
-  printf("Inserting into (%f, %f). level %d. ratio %f\n", _base[0], _base[1], _level, intersect_ratio);
   // This is an occupied leaf node
   if (_occupied) return;
 
@@ -138,7 +152,6 @@ void QTNode::insert_r(const Geometry& geom, float intersect_ratio)
     }
     else // geom can't fully occupy, must subdivide
     {
-      printf("\tMust Subdivide.\n");
       if (_level == QT_MAX_LEVEL)
       {
         // printf("Reached max subdivision level %d\n", QT_MAX_LEVEL);
