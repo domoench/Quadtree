@@ -72,7 +72,7 @@ void Polygon::add(vec2 vert)
 
 /**
  * Determine if two lines intersect. If they do, returns point of
- * intersection. TODO: Otherwise what?
+ * intersection.
  *
  * Arguments define the following 2 parametric line eqs:
  * L1 = a1 + s * u    (u = a2 - a1)

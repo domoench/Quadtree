@@ -7,13 +7,10 @@ extern Scene scene;
 /**
  * Construct a Geometry and initialize its OpenGL State: VAO and VBOs.
  */
-Geometry::Geometry(int id, const vector<vec2>& vertices,
-                   const vector<int>& edges) :
+Geometry::Geometry(int id, const vector<vec2>& vertices) :
   _id(id)
 {
-  // Dynamically make a copy of vertices, edges, and bb
   _poly = Polygon(vertices);
-  _edges = new vector<int>(edges);
   _bb = BB(vertices);
 
   // Create VAO to manage Vertex and Color VBOs
@@ -54,10 +51,7 @@ Geometry::Geometry(int id, const vector<vec2>& vertices,
  */
 Geometry::~Geometry()
 {
-  // Delete dynamic data from heap
-  delete _edges;
   // _poly destructor will take care of deallocating its vertices
-  _edges = NULL;
 
   // TODO: Find out if we need to delete the VAO on the GPU
 	glDisableVertexAttribArray(_vert_pos_loc);
@@ -70,9 +64,7 @@ Geometry::~Geometry()
  */
 float Geometry::area() const
 {
-  // TODO: Consider just making the vertices member of a Geometry object a Polygon
-  Polygon geom_poly(_poly);
-  return geom_poly.area();
+  return _poly.area();
 }
 
 /**

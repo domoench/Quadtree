@@ -11,16 +11,31 @@
 #include <OpenGL/gl3.h> // For mac
 
 // Globals
-GLFWwindow* window;
-Scene       scene;
+Scene scene;
 
 // Local Function Declarations
 int  init();
 void cleanUp();
-void display();
-void keyHandler();
-void mouseButton();
-void mouseMotion();
+
+// GLFW Callbacks
+static void mouseClick(GLFWwindow* window, int button, int action, int mods)
+{
+  if (action == GLFW_PRESS)
+  {
+    double x, y;
+    glfwGetCursorPos(window, &x, &y);
+    scene.addUserVertex(x, y);
+  }
+}
+
+static void keyPress(GLFWwindow* window, int key, int scancode, int action,
+                     int mods)
+{
+  if (key == GLFW_KEY_ENTER && action == GLFW_PRESS)
+  {
+    scene.insertUserGeometry();
+  }
+}
 
 using namespace glm;
 
@@ -38,23 +53,22 @@ int main(int argc, char** argv)
 
   // TEST: Square
   vector<vec2> sq_verts;
-  vector<int> edges;
   sq_verts.push_back(vec2(-100, -225));
   sq_verts.push_back(vec2(225 + 112, 225));
   sq_verts.push_back(vec2(225 + 112, 225 + 112));
   sq_verts.push_back(vec2(225, 225 + 112));
-  Geometry square = Geometry(1, sq_verts, edges); // TODO: Where to free this?
+  Geometry square = Geometry(1, sq_verts);
   if (qt.insert(square)) scene.addGeometry(square);
 
   // TEST: Triangle
   vector<vec2> tri_verts;
   tri_verts.push_back(vec2(-449, -449));
-  tri_verts.push_back(vec2(449, -449));
-  tri_verts.push_back(vec2(-449, 449));
-  Geometry triangle = Geometry(0, tri_verts, edges); // TODO: Where to free this?
-  if(qt.insert(triangle)) scene.addGeometry(triangle);
+  tri_verts.push_back(vec2( 449, -449));
+  tri_verts.push_back(vec2(-449,  449));
+  Geometry triangle = Geometry(0, tri_verts);
+  if (qt.insert(triangle)) scene.addGeometry(triangle);
 
-	do
+	while(!glfwWindowShouldClose(scene._glfw_window))
   {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -69,12 +83,10 @@ int main(int argc, char** argv)
     }
 
 		// Swap buffers
-		glfwSwapBuffers(window);
+		glfwSwapBuffers(scene._glfw_window);
 		glfwPollEvents();
 
 	} // Check if the ESC key was pressed or the window was closed
-	while(glfwGetKey(window, GLFW_KEY_ESCAPE)!= GLFW_PRESS &&
-		    glfwWindowShouldClose(window) == 0);
 
   // Clean Up
   cleanUp();
@@ -103,20 +115,21 @@ int init()
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
   // Open a window and create its OpenGL context
-	window = glfwCreateWindow(DEFAULT_W, DEFAULT_H, "Quadtree", NULL, NULL);
-	if (window == NULL)
+	scene._glfw_window = glfwCreateWindow(DEFAULT_W, DEFAULT_H, "Quadtree", NULL, NULL);
+	if (scene._glfw_window == NULL)
   {
 		fprintf(stderr, "Failed to open GLFW window.\n");
 		glfwTerminate();
 		return -1;
 	}
-	glfwMakeContextCurrent(window);
+	glfwMakeContextCurrent(scene._glfw_window);
+
+  // Set callbacks
+  glfwSetMouseButtonCallback(scene._glfw_window, mouseClick);
+  glfwSetKeyCallback(scene._glfw_window, keyPress);
 
   // Set viewport to be the entire size of the window
   glViewport(0, 0, DEFAULT_W, DEFAULT_H);
-
-  // Ensure we can capture the escape key as a "sticky key"
-	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 
   // White background
 	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
@@ -136,8 +149,8 @@ int init()
   // Camera matrix
 	scene._view = lookAt(
     vec3(0,0,400), // Camera position in world space
-    vec3(0,0,0), // Looks at the origin
-    vec3(0,1,0)  // Head is up
+    vec3(0,0,0),   // Looks at the origin
+    vec3(0,1,0)    // Head is up
 	);
 
   // Model Matrix is Identity matrix: models are what and where they are
@@ -156,24 +169,4 @@ void cleanUp()
 	glDeleteProgram(scene._prog_ID);
 	// Close OpenGL window and terminate GLFW
 	glfwTerminate();
-}
-
-void display()
-{
-  scene.display();
-}
-
-void keyHandler()
-{
-  scene.keyHandler();
-}
-
-void mouseButton()
-{
-  scene.mouseButton();
-}
-
-void mouseMotion()
-{
-  scene.mouseMotion();
 }

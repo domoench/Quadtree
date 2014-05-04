@@ -21,13 +21,12 @@ class Geometry
   public:
     unsigned int  _id;
     Polygon       _poly;
-    vector<int>*  _edges; // TODO: Delete this?
     BB            _bb;
 
     // OpenGL-GLSL State Members
     GLuint _vao, _vbo, _vert_pos_loc;
 
-    Geometry(int id, const vector<vec2>& vertices, const vector<int>& edges);
+    Geometry(int id, const vector<vec2>& vertices);
     ~Geometry();
     float area() const;
     void  draw() const;

@@ -24,27 +24,38 @@ class Scene
     unsigned int _window_height;
     float        _window_aspect;
 
-    //<! OpenGL shader-pair program ID
+    /*! OpenGL shader-pair program ID */
     GLuint _prog_ID;
 
-    //<! Default model, view, and projection matrices
+    /*! Default model, view, and projection matrices */
     mat4 _proj;
     mat4 _model;
     mat4 _view;
 
-    //!< A list of all the Geometry objects contained in the scene
+    /*! GLFW window context pointer */
+    GLFWwindow* _glfw_window;
+
+    /*!
+      An input buffer for user inputted vertices before they are used to
+      insert a new geometry into the scene.
+     */
+    vector<vec2>* _input_poly;
+
+    /*! A list of all the Geometry objects contained in the scene */
     vector<const Geometry*> _all_geometries;
 
-    //!< The quadtree node representing all geometries in the scene
+    /*! The quadtree node representing all geometries in the scene */
     // QTNode quadtree;
 
+    Scene();
+    ~Scene();
     void setDimensions(unsigned int w, unsigned int h);
     void addGeometry(const Geometry& geometry);
 
     void init();
     void display();
     void keyHandler();
-    void mouseButton();
-    void mouseMotion();
+    void addUserVertex(double x, double y);
+    bool insertUserGeometry();
 };
 #endif

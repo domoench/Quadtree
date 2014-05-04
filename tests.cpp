@@ -262,8 +262,7 @@ void testQTNodeIntersect()
   tri_verts.push_back(vec2(0.0f, 0.0f));
   tri_verts.push_back(vec2(100.0f, 0.0f));
   tri_verts.push_back(vec2(0.0f, 100.0f));
-  vector<int> edges;
-  Geometry tri = Geometry(0, tri_verts, edges);
+  Geometry tri = Geometry(0, tri_verts);
 
   vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
   QTNode qt(0, base, NULL, NULL);
@@ -281,8 +280,7 @@ void testQTNodeInsert()
   tri_verts.push_back(vec2(0.0f, 0.0f));
   tri_verts.push_back(vec2(100.0f, 0.0f));
   tri_verts.push_back(vec2(0.0f, 100.0f));
-  vector<int> edges;
-  Geometry triangle = Geometry(0, tri_verts, edges);
+  Geometry triangle = Geometry(0, tri_verts);
 
   // Quadtree Root
   vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
@@ -305,7 +303,7 @@ void testQTNodeInsert()
       grid_unit_verts.push_back(qt._base + vec2(i * w + w * .99, j * w));
       grid_unit_verts.push_back(qt._base + vec2(i * w + w * .99, j * w + w * .99));
       grid_unit_verts.push_back(qt._base + vec2(i * w, j * w + w * .99));
-      Geometry grid_unit = Geometry(i*n+j, grid_unit_verts, edges);
+      Geometry grid_unit = Geometry(i*n+j, grid_unit_verts);
 
       assert(qt.insert(grid_unit));
     }

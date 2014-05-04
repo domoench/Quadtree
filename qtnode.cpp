@@ -71,8 +71,6 @@ float QTNode::intersects(const Geometry& geom)
  * Returns true if successfully inserted, false if it can't be inserted.
  * Insertion fails if the geometry overlaps an existing geometry maintained
  * by the Quadtree.
- *
- * Pre: Geometry intersects this node. TODO: Really?
  */
 bool QTNode::insert(const Geometry& geom)
 {
