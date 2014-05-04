@@ -48,19 +48,20 @@ class QTNode
      */
     const Geometry* _occupier;
 
+    QTNode();
     QTNode(unsigned int level, vec2 base, QTNode* parent,
            const Geometry* occupier);
-    bool  intersectsBB(const BB& box);
-    float intersects(const Geometry& geom);
-    bool  insert(const Geometry& geom);
-    bool  canInsert(const Geometry& geom) const;
-    void  insert_r(const Geometry& geom, float intersect_ratio);
-    void  clear();
-    void  subdivide();
-    bool  isLeaf() const;
-    float area() const;
-    void  draw() const;
-    void  draw_r(GLuint vao_ID) const;
-    int   size() const;
+    bool    intersectsBB(const BB& box);
+    GLfloat intersects(const Geometry& geom);
+    bool    insert(const Geometry& geom);
+    bool    canInsert(const Geometry& geom) const;
+    void    insert_r(const Geometry& geom, GLfloat intersect_ratio);
+    void    clear();
+    void    subdivide();
+    bool    isLeaf() const;
+    GLfloat area() const;
+    void    draw() const;
+    void    draw_r(GLuint vao_ID) const;
+    int     size() const;
 };
 #endif

@@ -89,8 +89,8 @@ vec2 Polygon::lineIntersect(vec2 a1, vec2 a2, vec2 b1, vec2 b2)
   assert(u_n != v_n); // Uh oh, parallel lines got in here!
 
   // Calculate s parameter of intersection point
-  float s = ((b2[0]-b1[0])*(b1[1]-a1[1]) - (b1[0]-a1[0])*(b2[1]-b1[1])) /
-            ((b2[0]-b1[0])*(a2[1]-a1[1]) - (a2[0]-a1[0])*(b2[1]-b1[1]));
+  GLfloat s = ((b2[0]-b1[0])*(b1[1]-a1[1]) - (b1[0]-a1[0])*(b2[1]-b1[1])) /
+              ((b2[0]-b1[0])*(a2[1]-a1[1]) - (a2[0]-a1[0])*(b2[1]-b1[1]));
 
   // Calculate intersection point p, along L1 for example
   vec2 sxu = vec2(s * u[0], s * u[1]); // s * u
@@ -118,7 +118,7 @@ int Polygon::onLeftSide(vec2 a, vec2 b, vec2 p)
   //printf("axis: <%f, %f>\n", axis[0], axis[1]);
   //printf("v: <%f, %f>\n", v[0], v[1]);
   // 2D cross product
-  float x_prod = axis[0] * v[1] - axis[1] * v[0];
+  GLfloat x_prod = axis[0] * v[1] - axis[1] * v[0];
   //printf("cross: %f\n", x_prod);
   if (x_prod < 0) return -1;
   else return (x_prod > 0);
@@ -210,7 +210,7 @@ void Polygon::clipOneSide(vec2 a, vec2 b)
  * Return the area of this simple polygon. Follows technique described in
  * Graphic Gems II, pg 7.
  */
-float Polygon::area() const
+GLfloat Polygon::area() const
 {
   const vector<vec2>& verts = *_verts;
   int n = verts.size();
@@ -218,7 +218,7 @@ float Polygon::area() const
   //printf("n = %d\n", n);
 
   // Calculate product sum term
-  float prod_sum  = 0.0f;
+  GLfloat prod_sum  = 0.0f;
   for (int i = 0; i < n-1; ++i)
   {
     //printf("Sum Term: %f * %f = %f\n", verts[i][0], verts[i+1][1], (verts[i][0] * verts[i+1][1]));
@@ -227,7 +227,7 @@ float Polygon::area() const
   prod_sum += (verts[n-1][0] * verts[0][1]); // Wrap back to first
 
   // Calculate product difference term
-  float prod_diff = 0.0f;
+  GLfloat prod_diff = 0.0f;
   for (int i = 0; i < n-1; ++i)
   {
     prod_diff -= (verts[i][1] * verts[i+1][0]);

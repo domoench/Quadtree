@@ -2,6 +2,7 @@
 #define __DOM_POLYGON_H__
 
 #include <vector>
+#include <OpenGL/gl3.h> // For mac
 #include "glm/glm.hpp"
 
 using namespace std;
@@ -32,10 +33,10 @@ class Polygon
     ~Polygon();
     Polygon& operator=(const Polygon& other);
 
-    void  add(vec2 vert);
-    void  clip(const Polygon& clip_box);
-    void  clipOneSide(vec2 a, vec2 b);
-    float area() const;
+    void    add(vec2 vert);
+    void    clip(const Polygon& clip_box);
+    void    clipOneSide(vec2 a, vec2 b);
+    GLfloat area() const;
 
     // Static Helpers. TODO: Is there a better place for them?
     static int  onLeftSide(vec2 a, vec2 b, vec2 p);

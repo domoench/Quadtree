@@ -5,8 +5,8 @@
 #include "constants.h"
 #include "bb.h"
 #include "geometry.h"
-#include "qtnode.h"
 #include "glm/glm.hpp"
+#include "qtnode.h"
 #include "glm/gtc/matrix_transform.hpp"
 #include <GLFW/glfw3.h> // Leads to inclusion of gl.h
 #include <OpenGL/gl3.h> // For mac
@@ -44,15 +44,14 @@ class Scene
     /*! A list of all the Geometry objects contained in the scene */
     vector<const Geometry*> _all_geometries;
 
-    /*! The quadtree node representing all geometries in the scene */
-    // QTNode quadtree;
+    /*! The quadtree representing all geometries in the scene */
+    QTNode _qt;
 
     Scene();
     ~Scene();
     void setDimensions(unsigned int w, unsigned int h);
     void addGeometry(const Geometry& geometry);
 
-    void init();
     void display();
     void keyHandler();
     void addUserVertex(double x, double y);

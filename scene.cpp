@@ -2,6 +2,10 @@
 
 Scene::Scene()
 {
+  _window_width = DEFAULT_W;
+  _window_height = DEFAULT_H;
+  _window_aspect = (GLfloat) DEFAULT_W / (GLfloat) DEFAULT_H;
+
   _input_poly = new vector<vec2>();
 }
 
@@ -18,7 +22,7 @@ void Scene::setDimensions(unsigned int w, unsigned int h)
 {
   _window_width = w;
   _window_height = h;
-  _window_aspect = (float) w / (float) h;
+  _window_aspect = (GLfloat) w / (GLfloat) h;
 }
 
 /**
@@ -27,13 +31,6 @@ void Scene::setDimensions(unsigned int w, unsigned int h)
 void Scene::addGeometry(const Geometry& g)
 {
   _all_geometries.push_back(&g);
-}
-
-/**
- * TODO
- */
-void Scene::init()
-{
 }
 
 /**
@@ -74,15 +71,22 @@ bool Scene::insertUserGeometry()
 
   // Allocate Geometry instance
   Geometry* user_geom = new Geometry(_all_geometries.size(), *_input_poly);
+  // TODO: Delete these somewhere in cleanup
 
   // Add to scene + Insert to quadtree
-  // bool insert_success = insert(user_geom);
-  bool insert_success = true; // TODO
-  if (insert_success) addGeometry(*user_geom);
+  bool insert_success = _qt.insert(*user_geom);
+  if (insert_success)
+  {
+    addGeometry(*user_geom);
+    printf("Geometry %d with %lu vertices inserted.\n", user_geom->_id, user_geom->_poly._verts->size());
+  }
+  else
+  {
+    printf("Geometry insertion failed\n");
+  }
 
   // Clear _input_poly
   _input_poly->clear();
 
-  printf("Geometry %d with %lu vertices added.\n", user_geom->_id, user_geom->_poly._verts->size());
   return insert_success;
 }

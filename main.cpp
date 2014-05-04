@@ -47,26 +47,26 @@ int main(int argc, char** argv)
   // Run Tests
   if (DEBUG) runAllTests();
 
-  // TEST: Empty Subdivided Quadtree
-  vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
-  QTNode qt(0, base, NULL, NULL);
-
   // TEST: Square
+  /*
   vector<vec2> sq_verts;
   sq_verts.push_back(vec2(-100, -225));
   sq_verts.push_back(vec2(225 + 112, 225));
   sq_verts.push_back(vec2(225 + 112, 225 + 112));
   sq_verts.push_back(vec2(225, 225 + 112));
   Geometry square = Geometry(1, sq_verts);
-  if (qt.insert(square)) scene.addGeometry(square);
+  if (scene._qt.insert(square)) scene.addGeometry(square);
+  */
 
   // TEST: Triangle
+  /*
   vector<vec2> tri_verts;
   tri_verts.push_back(vec2(-449, -449));
   tri_verts.push_back(vec2( 449, -449));
   tri_verts.push_back(vec2(-449,  449));
   Geometry triangle = Geometry(0, tri_verts);
-  if (qt.insert(triangle)) scene.addGeometry(triangle);
+  if (scene._qt.insert(triangle)) scene.addGeometry(triangle);
+  */
 
 	while(!glfwWindowShouldClose(scene._glfw_window))
   {
@@ -74,7 +74,7 @@ int main(int argc, char** argv)
 		glClear(GL_COLOR_BUFFER_BIT);
 
     // Draw the quadtree
-    qt.draw();
+    scene._qt.draw();
 
 		// Draw all scene geometries
     for (const Geometry* g : scene._all_geometries)
@@ -85,10 +85,8 @@ int main(int argc, char** argv)
 		// Swap buffers
 		glfwSwapBuffers(scene._glfw_window);
 		glfwPollEvents();
+	}
 
-	} // Check if the ESC key was pressed or the window was closed
-
-  // Clean Up
   cleanUp();
   return 0;
 }
@@ -99,8 +97,6 @@ int main(int argc, char** argv)
  */
 int init()
 {
-  scene.setDimensions(DEFAULT_W, DEFAULT_H);
-
   // Initialise GLFW
 	if (!glfwInit())
   {
@@ -155,8 +151,6 @@ int init()
 
   // Model Matrix is Identity matrix: models are what and where they are
   scene._model = mat4(1.0f);
-
-  scene.init();
 
   return 0;
 }

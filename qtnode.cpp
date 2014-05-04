@@ -5,15 +5,30 @@
 extern Scene scene;
 
 /**
- * Construct a leaf quadtree node. Consists of a single node with no children.
+ * Default constructor - Root level leaf node.
+ */
+QTNode::QTNode()
+{
+  _level = 0;
+  _base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
+  _parent = NULL;
+  _occupier = NULL;
+  _occupied = false;
+  for (int i = 0; i < 4; ++i) {
+    _children[i] = NULL;
+  }
+}
+
+/**
+ * Construct a leaf quadtree node.
  */
 QTNode::QTNode(unsigned int level, vec2 base, QTNode* parent,
                const Geometry* occupier) :
   _level(level), _base(base), _parent(parent), _occupier(occupier)
 {
-  assert (level < 32);
+  assert (level < QT_N_LEVELS);
   // printf("Constructing level %d node\n", level);
-  for (int i = 0; i < 4; i++) {
+  for (int i = 0; i < 4; ++i) {
     _children[i] = NULL;
   }
   _occupied = occupier != NULL;
@@ -24,7 +39,6 @@ QTNode::QTNode(unsigned int level, vec2 base, QTNode* parent,
  */
 bool QTNode::intersectsBB(const BB& box)
 {
-  // TODO: SAT intersection test
   double w = (double) scene._window_width / pow(2.0, _level);
   vec2 min = _base;
   vec2 max = _base + vec2(w, w);
@@ -44,7 +58,7 @@ bool QTNode::intersectsBB(const BB& box)
  * Check if this node intersects the given Geometry polygon.
  * Returns the intersection ratio (geom area / QTNode area)
  */
-float QTNode::intersects(const Geometry& geom)
+GLfloat QTNode::intersects(const Geometry& geom)
 {
   // Quick Check. TODO: Test if this really gives a speedup
   if (!this->intersectsBB(geom._bb)) return false;
@@ -100,7 +114,7 @@ bool QTNode::canInsert(const Geometry& geom) const
   for (int i = 0; i < 4; ++i)
   {
     QTNode& child = *(_children[i]);
-    float intersect_ratio = child.intersects(geom);
+    GLfloat intersect_ratio = child.intersects(geom);
     if (intersect_ratio > 0)
     {
       // If any child insertion is impossible => All is lost
@@ -126,7 +140,7 @@ bool QTNode::canInsert(const Geometry& geom) const
  *        if ratio is unknown.
  * @return True if insertion successful. False if it can't be inserted.
  */
-void QTNode::insert_r(const Geometry& geom, float intersect_ratio)
+void QTNode::insert_r(const Geometry& geom, GLfloat intersect_ratio)
 {
   // This is an occupied leaf node
   if (_occupied) return;
@@ -167,7 +181,7 @@ void QTNode::insert_r(const Geometry& geom, float intersect_ratio)
   for (int i = 0; i < 4; ++i)
   {
     QTNode& child = *(_children[i]);
-    float intersect_ratio = child.intersects(geom);
+    GLfloat intersect_ratio = child.intersects(geom);
     // printf("\tIntersection ratio with Quadrant %d: %f\n", i, intersect_ratio);
     // If geom intersects this child, we must recursively insert
     if (intersect_ratio > 0) child.insert_r(geom, intersect_ratio);
@@ -221,7 +235,7 @@ bool QTNode::isLeaf() const
 /**
  * Return the area of this QTNode instance
  */
-float QTNode::area() const
+GLfloat QTNode::area() const
 {
   Polygon qt_poly;
   double w = (double) scene._window_width / pow(2.0, _level);
@@ -274,10 +288,6 @@ void QTNode::draw() const
     (void*)0        // array buffer offset
   );
 
-  // QTNode boundaries are blue
-  GLuint color_loc = glGetUniformLocation(scene._prog_ID, "color");
-  glUniform4f(color_loc, 0.0f, 0.0f, 1.0f, 1.0f);
-
   // Recursively render
   draw_r(vao_ID);
 }
@@ -300,6 +310,11 @@ void QTNode::draw_r(GLuint vao_ID) const
   mat4 MVP = scene._proj * scene._view * Model;
   GLuint MVP_ID = glGetUniformLocation(scene._prog_ID, "MVP");
   glUniformMatrix4fv(MVP_ID, 1, GL_FALSE, &MVP[0][0]);
+
+  GLuint color_loc = glGetUniformLocation(scene._prog_ID, "color");
+  if (_occupier) glUniform4f(color_loc, 1.0f, 0.0f, 1.0f, 1.0f);
+  else glUniform4f(color_loc, 0.0f, 0.0f, 1.0f, 1.0f);
+
 
   // Render the transformed square for this node
   glDrawArrays(GL_LINE_LOOP, 0, 4);

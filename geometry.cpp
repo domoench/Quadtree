@@ -62,7 +62,7 @@ Geometry::~Geometry()
 /**
  * Return the area of this geometry
  */
-float Geometry::area() const
+GLfloat Geometry::area() const
 {
   return _poly.area();
 }

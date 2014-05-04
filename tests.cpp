@@ -267,7 +267,7 @@ void testQTNodeIntersect()
   vec2 base = vec2(0 - DEFAULT_W/2, 0 - DEFAULT_H/2);
   QTNode qt(0, base, NULL, NULL);
 
-  float ratio = qt.intersects(tri);
+  GLfloat ratio = qt.intersects(tri);
   assert(fabs(ratio - 0.00617328) <= PRECISION_EPSILON);
   printf("%f\n", ratio);
 }
