@@ -8,19 +8,21 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{class_scene_ad10176d75a9cc0da56626f682d083507}{Scene} ()
+\item 
+\hyperlink{class_scene_a3b8cec2e32546713915f8c6303c951f1}{$\sim$\+Scene} ()
+\item 
 void \hyperlink{class_scene_a42b1481ada95342cfb71d6a6e6bcc3c5}{set\+Dimensions} (unsigned int w, unsigned int h)
 \item 
 void \hyperlink{class_scene_acbf85916173784558177e62dfba7acb9}{add\+Geometry} (const \hyperlink{class_geometry}{Geometry} \&geometry)
-\item 
-void \hyperlink{class_scene_abb3b6efc6fdba03cd96436edaf08a967}{init} ()
 \item 
 void \hyperlink{class_scene_ae1dc07ec420ecd407a3a47910438167a}{display} ()
 \item 
 void \hyperlink{class_scene_a59f325fa74a642ebeb27f59f0455e06e}{key\+Handler} ()
 \item 
-void \hyperlink{class_scene_aa7342d108ff80f49d39b89570d6be4aa}{mouse\+Button} ()
+void \hyperlink{class_scene_a583b9304d63842f65c18fadd772045e4}{add\+User\+Vertex} (double x, double y)
 \item 
-void \hyperlink{class_scene_a479536d524e9879442b9c59d3c8d7e2e}{mouse\+Motion} ()
+bool \hyperlink{class_scene_a89f5b25d54ef4a87d1fb66eb1ad442b3}{insert\+User\+Geometry} ()
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -38,13 +40,36 @@ mat4 \hyperlink{class_scene_a7e980fe501bcaf6f173497d0a2190887}{\+\_\+proj}
 mat4 \hyperlink{class_scene_a2eea7478321942ad8f26f4555e1202c9}{\+\_\+model}
 \item 
 mat4 \hyperlink{class_scene_ae1b9af3642d66e6eff7d849c20aafdc5}{\+\_\+view}
-\begin{DoxyCompactList}\small\item\em A list of all the \hyperlink{class_geometry}{Geometry} objects contained in the scene. \end{DoxyCompactList}\item 
+\item 
+G\+L\+F\+Wwindow $\ast$ \hyperlink{class_scene_a90aeef6966c87169d2adfb161772c2c3}{\+\_\+glfw\+\_\+window}
+\item 
+vector$<$ vec2 $>$ $\ast$ \hyperlink{class_scene_a28b649d5aa339d6783672045f8026476}{\+\_\+input\+\_\+poly}
+\item 
 vector$<$ const \hyperlink{class_geometry}{Geometry} $\ast$ $>$ \hyperlink{class_scene_ae4e39aee440d748c4dc14a5aad13825d}{\+\_\+all\+\_\+geometries}
-\begin{DoxyCompactList}\small\item\em The quadtree node representing all geometries in the scene. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\item 
+\hyperlink{class_q_t_node}{Q\+T\+Node} \hyperlink{class_scene_af49afd50369f23c12d70c6fe07c9b797}{\+\_\+qt}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A class to package information about a scene to be rendered, including the scene's geometries, associated quadtree, and window dimensions. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_scene_ad10176d75a9cc0da56626f682d083507}{\index{Scene@{Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!Scene@{Scene}}
+\subsubsection[{Scene}]{\setlength{\rightskip}{0pt plus 5cm}Scene\+::\+Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scene_ad10176d75a9cc0da56626f682d083507}
+\hypertarget{class_scene_a3b8cec2e32546713915f8c6303c951f1}{\index{Scene@{Scene}!````~Scene@{$\sim$\+Scene}}
+\index{````~Scene@{$\sim$\+Scene}!Scene@{Scene}}
+\subsubsection[{$\sim$\+Scene}]{\setlength{\rightskip}{0pt plus 5cm}Scene\+::$\sim$\+Scene (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_scene_a3b8cec2e32546713915f8c6303c951f1}
+
 
 \subsection{Member Function Documentation}
 \hypertarget{class_scene_acbf85916173784558177e62dfba7acb9}{\index{Scene@{Scene}!add\+Geometry@{add\+Geometry}}
@@ -54,41 +79,35 @@ A class to package information about a scene to be rendered, including the scene
 \item[{const {\bf Geometry} \&}]{g}
 \end{DoxyParamCaption}
 )}}\label{class_scene_acbf85916173784558177e62dfba7acb9}
-Add a reference to the given \hyperlink{class_geometry}{Geometry} object to the scene. \hypertarget{class_scene_ae1dc07ec420ecd407a3a47910438167a}{\index{Scene@{Scene}!display@{display}}
+Add a reference to the given \hyperlink{class_geometry}{Geometry} object to the scene. \hypertarget{class_scene_a583b9304d63842f65c18fadd772045e4}{\index{Scene@{Scene}!add\+User\+Vertex@{add\+User\+Vertex}}
+\index{add\+User\+Vertex@{add\+User\+Vertex}!Scene@{Scene}}
+\subsubsection[{add\+User\+Vertex}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::add\+User\+Vertex (
+\begin{DoxyParamCaption}
+\item[{double}]{x, }
+\item[{double}]{y}
+\end{DoxyParamCaption}
+)}}\label{class_scene_a583b9304d63842f65c18fadd772045e4}
+Add a vertex at position (x,y) to this scene's \+\_\+input\+\_\+poly buffer Screen Input Coordinate to World Coordinate transformation function f($<$x,y$>$) = $<$x -\/ Window Width/2, Window Height/2 -\/ y$>$ T\+O\+D\+O\+: Figure out formula that can handle window resizing\hypertarget{class_scene_ae1dc07ec420ecd407a3a47910438167a}{\index{Scene@{Scene}!display@{display}}
 \index{display@{display}!Scene@{Scene}}
 \subsubsection[{display}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::display (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{class_scene_ae1dc07ec420ecd407a3a47910438167a}
-T\+O\+D\+O \hypertarget{class_scene_abb3b6efc6fdba03cd96436edaf08a967}{\index{Scene@{Scene}!init@{init}}
-\index{init@{init}!Scene@{Scene}}
-\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::init (
+T\+O\+D\+O \hypertarget{class_scene_a89f5b25d54ef4a87d1fb66eb1ad442b3}{\index{Scene@{Scene}!insert\+User\+Geometry@{insert\+User\+Geometry}}
+\index{insert\+User\+Geometry@{insert\+User\+Geometry}!Scene@{Scene}}
+\subsubsection[{insert\+User\+Geometry}]{\setlength{\rightskip}{0pt plus 5cm}bool Scene\+::insert\+User\+Geometry (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{class_scene_abb3b6efc6fdba03cd96436edaf08a967}
-T\+O\+D\+O \hypertarget{class_scene_a59f325fa74a642ebeb27f59f0455e06e}{\index{Scene@{Scene}!key\+Handler@{key\+Handler}}
+)}}\label{class_scene_a89f5b25d54ef4a87d1fb66eb1ad442b3}
+Allocate and insert a \hyperlink{class_geometry}{Geometry} into the scene based on the current contents of the \+\_\+input\+\_\+poly vertex buffer. \hypertarget{class_scene_a59f325fa74a642ebeb27f59f0455e06e}{\index{Scene@{Scene}!key\+Handler@{key\+Handler}}
 \index{key\+Handler@{key\+Handler}!Scene@{Scene}}
 \subsubsection[{key\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::key\+Handler (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{class_scene_a59f325fa74a642ebeb27f59f0455e06e}
-T\+O\+D\+O \hypertarget{class_scene_aa7342d108ff80f49d39b89570d6be4aa}{\index{Scene@{Scene}!mouse\+Button@{mouse\+Button}}
-\index{mouse\+Button@{mouse\+Button}!Scene@{Scene}}
-\subsubsection[{mouse\+Button}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::mouse\+Button (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{class_scene_aa7342d108ff80f49d39b89570d6be4aa}
-T\+O\+D\+O \hypertarget{class_scene_a479536d524e9879442b9c59d3c8d7e2e}{\index{Scene@{Scene}!mouse\+Motion@{mouse\+Motion}}
-\index{mouse\+Motion@{mouse\+Motion}!Scene@{Scene}}
-\subsubsection[{mouse\+Motion}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::mouse\+Motion (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)}}\label{class_scene_a479536d524e9879442b9c59d3c8d7e2e}
 T\+O\+D\+O \hypertarget{class_scene_a42b1481ada95342cfb71d6a6e6bcc3c5}{\index{Scene@{Scene}!set\+Dimensions@{set\+Dimensions}}
 \index{set\+Dimensions@{set\+Dimensions}!Scene@{Scene}}
 \subsubsection[{set\+Dimensions}]{\setlength{\rightskip}{0pt plus 5cm}void Scene\+::set\+Dimensions (
@@ -103,26 +122,27 @@ Reset this scene's window dimensions
 \hypertarget{class_scene_ae4e39aee440d748c4dc14a5aad13825d}{\index{Scene@{Scene}!\+\_\+all\+\_\+geometries@{\+\_\+all\+\_\+geometries}}
 \index{\+\_\+all\+\_\+geometries@{\+\_\+all\+\_\+geometries}!Scene@{Scene}}
 \subsubsection[{\+\_\+all\+\_\+geometries}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$const {\bf Geometry}$\ast$$>$ Scene\+::\+\_\+all\+\_\+geometries}}\label{class_scene_ae4e39aee440d748c4dc14a5aad13825d}
-
-
-The quadtree node representing all geometries in the scene. 
-
-\hypertarget{class_scene_a2eea7478321942ad8f26f4555e1202c9}{\index{Scene@{Scene}!\+\_\+model@{\+\_\+model}}
+A list of all the \hyperlink{class_geometry}{Geometry} objects contained in the scene \hypertarget{class_scene_a90aeef6966c87169d2adfb161772c2c3}{\index{Scene@{Scene}!\+\_\+glfw\+\_\+window@{\+\_\+glfw\+\_\+window}}
+\index{\+\_\+glfw\+\_\+window@{\+\_\+glfw\+\_\+window}!Scene@{Scene}}
+\subsubsection[{\+\_\+glfw\+\_\+window}]{\setlength{\rightskip}{0pt plus 5cm}G\+L\+F\+Wwindow$\ast$ Scene\+::\+\_\+glfw\+\_\+window}}\label{class_scene_a90aeef6966c87169d2adfb161772c2c3}
+G\+L\+F\+W window context pointer \hypertarget{class_scene_a28b649d5aa339d6783672045f8026476}{\index{Scene@{Scene}!\+\_\+input\+\_\+poly@{\+\_\+input\+\_\+poly}}
+\index{\+\_\+input\+\_\+poly@{\+\_\+input\+\_\+poly}!Scene@{Scene}}
+\subsubsection[{\+\_\+input\+\_\+poly}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$vec2$>$$\ast$ Scene\+::\+\_\+input\+\_\+poly}}\label{class_scene_a28b649d5aa339d6783672045f8026476}
+An input buffer for user inputted vertices before they are used to insert a new geometry into the scene. \hypertarget{class_scene_a2eea7478321942ad8f26f4555e1202c9}{\index{Scene@{Scene}!\+\_\+model@{\+\_\+model}}
 \index{\+\_\+model@{\+\_\+model}!Scene@{Scene}}
 \subsubsection[{\+\_\+model}]{\setlength{\rightskip}{0pt plus 5cm}mat4 Scene\+::\+\_\+model}}\label{class_scene_a2eea7478321942ad8f26f4555e1202c9}
 \hypertarget{class_scene_a30e431c913372130cd9f97c0c1e3d75e}{\index{Scene@{Scene}!\+\_\+prog\+\_\+\+I\+D@{\+\_\+prog\+\_\+\+I\+D}}
 \index{\+\_\+prog\+\_\+\+I\+D@{\+\_\+prog\+\_\+\+I\+D}!Scene@{Scene}}
 \subsubsection[{\+\_\+prog\+\_\+\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}G\+Luint Scene\+::\+\_\+prog\+\_\+\+I\+D}}\label{class_scene_a30e431c913372130cd9f97c0c1e3d75e}
-\hypertarget{class_scene_a7e980fe501bcaf6f173497d0a2190887}{\index{Scene@{Scene}!\+\_\+proj@{\+\_\+proj}}
+Open\+G\+L shader-\/pair program I\+D \hypertarget{class_scene_a7e980fe501bcaf6f173497d0a2190887}{\index{Scene@{Scene}!\+\_\+proj@{\+\_\+proj}}
 \index{\+\_\+proj@{\+\_\+proj}!Scene@{Scene}}
 \subsubsection[{\+\_\+proj}]{\setlength{\rightskip}{0pt plus 5cm}mat4 Scene\+::\+\_\+proj}}\label{class_scene_a7e980fe501bcaf6f173497d0a2190887}
-\hypertarget{class_scene_ae1b9af3642d66e6eff7d849c20aafdc5}{\index{Scene@{Scene}!\+\_\+view@{\+\_\+view}}
+Default model, view, and projection matrices \hypertarget{class_scene_af49afd50369f23c12d70c6fe07c9b797}{\index{Scene@{Scene}!\+\_\+qt@{\+\_\+qt}}
+\index{\+\_\+qt@{\+\_\+qt}!Scene@{Scene}}
+\subsubsection[{\+\_\+qt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Q\+T\+Node} Scene\+::\+\_\+qt}}\label{class_scene_af49afd50369f23c12d70c6fe07c9b797}
+The quadtree representing all geometries in the scene \hypertarget{class_scene_ae1b9af3642d66e6eff7d849c20aafdc5}{\index{Scene@{Scene}!\+\_\+view@{\+\_\+view}}
 \index{\+\_\+view@{\+\_\+view}!Scene@{Scene}}
 \subsubsection[{\+\_\+view}]{\setlength{\rightskip}{0pt plus 5cm}mat4 Scene\+::\+\_\+view}}\label{class_scene_ae1b9af3642d66e6eff7d849c20aafdc5}
-
-
-A list of all the \hyperlink{class_geometry}{Geometry} objects contained in the scene. 
-
 \hypertarget{class_scene_aa5d5f322f50e6518e88501fa5481eca9}{\index{Scene@{Scene}!\+\_\+window\+\_\+aspect@{\+\_\+window\+\_\+aspect}}
 \index{\+\_\+window\+\_\+aspect@{\+\_\+window\+\_\+aspect}!Scene@{Scene}}
 \subsubsection[{\+\_\+window\+\_\+aspect}]{\setlength{\rightskip}{0pt plus 5cm}float Scene\+::\+\_\+window\+\_\+aspect}}\label{class_scene_aa5d5f322f50e6518e88501fa5481eca9}

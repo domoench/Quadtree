@@ -91,8 +91,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="constants_8h.html">constants.h</a>&quot;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="bb_8h.html">bb.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="geometry_8h.html">geometry.h</a>&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="qtnode_8h.html">qtnode.h</a>&quot;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;glm/glm.hpp&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="qtnode_8h.html">qtnode.h</a>&quot;</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;glm/gtc/matrix_transform.hpp&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;GLFW/glfw3.h&gt;</span> <span class="comment">// Leads to inclusion of gl.h</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;OpenGL/gl3.h&gt;</span> <span class="comment">// For mac</span></div>
@@ -106,51 +106,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_scene.html#a4a9a7b4b69981efd9ffddfb7d4205806">   24</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_scene.html#a4a9a7b4b69981efd9ffddfb7d4205806">_window_height</a>;</div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_scene.html#aa5d5f322f50e6518e88501fa5481eca9">   25</a></span>&#160;    <span class="keywordtype">float</span>        <a class="code" href="class_scene.html#aa5d5f322f50e6518e88501fa5481eca9">_window_aspect</a>;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">//&lt;! OpenGL shader-pair program ID</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_scene.html#a30e431c913372130cd9f97c0c1e3d75e">   28</a></span>&#160;    GLuint <a class="code" href="class_scene.html#a30e431c913372130cd9f97c0c1e3d75e">_prog_ID</a>;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">//&lt;! Default model, view, and projection matrices</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_scene.html#a7e980fe501bcaf6f173497d0a2190887">   31</a></span>&#160;    mat4 <a class="code" href="class_scene.html#a7e980fe501bcaf6f173497d0a2190887">_proj</a>;</div>
 <div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_scene.html#a2eea7478321942ad8f26f4555e1202c9">   32</a></span>&#160;    mat4 <a class="code" href="class_scene.html#a2eea7478321942ad8f26f4555e1202c9">_model</a>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_scene.html#ae1b9af3642d66e6eff7d849c20aafdc5">   33</a></span>&#160;    mat4 <a class="code" href="class_scene.html#ae1b9af3642d66e6eff7d849c20aafdc5">_view</a>;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_scene.html#ae4e39aee440d748c4dc14a5aad13825d">   36</a></span>&#160;    vector&lt;const Geometry*&gt; <a class="code" href="class_scene.html#ae4e39aee440d748c4dc14a5aad13825d">_all_geometries</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_scene.html#a90aeef6966c87169d2adfb161772c2c3">   36</a></span>&#160;    GLFWwindow* <a class="code" href="class_scene.html#a90aeef6966c87169d2adfb161772c2c3">_glfw_window</a>;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// QTNode quadtree;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> setDimensions(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> w, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> h);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> addGeometry(<span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>&amp; geometry);</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="class_scene.html#a28b649d5aa339d6783672045f8026476">   42</a></span>&#160;    vector&lt;vec2&gt;* <a class="code" href="class_scene.html#a28b649d5aa339d6783672045f8026476">_input_poly</a>;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a05848de25ac2dbec233935058a1d24b4">init</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269">display</a>();</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a95797fc4b624770c98d08de93881f98b">keyHandler</a>();</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a860764943be2099746afc7196999de52">mouseButton</a>();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a11fc0d976fb75147ac3c87c28159f861">mouseMotion</a>();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_scene.html#ae4e39aee440d748c4dc14a5aad13825d">   45</a></span>&#160;    vector&lt;const Geometry*&gt; <a class="code" href="class_scene.html#ae4e39aee440d748c4dc14a5aad13825d">_all_geometries</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_scene.html#af49afd50369f23c12d70c6fe07c9b797">   48</a></span>&#160;    <a class="code" href="class_q_t_node.html">QTNode</a> <a class="code" href="class_scene.html#af49afd50369f23c12d70c6fe07c9b797">_qt</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="class_scene.html">Scene</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    ~<a class="code" href="class_scene.html">Scene</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> setDimensions(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> w, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> h);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> addGeometry(<span class="keyword">const</span> <a class="code" href="class_geometry.html">Geometry</a>&amp; geometry);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> display();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> keyHandler();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> addUserVertex(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">bool</span> insertUserGeometry();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="class_scene_html_a2eea7478321942ad8f26f4555e1202c9"><div class="ttname"><a href="class_scene.html#a2eea7478321942ad8f26f4555e1202c9">Scene::_model</a></div><div class="ttdeci">mat4 _model</div><div class="ttdef"><b>Definition:</b> scene.h:32</div></div>
-<div class="ttc" id="main_8cpp_html_a1e5b20fed15743656bb6d2e6a6ea6269"><div class="ttname"><a href="main_8cpp.html#a1e5b20fed15743656bb6d2e6a6ea6269">display</a></div><div class="ttdeci">void display()</div><div class="ttdef"><b>Definition:</b> main.cpp:161</div></div>
 <div class="ttc" id="class_scene_html_a4a9a7b4b69981efd9ffddfb7d4205806"><div class="ttname"><a href="class_scene.html#a4a9a7b4b69981efd9ffddfb7d4205806">Scene::_window_height</a></div><div class="ttdeci">unsigned int _window_height</div><div class="ttdef"><b>Definition:</b> scene.h:24</div></div>
 <div class="ttc" id="class_scene_html_a30e431c913372130cd9f97c0c1e3d75e"><div class="ttname"><a href="class_scene.html#a30e431c913372130cd9f97c0c1e3d75e">Scene::_prog_ID</a></div><div class="ttdeci">GLuint _prog_ID</div><div class="ttdef"><b>Definition:</b> scene.h:28</div></div>
+<div class="ttc" id="class_q_t_node_html"><div class="ttname"><a href="class_q_t_node.html">QTNode</a></div><div class="ttdef"><b>Definition:</b> qtnode.h:26</div></div>
 <div class="ttc" id="constants_8h_html"><div class="ttname"><a href="constants_8h.html">constants.h</a></div></div>
 <div class="ttc" id="bb_8h_html"><div class="ttname"><a href="bb_8h.html">bb.h</a></div></div>
-<div class="ttc" id="main_8cpp_html_a05848de25ac2dbec233935058a1d24b4"><div class="ttname"><a href="main_8cpp.html#a05848de25ac2dbec233935058a1d24b4">init</a></div><div class="ttdeci">int init()</div><div class="ttdef"><b>Definition:</b> main.cpp:88</div></div>
-<div class="ttc" id="class_geometry_html"><div class="ttname"><a href="class_geometry.html">Geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:17</div></div>
+<div class="ttc" id="class_scene_html_af49afd50369f23c12d70c6fe07c9b797"><div class="ttname"><a href="class_scene.html#af49afd50369f23c12d70c6fe07c9b797">Scene::_qt</a></div><div class="ttdeci">QTNode _qt</div><div class="ttdef"><b>Definition:</b> scene.h:48</div></div>
+<div class="ttc" id="class_scene_html_a28b649d5aa339d6783672045f8026476"><div class="ttname"><a href="class_scene.html#a28b649d5aa339d6783672045f8026476">Scene::_input_poly</a></div><div class="ttdeci">vector&lt; vec2 &gt; * _input_poly</div><div class="ttdef"><b>Definition:</b> scene.h:42</div></div>
+<div class="ttc" id="class_geometry_html"><div class="ttname"><a href="class_geometry.html">Geometry</a></div><div class="ttdef"><b>Definition:</b> geometry.h:19</div></div>
 <div class="ttc" id="class_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition:</b> scene.h:20</div></div>
-<div class="ttc" id="main_8cpp_html_a95797fc4b624770c98d08de93881f98b"><div class="ttname"><a href="main_8cpp.html#a95797fc4b624770c98d08de93881f98b">keyHandler</a></div><div class="ttdeci">void keyHandler()</div><div class="ttdef"><b>Definition:</b> main.cpp:166</div></div>
+<div class="ttc" id="class_scene_html_a90aeef6966c87169d2adfb161772c2c3"><div class="ttname"><a href="class_scene.html#a90aeef6966c87169d2adfb161772c2c3">Scene::_glfw_window</a></div><div class="ttdeci">GLFWwindow * _glfw_window</div><div class="ttdef"><b>Definition:</b> scene.h:36</div></div>
 <div class="ttc" id="class_scene_html_aa5d5f322f50e6518e88501fa5481eca9"><div class="ttname"><a href="class_scene.html#aa5d5f322f50e6518e88501fa5481eca9">Scene::_window_aspect</a></div><div class="ttdeci">float _window_aspect</div><div class="ttdef"><b>Definition:</b> scene.h:25</div></div>
 <div class="ttc" id="class_scene_html_a9857688fb9c3a52be5e6b7551d7e3af8"><div class="ttname"><a href="class_scene.html#a9857688fb9c3a52be5e6b7551d7e3af8">Scene::_window_width</a></div><div class="ttdeci">unsigned int _window_width</div><div class="ttdef"><b>Definition:</b> scene.h:23</div></div>
-<div class="ttc" id="class_scene_html_ae4e39aee440d748c4dc14a5aad13825d"><div class="ttname"><a href="class_scene.html#ae4e39aee440d748c4dc14a5aad13825d">Scene::_all_geometries</a></div><div class="ttdeci">vector&lt; const Geometry * &gt; _all_geometries</div><div class="ttdoc">The quadtree node representing all geometries in the scene. </div><div class="ttdef"><b>Definition:</b> scene.h:36</div></div>
-<div class="ttc" id="main_8cpp_html_a11fc0d976fb75147ac3c87c28159f861"><div class="ttname"><a href="main_8cpp.html#a11fc0d976fb75147ac3c87c28159f861">mouseMotion</a></div><div class="ttdeci">void mouseMotion()</div><div class="ttdef"><b>Definition:</b> main.cpp:176</div></div>
-<div class="ttc" id="main_8cpp_html_a860764943be2099746afc7196999de52"><div class="ttname"><a href="main_8cpp.html#a860764943be2099746afc7196999de52">mouseButton</a></div><div class="ttdeci">void mouseButton()</div><div class="ttdef"><b>Definition:</b> main.cpp:171</div></div>
+<div class="ttc" id="class_scene_html_ae4e39aee440d748c4dc14a5aad13825d"><div class="ttname"><a href="class_scene.html#ae4e39aee440d748c4dc14a5aad13825d">Scene::_all_geometries</a></div><div class="ttdeci">vector&lt; const Geometry * &gt; _all_geometries</div><div class="ttdef"><b>Definition:</b> scene.h:45</div></div>
 <div class="ttc" id="geometry_8h_html"><div class="ttname"><a href="geometry_8h.html">geometry.h</a></div></div>
-<div class="ttc" id="class_scene_html_ae1b9af3642d66e6eff7d849c20aafdc5"><div class="ttname"><a href="class_scene.html#ae1b9af3642d66e6eff7d849c20aafdc5">Scene::_view</a></div><div class="ttdeci">mat4 _view</div><div class="ttdoc">A list of all the Geometry objects contained in the scene. </div><div class="ttdef"><b>Definition:</b> scene.h:33</div></div>
+<div class="ttc" id="class_scene_html_ae1b9af3642d66e6eff7d849c20aafdc5"><div class="ttname"><a href="class_scene.html#ae1b9af3642d66e6eff7d849c20aafdc5">Scene::_view</a></div><div class="ttdeci">mat4 _view</div><div class="ttdef"><b>Definition:</b> scene.h:33</div></div>
 <div class="ttc" id="class_scene_html_a7e980fe501bcaf6f173497d0a2190887"><div class="ttname"><a href="class_scene.html#a7e980fe501bcaf6f173497d0a2190887">Scene::_proj</a></div><div class="ttdeci">mat4 _proj</div><div class="ttdef"><b>Definition:</b> scene.h:31</div></div>
 <div class="ttc" id="qtnode_8h_html"><div class="ttname"><a href="qtnode_8h.html">qtnode.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 24 2014 16:18:34 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed May 7 2014 14:03:36 for Quadtree by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
