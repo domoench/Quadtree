@@ -7,7 +7,7 @@ director of the Center for Computational Visualization at UT Austin.
 
 Output
 ------
-![screenshot.png](https://github.com/domoench/Quadtree/blob/master/screenshot.png)
+![screenshot.png](https://raw.githubusercontent.com/domoench/Quadtree/master/screenshot.png)
 
 Documentation
 -------------
