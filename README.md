@@ -11,7 +11,7 @@ Output
 
 Documentation
 -------------
-[HERE](www.cs.utexas.edu/~dmoench/quadtree-docs)
+[HERE](https://www.cs.utexas.edu/~dmoench/quadtree-docs)
 
 Credits to:
 -----------
@@ -25,4 +25,4 @@ Credits to:
   for quadtrees and octrees. The Journal of Graphics Tools, 2002.
 * Hanan Samet. The Design and Analysis of Spatial Data Structures. 
   Addison-Wesley, 1989.
-* [opengl-tutorial.org](www.opengl-tutorial.org)
+* [opengl-tutorial.org](http://www.opengl-tutorial.org)
