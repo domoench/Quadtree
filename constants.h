@@ -12,8 +12,8 @@
 #define SUBDIV_THRESHOLD 0.985f
 
 //! Default window width in pixels
-#define DEFAULT_W 900
+#define DEFAULT_W 860
 //! Default window height in pixels
-#define DEFAULT_H 900
+#define DEFAULT_H 860
 
 #endif

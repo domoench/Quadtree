@@ -47,28 +47,7 @@ int main(int argc, char** argv)
   // Run Tests
   if (DEBUG) runAllTests();
 
-  // TEST: Square
-  /*
-  vector<vec2> sq_verts;
-  sq_verts.push_back(vec2(-100, -225));
-  sq_verts.push_back(vec2(225 + 112, 225));
-  sq_verts.push_back(vec2(225 + 112, 225 + 112));
-  sq_verts.push_back(vec2(225, 225 + 112));
-  Geometry square = Geometry(1, sq_verts);
-  if (scene._qt.insert(square)) scene.addGeometry(square);
-  */
-
-  // TEST: Triangle
-  /*
-  vector<vec2> tri_verts;
-  tri_verts.push_back(vec2(-449, -449));
-  tri_verts.push_back(vec2( 449, -449));
-  tri_verts.push_back(vec2(-449,  449));
-  Geometry triangle = Geometry(0, tri_verts);
-  if (scene._qt.insert(triangle)) scene.addGeometry(triangle);
-  */
-
-	while(!glfwWindowShouldClose(scene._glfw_window))
+	while (!glfwWindowShouldClose(scene._glfw_window))
   {
 		// Clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -144,7 +123,7 @@ int init()
 
   // Camera matrix
 	scene._view = lookAt(
-    vec3(0,0,400), // Camera position in world space
+    vec3(0,0,385), // Camera position in world space
     vec3(0,0,0),   // Looks at the origin
     vec3(0,1,0)    // Head is up
 	);

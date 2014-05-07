@@ -57,8 +57,8 @@ void Scene::addUserVertex(double x, double y)
    *  f(<x,y>) = <x - Window Width/2, Window Height/2 - y>
    *  TODO: Figure out formula that can handle window resizing
    */
-  printf("Click: (%f, %f) -> (%f, %f)\n", x, y, x - 450, 450 - y);
-  _input_poly->push_back(vec2(x - 450.0, 450.0 - y));
+  printf("Click: (%f, %f) -> (%f, %f)\n", x, y, x - DEFAULT_W/2, DEFAULT_H/2 - y);
+  _input_poly->push_back(vec2(x - DEFAULT_W/2, DEFAULT_H/2 - y));
 }
 
 /**
